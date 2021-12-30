@@ -21,7 +21,8 @@
             "store/*": ["src/store/*"],
             "@/*": ["src/*"],
             "static/*": ["static/*"],
-            "root/*": ["*"]
+            "root/*": ["*"],
+            "~/*": ["packages/*"]
         },
         "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
         "typeRoots": ["src/global.d.ts", "node_modules/@types"]
@@ -34,6 +35,10 @@
         "src/**/*.vue",
         "tests/**/*.ts",
         "tests/**/*.tsx",
+        "packages/**/*.ts",
+        "packages/**/*.tsx",
+        "packages/**/*.vue",
+        "typings/**/*.ts",
         "env.d.ts",
     ],
     "exclude": ["node_modules"]

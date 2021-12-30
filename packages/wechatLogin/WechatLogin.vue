@@ -2,8 +2,8 @@
  * @Author: matiastang
  * @Date: 2021-12-21 17:46:03
  * @LastEditors: matiastang
- * @LastEditTime: 2021-12-22 11:09:15
- * @FilePath: /datumwealth-openalpha-front/src/components/wechatLogin/WechatLogin.vue
+ * @LastEditTime: 2021-12-30 19:20:14
+ * @FilePath: /dw-vue-components/packages/wechatLogin/WechatLogin.vue
  * @Description: 微信登录
  * https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_Login/Wechat_Login.html
  * http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js
@@ -23,6 +23,7 @@
 
 <script setup lang="ts">
 import { computed, defineProps } from 'vue'
+import { PhoneType } from 'root/typings/vue'
 
 const prop = defineProps({
     /**
@@ -183,6 +184,11 @@ const loginSrc = computed(() => {
     console.log(loginSrc)
     return loginSrc
 })
+
+const phone = {
+    value: '18380449615',
+} as PhoneType
+console.log(phone)
 </script>
 
 <style lang="scss" scoped>

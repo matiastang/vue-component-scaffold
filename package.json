@@ -1,14 +1,26 @@
 {
-    "name": "datumwealth-openalpha-front",
-    "version": "1.0.1",
+    "name": "datumwealth-vue-components",
+    "version": "0.1.0",
     "description": "西筹金融科技开放平台项目",
-    "main": "index.js",
+    "main": "./dist/datumwealth-vue-components.umd.js",
+    "private": false,
     "directories": {
         "test": "tests"
     },
+    "files": [
+        "dist"
+    ],
+    "module": "./dist/datumwealth-vue-components.es.js",
+    "typings": "lib/index.d.ts",
+    "exports": {
+        ".": {
+            "import": "./dist/datumwealth-vue-components.es.js",
+            "require": "./dist/datumwealth-vue-components.umd.js"
+        }
+    },
     "scripts": {
         "dev": "vite",
-        "build": "vite --config vite.config.ts build --mode production",
+        "build": "vite --config vite.build.config.ts build --mode production",
         "serve": "vite --config vite.config.ts preview",
         "build:docker:run": "./dockerRun.sh openalpha-front-dev-container openalpha-front",
         "build:prod": "vue-cli-service build --mode prod --report",
@@ -24,23 +36,26 @@
         "type": "git",
         "url": "git+https://github.com/matiastang/vue-scaffold.git"
     },
-    "author": "",
+    "author": {
+        "name": "matiastang",
+        "email": "matiastang@163.com"
+    },
     "license": "ISC",
     "bugs": {
         "url": "https://github.com/matiastang/vue-scaffold/issues"
     },
     "homepage": "https://github.com/matiastang/vue-scaffold#readme",
     "dependencies": {
+        "vue": "^3.2.20"
+    },
+    "devDependencies": {
+        "vue-router": "^4.0.12",
+        "vuex": "^4.0.2",
         "child_process": "^1.0.2",
         "inquirer": "8.2.0",
         "ora": "5.4.0",
         "vite-plugin-compression": "^0.3.6",
         "vite-plugin-imagemin": "^0.4.6",
-        "vue": "^3.2.20",
-        "vue-router": "^4.0.12",
-        "vuex": "^4.0.2"
-    },
-    "devDependencies": {
         "@element-plus/icons": "^0.0.11",
         "@types/gulp": "^4.0.9",
         "@types/gulp-bump": "^2.8.2",
