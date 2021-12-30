@@ -2,17 +2,41 @@
  * @Author: matiastang
  * @Date: 2021-12-29 10:52:57
  * @LastEditors: matiastang
- * @LastEditTime: 2021-12-29 10:57:16
- * @FilePath: /datumwealth-front-scaffold/src/views/home.vue
+ * @LastEditTime: 2021-12-30 15:17:06
+ * @FilePath: /dw-vue-components/src/views/home/Home.vue
  * @Description: 
 -->
 <template>
     <div class="home">
         <div class="text">{{ text }}</div>
+        <WechatLogin
+            appid="wx6d902dc1624282c4"
+            scope="snsapi_login"
+            :state="wechatState"
+            :redirect_uri="redirect_uri"
+        />
     </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import WechatLogin from '@/components/wechatLogin/WechatLogin.vue'
+
+const stateUUID = Math.round(Math.random() * 100 + 100)
+console.log(`成功uuid:${stateUUID}`)
+const wechatState = ref(stateUUID.toString())
+
+/**
+ * 重定向地址
+ */
+const redirect_uri = computed(() => {
+    const uri = `${import.meta.env.DEV ? 'https://openalpha.cn' : window.location.origin}${
+        // route.path
+        '/login'
+    }`
+    console.log(uri)
+    const redirect_uri = encodeURI(uri)
+    return redirect_uri
+})
 
 const text = ref('home')
 </script>
