@@ -11,6 +11,7 @@ typings/
 gulpfile.ts/
 nginx/
 static/
+rollup
 
  
 # 忽略指定文件
