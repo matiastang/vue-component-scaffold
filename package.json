@@ -30,7 +30,8 @@
         "lint": "eslint './src/**/*.{ts,tsx,js,jsx}' './tsconfig.json'",
         "lint:fix": "eslint --fix './src/**/*.{ts,tsx,js,jsx}' './tsconfig.json'",
         "lint:setting:fix": "cd .vscode && eslint --fix './settings.json' && cd -",
-        "prettier": "prettier --write --config .prettierrc './src/**/*.{ts,tsx,js,jsx,vue}'"
+        "prettier": "prettier --write --config .prettierrc './src/**/*.{ts,tsx,js,jsx,vue}'",
+        "push:npm:package": "gulp versionPatch | gulp npmPackagePush"
     },
     "repository": {
         "type": "git",
