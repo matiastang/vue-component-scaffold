@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-30 15:37:18
  * @LastEditors: matiastang
- * @LastEditTime: 2021-12-30 18:53:09
+ * @LastEditTime: 2021-12-31 10:28:09
  * @FilePath: /dw-vue-components/vite.build.config.ts
  * @Description: npm 打包上传配置
  */
@@ -26,49 +26,12 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 // 图片压缩
 import viteImagemin from 'vite-plugin-imagemin'
 import config from './loadenv'
+// .vue或.ts生成.d.ts文件
+import dts from 'vite-plugin-dts'
+
 export default defineConfig({
     // 共享配置
-    plugins: [
-        vue(),
-        vueJsx(),
-        Components({
-            resolvers: [
-                ElementPlusResolver({
-                    importStyle: 'sass',
-                    // directives: true,
-                    // version: "1.2.0-beta.1",
-                }),
-            ],
-        }),
-        // ElementPlus({
-        //     useSource: true,
-        // }),
-
-        // compressPlugin({
-        //     ext: '.gz', //gz br
-        //     algorithm: 'gzip', //brotliCompress gzip
-        //     deleteOriginFile: false,
-        // }),
-        viteImagemin({
-            gifsicle: {
-                optimizationLevel: 7,
-                interlaced: false,
-            },
-            optipng: {
-                optimizationLevel: 7,
-            },
-            webp: {
-                quality: 75,
-            },
-            mozjpeg: {
-                quality: 65,
-            },
-            pngquant: {
-                quality: [0.65, 0.9],
-                speed: 4,
-            },
-        }),
-    ],
+    plugins: [vue(), dts()],
     resolve: {
         // 别名
         alias: [
@@ -95,31 +58,14 @@ export default defineConfig({
             sass: {},
         },
     },
-    // 开发服务配置
-    server: {
-        host: '127.0.0.1',
-        port: 3000,
-        strictPort: true,
-        fs: {
-            strict: false,
-        },
-        proxy: {
-            // 选项写法
-            [config.VITE_APP_BASE_API]: {
-                target: config.VITE_APP_BASE_HOST, // 所要代理的目标地址
-                rewrite: (path) => path.replace(/^\/dev-api/, ''), // 重写传过来的path路径，比如 `/api/index/1?id=10&name=zs`（注意:path路径最前面有斜杠（/），因此，正则匹配的时候不要忘了是斜杠（/）开头的；选项的 key 也是斜杠（/）开头的）
-                changeOrigin: true, // true/false, Default: false - changes the origin of the host header to the target URL
-            },
-        },
-    },
     // 库模式
     build: {
         lib: {
             entry: path.resolve(__dirname, './packages/index.ts'),
-            name: 'DatumwealthVueComponents',
+            name: 'dwVueComponents',
             // formats: ['es', 'cjs', 'umd', 'iife'],
             formats: ['es', 'umd'],
-            fileName: (format) => `datumwealth-vue-components.${format}.js`,
+            fileName: (format) => `dw-vue-components.${format}.js`,
         },
         rollupOptions: {
             // 确保外部化处理那些你不想打包进库的依赖
