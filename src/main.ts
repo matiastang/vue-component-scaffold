@@ -1,10 +1,10 @@
 /*
  * @Author: your name
  * @Date: 2021-10-15 17:10:16
- * @LastEditTime: 2021-12-08 19:08:48
+ * @LastEditTime: 2022-01-04 14:25:48
  * @LastEditors: matiastang
  * @Description: In User Settings Edit
- * @FilePath: /datumwealth-openalpha-front/src/main.ts
+ * @FilePath: /dw-vue-components/src/main.ts
  */
 import { createApp } from 'vue'
 import App from '@/App.vue'
@@ -16,8 +16,14 @@ import ElementPlus from 'element-plus'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import 'element-plus/theme-chalk/el-message.css'
 import 'element-plus/theme-chalk/el-message-box.css'
+// 自定义组件
+import DwVueComponents from 'root/components/index'
+import 'root/dist/style.css'
 
 const app = createApp(App)
+
+// 导入西筹组件
+app.use(DwVueComponents)
 
 // Element-plus组件
 app.use(ElementPlus, {
@@ -37,5 +43,4 @@ if (import.meta.env.PROD) {
         // 线上环境屏蔽log
     }
 }
-
-// console.info(`当前Vue版本为${app.version}`)
+console.info(`当前Vue版本为${app.version}`)

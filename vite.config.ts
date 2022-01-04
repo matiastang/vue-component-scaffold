@@ -1,10 +1,10 @@
 /*
  * @Author: your name
  * @Date: 2021-10-15 16:57:39
- * @LastEditTime: 2021-12-22 15:02:59
+ * @LastEditTime: 2022-01-04 14:54:38
  * @LastEditors: matiastang
  * @Description: In User Settings Edit
- * @FilePath: /datumwealth-openalpha-front/vite.config.ts
+ * @FilePath: /dw-vue-components/vite.config.ts
  */
 // vite配置文件vite.config.js
 
@@ -116,8 +116,5 @@ export default defineConfig({
     build: {
         outDir: './build',
         assetsInlineLimit: 10240,
-        // rollupOptions: {
-        //     input:'src/pages/default/index.html'
-        // }
     },
 })

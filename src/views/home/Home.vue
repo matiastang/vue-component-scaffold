@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-29 10:52:57
  * @LastEditors: matiastang
- * @LastEditTime: 2021-12-30 16:05:35
+ * @LastEditTime: 2022-01-04 15:13:00
  * @FilePath: /dw-vue-components/src/views/home/Home.vue
  * @Description: 
 -->
@@ -19,9 +19,6 @@
 </template>
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-// import WechatLogin from '@/components/wechatLogin/WechatLogin.vue'
-import { WechatLogin } from '../../../dist/my-lib.es'
-import '../../../dist/style.css'
 
 const stateUUID = Math.round(Math.random() * 100 + 100)
 console.log(`成功uuid:${stateUUID}`)

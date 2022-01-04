@@ -31,8 +31,9 @@ vue.config.js
 *.sh
 Dockerfile
 env.d.ts
-global.d.ts
 index.html
 loadenv.ts
 vite.config.ts
 vite.build.config.ts
+
+# 忽略dist中的部分文件

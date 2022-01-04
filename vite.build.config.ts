@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-30 15:37:18
  * @LastEditors: matiastang
- * @LastEditTime: 2021-12-31 10:28:09
+ * @LastEditTime: 2022-01-04 13:56:46
  * @FilePath: /dw-vue-components/vite.build.config.ts
  * @Description: npm 打包上传配置
  */
@@ -14,24 +14,17 @@ import path from 'path'
 import { defineConfig } from 'vite'
 // 解析.vue文件
 import vue from '@vitejs/plugin-vue'
-// 解析.jsx语法
-import vueJsx from '@vitejs/plugin-vue-jsx'
-// 手动导入使用 unplugin-element-plus
-// import ElementPlus from 'unplugin-element-plus/vite'
-// 自动导入使用 unplugin-vue-components
-import Components from 'unplugin-vue-components/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-// 开启GZIP压缩
-// import compressPlugin from 'vite-plugin-compression'
-// 图片压缩
-import viteImagemin from 'vite-plugin-imagemin'
-import config from './loadenv'
 // .vue或.ts生成.d.ts文件
 import dts from 'vite-plugin-dts'
 
 export default defineConfig({
     // 共享配置
-    plugins: [vue(), dts()],
+    plugins: [
+        vue(),
+        dts({
+            include: ['./components'],
+        }),
+    ],
     resolve: {
         // 别名
         alias: [
@@ -61,10 +54,9 @@ export default defineConfig({
     // 库模式
     build: {
         lib: {
-            entry: path.resolve(__dirname, './packages/index.ts'),
+            entry: path.resolve(__dirname, './components/index.ts'),
             name: 'dwVueComponents',
-            // formats: ['es', 'cjs', 'umd', 'iife'],
-            formats: ['es', 'umd'],
+            formats: ['es', 'cjs', 'umd', 'iife'],
             fileName: (format) => `dw-vue-components.${format}.js`,
         },
         rollupOptions: {
@@ -78,11 +70,4 @@ export default defineConfig({
             },
         },
     },
-    // build: {
-    //     outDir: './build',
-    //     assetsInlineLimit: 10240,
-    //     // rollupOptions: {
-    //     //     input:'src/pages/default/index.html'
-    //     // }
-    // },
 })

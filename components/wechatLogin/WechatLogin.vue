@@ -2,8 +2,8 @@
  * @Author: matiastang
  * @Date: 2021-12-21 17:46:03
  * @LastEditors: matiastang
- * @LastEditTime: 2021-12-31 11:38:05
- * @FilePath: /dw-vue-components/packages/wechatLogin/WechatLogin.vue
+ * @LastEditTime: 2022-01-04 13:59:55
+ * @FilePath: /dw-vue-components/components/wechatLogin/WechatLogin.vue
  * @Description: 微信登录
  * https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_Login/Wechat_Login.html
  * http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js
@@ -17,13 +17,13 @@
             :src="loginSrc"
             :width="iframeWidth"
             :height="iframeHeight"
+            style="border: none"
         ></iframe>
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
-import { PhoneType } from 'root/typings/vue'
 
 export default defineComponent({
     name: 'WechatLogin',
@@ -186,14 +186,9 @@ export default defineComponent({
             console.log(loginSrc)
             return loginSrc
         })
-        const phone = {
-            value: '18380449615',
-        } as PhoneType
-        console.log(phone)
         return {
             hidden,
             loginSrc,
-            phone,
         }
     },
 })

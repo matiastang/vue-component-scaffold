@@ -1,8 +1,9 @@
 {
     "name": "datumwealth-vue-components",
-    "version": "0.1.0",
-    "description": "西筹金融科技开放平台项目",
-    "main": "./dist/datumwealth-vue-components.umd.js",
+    "version": "0.1.2",
+    "description": "西筹金融科技Vue组件库",
+    "main": "./dist/dw-vue-components.es.js",
+    "source": "./dist/components/index.d.ts",
     "private": false,
     "directories": {
         "test": "tests"
@@ -10,28 +11,24 @@
     "files": [
         "dist"
     ],
-    "module": "./dist/datumwealth-vue-components.es.js",
-    "typings": "./dist/packages/index.d.ts",
+    "module": "./dist/dw-vue-components.es.js",
+    "types": "./dist/components/index.d.ts",
     "exports": {
         ".": {
-            "import": "./dist/datumwealth-vue-components.es.js",
-            "require": "./dist/datumwealth-vue-components.umd.js"
+            "import": "./dist/dw-vue-components.es.js",
+            "require": "./dist/dw-vue-components.umd.js"
         }
     },
     "scripts": {
         "dev": "vite",
         "build": "vite --config vite.build.config.ts build --mode production",
         "serve": "vite --config vite.config.ts preview",
-        "build:docker:run": "./dockerRun.sh openalpha-front-dev-container openalpha-front",
-        "build:prod": "vue-cli-service build --mode prod --report",
-        "build:dev:update": "./buildUpdate.sh dev",
-        "build:pro:update": "./buildUpdate.sh pro",
         "test": "echo \"Error: no test specified\" && exit 1",
         "lint": "eslint './src/**/*.{ts,tsx,js,jsx}' './tsconfig.json'",
         "lint:fix": "eslint --fix './src/**/*.{ts,tsx,js,jsx}' './tsconfig.json'",
         "lint:setting:fix": "cd .vscode && eslint --fix './settings.json' && cd -",
         "prettier": "prettier --write --config .prettierrc './src/**/*.{ts,tsx,js,jsx,vue}'",
-        "push:npm:package": "gulp versionPatch | gulp npmPackagePush"
+        "push:npm:package": "gulp versionPatch && gulp npmPackagePush"
     },
     "repository": {
         "type": "git",
@@ -77,6 +74,7 @@
         "gulp-json-editor": "^2.5.6",
         "inquirer": "8.2.0",
         "less": "^4.1.2",
+        "microbundle": "^0.14.2",
         "minimist": "^1.2.5",
         "object-hash": "^2.2.0",
         "ora": "5.4.0",
