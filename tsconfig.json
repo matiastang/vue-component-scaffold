@@ -5,6 +5,7 @@
         "diagnostics": true, // 打印诊断信息
         "target": "esnext", // 目标语言的版本, 与 Vue 的浏览器支持保持一致
         "module": "CommonJS", // 生成代码的模板标准
+        // "module": "esnext",
 //     "outFile": "./app.js", // 将多个相互依赖的文件生成一个文件，可以用在AMD模块中，即开启时应设置"module": "AMD",
 //     "lib": ["DOM", "ES2015", "ScriptHost", "ES2019.Array"], // TS需要引用的库，即声明文件，es5 默认引用dom、es5、scripthost,如需要使用es的高级版本特性，通常都需要配置，如es8的数组新特性需要引入"ES2019.Array",
 //     "allowJS": true, // 允许编译器编译JS，JSX文件
@@ -58,7 +59,7 @@
         "resolveJsonModule": true,
         "sourceMap": true,
         "baseUrl": ".",
-        // "types": ["node_modules/element-plus/global"],// 加载的声明文件包
+        "types": ["node_modules/element-plus/global"],// 加载的声明文件包
         "paths": {
             "utils/*": ["src/common/utils/*"],
             "store/*": ["src/store/*"],
@@ -69,7 +70,7 @@
         "lib": ["esnext", "es2020", "dom", "dom.iterable", "scripthost"],
         "typeRoots": ["src/global.d.ts", "node_modules/@types"]// 声明文件目录，默认时node_modules/@types
     },
-    "files": ["global.d.ts", "stringExtension.d.ts"],
+    "files": ["global.d.ts", "stringExtension.d.ts", "node_modules/datumwealth-vue-components/dist/components/global"],
     "include": [
         "src/**/*.d.ts",
         "src/**/*.ts",

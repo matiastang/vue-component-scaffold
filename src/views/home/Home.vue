@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-29 10:52:57
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-04 15:13:00
+ * @LastEditTime: 2022-01-04 16:45:45
  * @FilePath: /dw-vue-components/src/views/home/Home.vue
  * @Description: 
 -->
@@ -19,6 +19,7 @@
 </template>
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+// import { WechatLogin } from 'datumwealth-vue-components'
 
 const stateUUID = Math.round(Math.random() * 100 + 100)
 console.log(`成功uuid:${stateUUID}`)

@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-13 10:12:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-04 16:29:03
+ * @LastEditTime: 2022-01-04 17:07:42
  * @FilePath: /dw-vue-components/README.md
  * @Description: datumwealth-vue-components
 -->
@@ -12,21 +12,24 @@
 
 该项目为`西筹金融科技`前端组件库项目。使用`Vue3`+`TS`+`Vite`开发。
 
-## 运行
+## 安装与使用
 
 1. 安装datumwealth-vue-components
 
+* `pnpm`导入
 > $ pnpm add -D datumwealth-vue-components
+* `yarn`导入
 > $ yarn add -D datumwealth-vue-components
+* `npm`导入
 > $ npm install -D datumwealth-vue-components
 
 2. 声明使用
 
-两种引入方式：
+两种引入方式如下（以`DwWechatLogin`组件举例）：
 * 单个组件引入
 ```vue
 <template>
-    <WechatLogin
+    <DwWechatLogin
         appid="你的appid"
         scope="snsapi_login"
         :state="wechatState"
@@ -35,7 +38,7 @@
 </template>
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { WechatLogin } from 'datumwealth-vue-components'
+import { DwWechatLogin } from 'datumwealth-vue-components'
 
 const stateUUID = Math.round(Math.random() * 100 + 100)
 // state
@@ -44,7 +47,6 @@ const wechatState = ref(stateUUID.toString())
 // redirect_uri
 const redirect_uri = computed(() => {
     const uri = `${window.location.origin}/login`
-    console.log(uri)
     const redirect_uri = encodeURI(uri)
     return redirect_uri
 })
@@ -62,10 +64,18 @@ const app = createApp(App)
 // 导入西筹组件
 app.use(DwVueComponents)
 ```
+> 引入组件全局声明
+```json
+{
+    ...
+    "files": ["node_modules/datumwealth-vue-components/dist/components/global"],
+    ...
+}
+```
 > `*.vue`文件中使用
 ```vue
 <template>
-    <WechatLogin
+    <DwWechatLogin
         appid="你的appid"
         scope="snsapi_login"
         :state="wechatState"
@@ -74,7 +84,6 @@ app.use(DwVueComponents)
 </template>
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { WechatLogin } from 'datumwealth-vue-components'
 
 const stateUUID = Math.round(Math.random() * 100 + 100)
 // state
@@ -89,13 +98,8 @@ const redirect_uri = computed(() => {
 </script>
 ```
 
-
 ## 版本
 
-### 1.0.0
+### 0.1.5
 
-* 第一版
-
-## package包
-
-* 使用`pnpm`管理三方包
+* 添加微信登录二维码组件`DwWechatLogin`.

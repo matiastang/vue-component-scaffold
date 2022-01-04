@@ -1,6 +1,6 @@
 {
     "name": "datumwealth-vue-components",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "description": "西筹金融科技Vue组件库",
     "main": "./dist/dw-vue-components.es.js",
     "source": "./dist/components/index.d.ts",
@@ -65,7 +65,7 @@
         "@vue/eslint-config-typescript": "^8.0.0",
         "axios": "^0.24.0",
         "child_process": "^1.0.2",
-        "datumwealth-vue-components": "^0.1.3",
+        "datumwealth-vue-components": "^0.1.4",
         "element-plus": "^1.2.0-beta.1",
         "eslint": "^8.0.1",
         "eslint-plugin-prettier": "^4.0.0",
