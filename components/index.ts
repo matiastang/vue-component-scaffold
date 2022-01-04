@@ -2,12 +2,12 @@
  * @Author: matiastang
  * @Date: 2021-12-30 15:31:25
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-04 14:59:26
+ * @LastEditTime: 2022-01-04 15:21:08
  * @FilePath: /dw-vue-components/components/index.ts
  * @Description: 导出组件
  */
 import { App } from 'vue'
-import WechatLogin from 'root/components/wechatLogin/WechatLogin.vue'
+import WechatLogin from './wechatLogin'
 
 // 所有组件列表
 const components = [WechatLogin]

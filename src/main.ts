@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-15 17:10:16
- * @LastEditTime: 2022-01-04 14:25:48
+ * @LastEditTime: 2022-01-04 15:28:20
  * @LastEditors: matiastang
  * @Description: In User Settings Edit
  * @FilePath: /dw-vue-components/src/main.ts
@@ -17,7 +17,7 @@ import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import 'element-plus/theme-chalk/el-message.css'
 import 'element-plus/theme-chalk/el-message-box.css'
 // 自定义组件
-import DwVueComponents from 'root/components/index'
+import DwVueComponents from 'root/components'
 import 'root/dist/style.css'
 
 const app = createApp(App)

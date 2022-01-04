@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-30 15:37:18
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-04 13:56:46
+ * @LastEditTime: 2022-01-04 15:27:19
  * @FilePath: /dw-vue-components/vite.build.config.ts
  * @Description: npm 打包上传配置
  */
