@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-13 10:12:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-05 10:53:25
+ * @LastEditTime: 2022-01-05 15:09:33
  * @FilePath: /dw-vue-components/README.md
  * @Description: datumwealth-vue-components
 -->
@@ -96,6 +96,17 @@ const redirect_uri = computed(() => {
     return redirect_uri
 })
 </script>
+```
+
+3. 引入样式
+```ts
+import DwVueComponents from 'datumwealth-vue-components'
+import 'datumwealth-vue-components/dist/style.css'
+
+const app = createApp(App)
+
+// 引入西筹组件库
+app.use(DwVueComponents)
 ```
 
 ## 版本
