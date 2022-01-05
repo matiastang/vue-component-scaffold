@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-30 15:31:25
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-05 15:05:27
+ * @LastEditTime: 2022-01-05 18:32:55
  * @FilePath: /dw-vue-components/components/index.ts
  * @Description: 导出所有组件
  */
@@ -32,4 +32,7 @@ const install = (app: App): void => {
 
 export { DwWechatLogin, DwDragVerify }
 
-export default install
+export default {
+    version: '0.1.12',
+    install,
+}

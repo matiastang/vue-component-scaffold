@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-30 15:37:18
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-05 17:46:29
+ * @LastEditTime: 2022-01-05 18:46:22
  * @FilePath: /dw-vue-components/vite.build.config.ts
  * @Description: npm 打包上传配置
  */
@@ -14,6 +14,8 @@ import path from 'path'
 import { defineConfig } from 'vite'
 // 解析.vue文件
 import vue from '@vitejs/plugin-vue'
+// 开启GZIP压缩
+import compressPlugin from 'vite-plugin-compression'
 // .vue或.ts生成.d.ts文件
 import dts from 'vite-plugin-dts'
 // vite-plugin-imp
@@ -25,7 +27,12 @@ export default defineConfig({
         vue(),
         dts({
             include: ['./components'],
-            outputDir: './@types',
+            outputDir: './types',
+        }),
+        compressPlugin({
+            ext: '.gz', //gz br
+            algorithm: 'gzip', //brotliCompress gzip
+            deleteOriginFile: false,
         }),
     ],
     resolve: {
