@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-29 10:52:57
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-04 17:13:02
+ * @LastEditTime: 2022-01-05 10:50:07
  * @FilePath: /dw-vue-components/src/views/home/Home.vue
  * @Description: 
 -->
@@ -14,7 +14,7 @@
             scope="snsapi_login"
             :state="wechatState"
             :redirect_uri="redirect_uri"
-        />
+        ></DwWechatLogin>
     </div>
 </template>
 <script setup lang="ts">

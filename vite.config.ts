@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-15 16:57:39
- * @LastEditTime: 2022-01-04 17:08:27
+ * @LastEditTime: 2022-01-05 10:19:20
  * @LastEditors: matiastang
  * @Description: In User Settings Edit
  * @FilePath: /dw-vue-components/vite.config.ts
@@ -98,7 +98,7 @@ export default defineConfig({
     // 开发服务配置
     server: {
         host: '0.0.0.0',
-        port: 3000,
+        port: 3001,
         strictPort: true,
         fs: {
             strict: false,
