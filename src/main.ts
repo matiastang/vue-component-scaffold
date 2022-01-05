@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-15 17:10:16
- * @LastEditTime: 2022-01-05 10:28:37
+ * @LastEditTime: 2022-01-05 11:05:04
  * @LastEditors: matiastang
  * @Description: In User Settings Edit
  * @FilePath: /dw-vue-components/src/main.ts
@@ -17,12 +17,12 @@ import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import 'element-plus/theme-chalk/el-message.css'
 import 'element-plus/theme-chalk/el-message-box.css'
 // 自定义组件
-import DwVueComponents from 'datumwealth-vue-components'
+// import DwVueComponents from 'datumwealth-vue-components'
 
 const app = createApp(App)
 
 // 导入西筹组件
-app.use(DwVueComponents)
+// app.use(DwVueComponents)
 
 // Element-plus组件
 app.use(ElementPlus, {

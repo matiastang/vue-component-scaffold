@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-13 10:12:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-04 17:07:42
+ * @LastEditTime: 2022-01-05 10:53:25
  * @FilePath: /dw-vue-components/README.md
  * @Description: datumwealth-vue-components
 -->
@@ -68,7 +68,7 @@ app.use(DwVueComponents)
 ```json
 {
     ...
-    "files": ["node_modules/datumwealth-vue-components/dist/components/global"],
+    "files": ["node_modules/datumwealth-vue-components/global.d.ts"],
     ...
 }
 ```
@@ -100,6 +100,10 @@ const redirect_uri = computed(() => {
 
 ## 版本
 
-### 0.1.5
+### 0.1.8
+
+* 添加滑块拖拽验证`DwDragVerify`.
+
+### 0.1.0
 
 * 添加微信登录二维码组件`DwWechatLogin`.

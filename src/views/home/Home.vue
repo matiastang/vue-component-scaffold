@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-29 10:52:57
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-05 10:50:07
+ * @LastEditTime: 2022-01-05 11:08:10
  * @FilePath: /dw-vue-components/src/views/home/Home.vue
  * @Description: 
 -->
@@ -15,11 +15,14 @@
             :state="wechatState"
             :redirect_uri="redirect_uri"
         ></DwWechatLogin>
+        <!-- <DwDragVerify @dragSuccess="dragSuccess"></DwDragVerify> -->
     </div>
 </template>
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-// import { DwWechatLogin } from 'datumwealth-vue-components'
+import { DwWechatLogin } from 'datumwealth-vue-components'
+// import { DwDragVerify } from 'datumwealth-vue-components'
+import { ElMessage } from 'element-plus'
 
 const stateUUID = Math.round(Math.random() * 100 + 100)
 console.log(`成功uuid:${stateUUID}`)
@@ -37,6 +40,13 @@ const redirect_uri = computed(() => {
     const redirect_uri = encodeURI(uri)
     return redirect_uri
 })
+
+/**
+ * 滑块验证通过
+ */
+const dragSuccess = () => {
+    ElMessage.success('滑块验证通过')
+}
 
 const text = ref('home')
 </script>

@@ -19,7 +19,7 @@ specifiers:
   '@vue/eslint-config-typescript': ^8.0.0
   axios: ^0.24.0
   child_process: ^1.0.2
-  datumwealth-vue-components: 0.1.7
+  datumwealth-vue-components: 0.1.8
   element-plus: ^1.2.0-beta.1
   eslint: ^8.0.1
   eslint-plugin-prettier: ^4.0.0
@@ -80,7 +80,7 @@ devDependencies:
   '@vue/eslint-config-typescript': registry.npmmirror.com/@vue/eslint-config-typescript/8.0.0_567c2d4be752485c4cea80a96a29945e
   axios: registry.npmmirror.com/axios/0.24.0
   child_process: 1.0.2
-  datumwealth-vue-components: registry.npmmirror.com/datumwealth-vue-components/0.1.7
+  datumwealth-vue-components: registry.npmmirror.com/datumwealth-vue-components/0.1.8
   element-plus: registry.npmmirror.com/element-plus/1.2.0-beta.1_vue@3.2.20
   eslint: registry.npmmirror.com/eslint/8.0.1
   eslint-plugin-prettier: registry.nlark.com/eslint-plugin-prettier/4.0.0_eslint@8.0.1+prettier@2.4.1
@@ -197,13 +197,6 @@ packages:
   /ansi-regex/5.0.1:
     resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}
     engines: {node: '>=8'}
-    dev: true
-
-  /ansi-styles/4.3.0:
-    resolution: {integrity: sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg==}
-    engines: {node: '>=8'}
-    dependencies:
-      color-convert: registry.npmmirror.com/color-convert/2.0.1
     dev: true
 
   /arch/2.2.0:
@@ -362,8 +355,8 @@ packages:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
     engines: {node: '>=10'}
     dependencies:
-      ansi-styles: 4.3.0
-      supports-color: 7.2.0
+      ansi-styles: registry.nlark.com/ansi-styles/4.3.0
+      supports-color: registry.npmmirror.com/supports-color/7.2.0
     dev: true
 
   /chardet/0.7.0:
@@ -1367,7 +1360,7 @@ packages:
     resolution: {integrity: sha512-8XPvpAA8uyhfteu8pIvQxpJZ7SYYdpUivZpGy6sFsBuKRY/7rQGavedeB8aK+Zkyq6upMFVL/9AW6vOYzfRyLg==}
     engines: {node: '>=10'}
     dependencies:
-      chalk: 4.1.2
+      chalk: registry.npmmirror.com/chalk/4.1.2
       is-unicode-supported: 0.1.0
     dev: true
 
@@ -1567,7 +1560,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       bl: 4.1.0
-      chalk: 4.1.2
+      chalk: registry.npmmirror.com/chalk/4.1.2
       cli-cursor: 3.1.0
       cli-spinners: 2.6.1
       is-interactive: 1.0.0
@@ -1963,13 +1956,6 @@ packages:
 
   /strnum/1.0.4:
     resolution: {integrity: sha512-lMzNMfDpaQOLt4B2mEbfzYS0+T7dvCXeojnlGf6f1AygvWDMcWyXYaLbyICfjVu29sErR8fnRagQfBW/N/hGgw==}
-    dev: true
-
-  /supports-color/7.2.0:
-    resolution: {integrity: sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==}
-    engines: {node: '>=8'}
-    dependencies:
-      has-flag: registry.nlark.com/has-flag/4.0.0
     dev: true
 
   /svgo/2.8.0:
@@ -15177,10 +15163,10 @@ packages:
       meow: registry.npmmirror.com/meow/3.7.0
     dev: true
 
-  registry.npmmirror.com/datumwealth-vue-components/0.1.7:
-    resolution: {integrity: sha512-tdpZTkHHNOTbMZmjlXX22FOsKhUzYy+MZLBBfmO96zkGPgIuc8eoaVHTOUuGEXEXdFQJaFwedKUKVBJTZma8XA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/datumwealth-vue-components/download/datumwealth-vue-components-0.1.7.tgz}
+  registry.npmmirror.com/datumwealth-vue-components/0.1.8:
+    resolution: {integrity: sha512-pdlSefDVTRFTgXU+cDVDGLZRS7d3wFyHPxgbRcP3BqScIGW/ptMkGTthW/pUB/n10yhvCG7+XJdXNVQgX5fO/A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/datumwealth-vue-components/download/datumwealth-vue-components-0.1.8.tgz}
     name: datumwealth-vue-components
-    version: 0.1.7
+    version: 0.1.8
     dependencies:
       vue: registry.npmmirror.com/vue/3.2.20
     dev: true
