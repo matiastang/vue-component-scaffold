@@ -2,14 +2,14 @@
  * @Author: matiastang
  * @Date: 2021-12-29 10:52:57
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-04 16:45:45
+ * @LastEditTime: 2022-01-04 17:13:02
  * @FilePath: /dw-vue-components/src/views/home/Home.vue
  * @Description: 
 -->
 <template>
     <div class="home">
         <div class="text">{{ text }}</div>
-        <WechatLogin
+        <DwWechatLogin
             appid="wx6d902dc1624282c4"
             scope="snsapi_login"
             :state="wechatState"
@@ -19,7 +19,7 @@
 </template>
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-// import { WechatLogin } from 'datumwealth-vue-components'
+// import { DwWechatLogin } from 'datumwealth-vue-components'
 
 const stateUUID = Math.round(Math.random() * 100 + 100)
 console.log(`成功uuid:${stateUUID}`)

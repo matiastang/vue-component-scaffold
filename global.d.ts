@@ -1,14 +1,15 @@
 /*
- * @Author: your name
- * @Date: 2021-10-15 17:23:18
- * @LastEditTime: 2022-01-04 15:10:36
+ * @Author: matiastang
+ * @Date: 2021-12-13 10:12:56
  * @LastEditors: matiastang
- * @Description: In User Settings Edit
+ * @LastEditTime: 2022-01-05 09:55:53
  * @FilePath: /dw-vue-components/global.d.ts
+ * @Description: 全局组件声明
  */
-/* eslint-disable */
-declare module '*.vue' {
-    import type { DefineComponent } from 'vue'
-    const component: DefineComponent<{}, {}, any>
-    export default component
+declare module 'vue' {
+    export interface GlobalComponents {
+        DwWechatLogin: typeof import('datumwealth-vue-components')['DwWechatLogin']
+    }
 }
+
+export {}

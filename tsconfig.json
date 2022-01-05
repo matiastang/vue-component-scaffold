@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
-        "incremental": true, // TS编译器在第一次编译之后会生成一个存储编译信息的文件，第二次编译会在第一次的基础上进行增量编译，可以提高编译的速度
-        "tsBuildInfoFile": "./buildFile", // 增量编译文件的存储位置
+        // "incremental": true, // TS编译器在第一次编译之后会生成一个存储编译信息的文件，第二次编译会在第一次的基础上进行增量编译，可以提高编译的速度
+        // "tsBuildInfoFile": "./buildFile", // 增量编译文件的存储位置
         "diagnostics": true, // 打印诊断信息
         "target": "esnext", // 目标语言的版本, 与 Vue 的浏览器支持保持一致
         "module": "CommonJS", // 生成代码的模板标准
@@ -59,7 +59,7 @@
         "resolveJsonModule": true,
         "sourceMap": true,
         "baseUrl": ".",
-        "types": ["node_modules/element-plus/global"],// 加载的声明文件包
+        "types": ["element-plus/global.d.ts"],// 加载的声明文件包
         "paths": {
             "utils/*": ["src/common/utils/*"],
             "store/*": ["src/store/*"],
@@ -68,9 +68,9 @@
             "root/*": ["*"]
         },
         "lib": ["esnext", "es2020", "dom", "dom.iterable", "scripthost"],
-        "typeRoots": ["src/global.d.ts", "node_modules/@types"]// 声明文件目录，默认时node_modules/@types
+        "typeRoots": ["./vueGlobal.d.ts", "node_modules/@types"]// 声明文件目录，默认时node_modules/@types
     },
-    "files": ["global.d.ts", "stringExtension.d.ts", "node_modules/datumwealth-vue-components/dist/components/global"],
+    "files": ["./vueGlobal.d.ts", "./src/common/extension/string/stringExtension.d.ts", "node_modules/datumwealth-vue-components/global.d.ts"],
     "include": [
         "src/**/*.d.ts",
         "src/**/*.ts",
@@ -82,5 +82,5 @@
         "components/**/*.vue",
         "env.d.ts",
     ],
-    "exclude": ["node_modules", "tsconfig.json"]
+    "exclude": ["node_modules"]
 }

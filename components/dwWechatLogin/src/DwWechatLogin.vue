@@ -2,8 +2,8 @@
  * @Author: matiastang
  * @Date: 2021-12-21 17:46:03
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-04 13:59:55
- * @FilePath: /dw-vue-components/components/wechatLogin/WechatLogin.vue
+ * @LastEditTime: 2022-01-05 09:50:46
+ * @FilePath: /dw-vue-components/components/dwWechatLogin/src/DwWechatLogin.vue
  * @Description: 微信登录
  * https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_Login/Wechat_Login.html
  * http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js

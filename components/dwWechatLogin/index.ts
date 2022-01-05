@@ -2,8 +2,8 @@
  * @Author: matiastang
  * @Date: 2021-12-30 18:49:53
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-04 17:00:02
- * @FilePath: /dw-vue-components/components/wechatLogin/index.ts
+ * @LastEditTime: 2022-01-04 18:05:51
+ * @FilePath: /dw-vue-components/components/dwWechatLogin/index.ts
  * @Description:
  */
 import { App } from 'vue'
