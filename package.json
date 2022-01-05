@@ -1,22 +1,23 @@
 {
     "name": "datumwealth-vue-components",
-    "version": "0.1.10",
+    "version": "0.1.11",
     "description": "西筹金融科技Vue组件库",
-    "main": "./dist/dw-vue-components.es.js",
+    "main": "./components/index.ts",
     "source": "./dist/components/index.d.ts",
     "private": false,
     "directories": {
         "test": "tests"
     },
     "files": [
-        "dist",
+        "@types",
+        "components",
         "global.d.ts"
     ],
-    "module": "./dist/dw-vue-components.es.js",
-    "types": "./dist/components/index.d.ts",
+    "module": "./components/index.ts",
+    "types": "./@types/components/index.d.ts",
     "exports": {
         ".": {
-            "import": "./dist/dw-vue-components.es.js",
+            "import": "./components/index.ts",
             "require": "./dist/dw-vue-components.umd.js"
         }
     },
@@ -57,11 +58,14 @@
     "devDependencies": {
         "@element-plus/icons": "^0.0.11",
         "@types/gulp": "^4.0.9",
+        "@types/gulp-autoprefixer": "^0.0.33",
         "@types/gulp-bump": "^2.8.2",
         "@types/gulp-json-editor": "^2.2.33",
+        "@types/gulp-sass": "^5.0.0",
         "@types/minimist": "^1.2.2",
         "@types/node": "^16.11.1",
         "@types/object-hash": "^2.2.1",
+        "@types/sass": "^1.43.1",
         "@types/shelljs": "^0.8.10",
         "@typescript-eslint/eslint-plugin": "^5.0.0",
         "@typescript-eslint/parser": "^5.0.0",
@@ -74,13 +78,18 @@
         "axios": "^0.24.0",
         "child_process": "^1.0.2",
         "datumwealth-vue-components": "0.1.9",
+        "del": "^6.0.0",
         "element-plus": "^1.2.0-beta.1",
         "eslint": "^8.0.1",
         "eslint-plugin-prettier": "^4.0.0",
         "eslint-plugin-vue": "^7.19.1",
         "gulp": "^4.0.2",
+        "gulp-autoprefixer": "^8.0.0",
         "gulp-bump": "^3.2.0",
+        "gulp-cssmin": "^0.2.0",
         "gulp-json-editor": "^2.5.6",
+        "gulp-sass": "^5.1.0",
+        "gulp-scss": "^1.4.0",
         "inquirer": "8.2.0",
         "less": "^4.1.2",
         "microbundle": "^0.14.2",
@@ -107,6 +116,7 @@
         "vue-axios": "^3.4.0",
         "vue-clipboard3": "^1.0.1",
         "vue-router": "^4.0.12",
+        "vue-tsc": "^0.30.2",
         "vue3-json-view": "^1.3.2",
         "vuex": "^4.0.2",
         "vuex-persistedstate": "^4.1.0"

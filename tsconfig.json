@@ -68,9 +68,9 @@
             "root/*": ["*"]
         },
         "lib": ["esnext", "es2020", "dom", "dom.iterable", "scripthost"],
-        "typeRoots": ["./vueGlobal.d.ts", "node_modules/@types"]// 声明文件目录，默认时node_modules/@types
+        "typeRoots": ["shims-vue.d.ts", "node_modules/@types"]// 声明文件目录，默认时node_modules/@types
     },
-    "files": ["./vueGlobal.d.ts", "./src/common/extension/string/stringExtension.d.ts", "node_modules/datumwealth-vue-components/global.d.ts"],
+    "files": ["shims-vue.d.ts", "./src/common/extension/string/stringExtension.d.ts", "node_modules/datumwealth-vue-components/global.d.ts"],
     "include": [
         "src/**/*.d.ts",
         "src/**/*.ts",

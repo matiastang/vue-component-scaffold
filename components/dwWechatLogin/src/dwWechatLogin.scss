@@ -1,0 +1,10 @@
+.dw-wechat-login-container {
+    width: 300px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .dw-wechat-login-qrcode {
+        border: none;
+    }
+}
