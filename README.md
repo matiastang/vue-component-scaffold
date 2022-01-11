@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-13 10:12:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-05 19:12:16
+ * @LastEditTime: 2022-01-11 15:16:01
  * @FilePath: /dw-vue-components/README.md
  * @Description: datumwealth-vue-components
 -->
@@ -100,6 +100,10 @@ const redirect_uri = computed(() => {
 
 ## 版本
 
+### 0.1.13
+
+* 添加`DwPortfolioBg`组件，“基金组合”`H5`背景组件。
+  
 ### 0.1.8
 
 * 添加滑块拖拽验证`DwDragVerify`.
