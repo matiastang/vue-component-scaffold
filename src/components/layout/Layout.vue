@@ -1,19 +1,19 @@
 <!--
  * @Author: your name
  * @Date: 2021-11-02 19:15:52
- * @LastEditTime: 2021-12-17 17:20:09
+ * @LastEditTime: 2022-01-11 15:00:26
  * @LastEditors: matiastang
  * @Description: In User Settings Edit
- * @FilePath: /datumwealth-openalpha-front/src/components/layout/Layout.vue
+ * @FilePath: /dw-vue-components/src/components/layout/Layout.vue
 -->
 <template>
     <div class="layout">
-        <Header class="header" />
+        <!-- <Header class="header" /> -->
         <div ref="contentRef" class="content" @scroll="scrollAction">
             <div class="router-content">
                 <router-view></router-view>
             </div>
-            <Footer class="footer" />
+            <!-- <Footer class="footer" /> -->
         </div>
     </div>
 </template>
@@ -77,7 +77,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .layout {
     width: 100vw;
-    min-width: 1366px;
+    // min-width: 1366px;
     height: 100vh;
     display: flex;
     flex-direction: column;

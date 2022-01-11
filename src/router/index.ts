@@ -2,8 +2,8 @@
  * @Author: matiastang
  * @Date: 2021-12-28 19:31:46
  * @LastEditors: matiastang
- * @LastEditTime: 2021-12-29 13:42:09
- * @FilePath: /datumwealth-front-scaffold/src/router/index.ts
+ * @LastEditTime: 2022-01-11 15:02:56
+ * @FilePath: /dw-vue-components/src/router/index.ts
  * @Description: 路由
  */
 import { createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw } from 'vue-router'
@@ -16,16 +16,19 @@ import NotFound from '@/views/NotFound.vue'
 
 const routes: Array<RouteRecordRaw> = [
     {
+        // path: '/',
+        // name: 'layout',
+        // component: Layout,
+        // children: [
+        //     {
+        //         path: '',
+        //         name: 'home',
+        //         component: Home,
+        //     },
+        // ],
         path: '/',
-        name: 'layout',
-        component: Layout,
-        children: [
-            {
-                path: '',
-                name: 'home',
-                component: Home,
-            },
-        ],
+        name: 'home',
+        component: Home,
         beforeEnter: (to, from) => {
             console.log(`web路由卫士：即将从${from.path}跳转到${to.path}`)
             return true

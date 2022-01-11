@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-13 10:12:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-05 15:09:33
+ * @LastEditTime: 2022-01-05 19:12:16
  * @FilePath: /dw-vue-components/README.md
  * @Description: datumwealth-vue-components
 -->
@@ -64,7 +64,7 @@ const app = createApp(App)
 // 导入西筹组件
 app.use(DwVueComponents)
 ```
-> 引入组件全局声明
+> `tsconfig.json`引入组件全局声明
 ```json
 {
     ...
@@ -96,17 +96,6 @@ const redirect_uri = computed(() => {
     return redirect_uri
 })
 </script>
-```
-
-3. 引入样式
-```ts
-import DwVueComponents from 'datumwealth-vue-components'
-import 'datumwealth-vue-components/dist/style.css'
-
-const app = createApp(App)
-
-// 引入西筹组件库
-app.use(DwVueComponents)
 ```
 
 ## 版本
