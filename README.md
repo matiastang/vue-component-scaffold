@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-13 10:12:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-11 15:16:01
+ * @LastEditTime: 2022-01-11 19:31:05
  * @FilePath: /dw-vue-components/README.md
  * @Description: datumwealth-vue-components
 -->
@@ -99,6 +99,10 @@ const redirect_uri = computed(() => {
 ```
 
 ## 版本
+
+### 0.1.14
+
+* 添加`DwPortfolioIcon`组件，西筹“基金组合”组合策略折线icon
 
 ### 0.1.13
 
