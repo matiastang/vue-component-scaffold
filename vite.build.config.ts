@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-30 15:37:18
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-05 18:46:22
+ * @LastEditTime: 2022-01-12 14:08:34
  * @FilePath: /dw-vue-components/vite.build.config.ts
  * @Description: npm 打包上传配置
  */
@@ -76,11 +76,14 @@ export default defineConfig({
         // 自定义底层的 Rollup 打包配置。这与从 Rollup 配置文件导出的选项相同，并将与 Vite 的内部 Rollup 选项合并。查看 Rollup 选项文档 获取更多细节。
         rollupOptions: {
             // 确保外部化处理那些你不想打包进库的依赖
-            external: ['vue'],
+            external: ['vue', 'echarts', 'vue-echarts'],
+            // external: ['vue'],
             output: {
                 // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
                 globals: {
                     vue: 'Vue',
+                    echarts: 'echarts',
+                    VChart: 'vue-echarts',
                 },
             },
         },
