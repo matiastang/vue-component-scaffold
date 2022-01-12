@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-01-11 15:48:23
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-11 19:29:14
+ * @LastEditTime: 2022-01-12 10:13:25
  * @FilePath: /dw-vue-components/components/dwPortfolioIcon/DwPortfolioIcon.vue
  * @Description: 西筹“基金组合”组合策略折线icon
 -->
@@ -191,7 +191,7 @@ const option = reactive({
 watch(
     () => props.xData,
     (newValue, oldValue) => {
-        option.value.xAxis.data = newValue
+        option.xAxis.data = newValue
     }
 )
 
@@ -199,7 +199,7 @@ watch(
 watch(
     () => props.yData,
     (newValue, oldValue) => {
-        option.value.series[0].data = newValue.map((value, index) => {
+        option.series[0].data = newValue.map((value, index) => {
             return {
                 value,
                 itemStyle: {
@@ -232,7 +232,7 @@ watch(
         position: absolute;
         width: 100%;
         left: 0rem;
-        bottom: 1rem;
+        bottom: 0.5rem;
         font-size: 1rem;
         font-family: PingFang SC-Medium, PingFang SC;
         font-weight: 500;

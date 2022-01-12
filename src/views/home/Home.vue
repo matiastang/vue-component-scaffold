@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-29 10:52:57
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-11 18:05:55
+ * @LastEditTime: 2022-01-12 11:01:34
  * @FilePath: /dw-vue-components/src/views/home/Home.vue
  * @Description: 
 -->
@@ -22,14 +22,20 @@
             ></DwWechatLogin> -->
             <!-- <DwDragVerify @dragSuccess="dragSuccess"></DwDragVerify> -->
             <DwPortfolioIcon />
+            <DwPortfolioLine />
         </DwPortfolioBg>
     </div>
 </template>
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { ElMessage } from 'element-plus'
-// import { DwWechatLogin, DwDragVerify } from 'datumwealth-vue-components'
-import { DwPortfolioBg, DwPortfolioIcon } from 'root/components/index'
+// import {
+//     DwWechatLogin,
+//     DwDragVerify,
+//     DwPortfolioBg,
+//     DwPortfolioIcon,
+// } from 'datumwealth-vue-components'
+import { DwPortfolioBg, DwPortfolioIcon, DwPortfolioLine } from 'root/components/index'
 
 const stateUUID = Math.round(Math.random() * 100 + 100)
 console.log(`成功uuid:${stateUUID}`)

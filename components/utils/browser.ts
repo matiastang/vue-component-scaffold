@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-01-11 18:57:04
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-11 19:01:56
+ * @LastEditTime: 2022-01-12 10:14:42
  * @FilePath: /dw-vue-components/components/utils/browser.ts
  * @Description: 浏览器信息
  */
@@ -54,7 +54,8 @@ const browserInfo = () => {
          */
         webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
     }
-    const language = (navigator.browserLanguage || navigator.language).toLowerCase()
+    // const language = (navigator.browserLanguage || navigator.language).toLowerCase()
+    const language = navigator.language.toLowerCase()
     return {
         versions,
         language,

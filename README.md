@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-13 10:12:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-11 19:31:05
+ * @LastEditTime: 2022-01-12 13:49:05
  * @FilePath: /dw-vue-components/README.md
  * @Description: datumwealth-vue-components
 -->
@@ -99,6 +99,10 @@ const redirect_uri = computed(() => {
 ```
 
 ## 版本
+
+### 0.1.15
+
+* 添加`DwPortfolioLine`组件，西筹“基金组合”结果页优化折线图
 
 ### 0.1.14
 

@@ -22,7 +22,7 @@ specifiers:
   '@vue/eslint-config-typescript': ^8.0.0
   axios: ^0.24.0
   child_process: ^1.0.2
-  datumwealth-vue-components: 0.1.12
+  datumwealth-vue-components: 0.1.14
   del: ^6.0.0
   echarts: ^5.2.2
   element-plus: ^1.2.0-beta.1
@@ -96,7 +96,7 @@ devDependencies:
   '@vue/eslint-config-typescript': registry.npmmirror.com/@vue/eslint-config-typescript/8.0.0_567c2d4be752485c4cea80a96a29945e
   axios: registry.npmmirror.com/axios/0.24.0
   child_process: 1.0.2
-  datumwealth-vue-components: registry.npmmirror.com/datumwealth-vue-components/0.1.12
+  datumwealth-vue-components: registry.npmmirror.com/datumwealth-vue-components/0.1.14
   del: registry.nlark.com/del/6.0.0
   element-plus: registry.npmmirror.com/element-plus/1.2.0-beta.1_vue@3.2.20
   eslint: registry.npmmirror.com/eslint/8.0.1
@@ -6140,20 +6140,6 @@ packages:
     version: 1.0.1
     dev: true
 
-  registry.nlark.com/has-flag/3.0.0:
-    resolution: {integrity: sha1-tdRU3CGZriJWmfNGfloH87lVuv0=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/has-flag/download/has-flag-3.0.0.tgz}
-    name: has-flag
-    version: 3.0.0
-    engines: {node: '>=4'}
-    dev: true
-
-  registry.nlark.com/has-flag/4.0.0:
-    resolution: {integrity: sha1-lEdx/ZyByBJlxNaUGGDaBrtZR5s=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/has-flag/download/has-flag-4.0.0.tgz}
-    name: has-flag
-    version: 4.0.0
-    engines: {node: '>=8'}
-    dev: true
-
   registry.nlark.com/has-gulplog/0.1.0:
     resolution: {integrity: sha1-ZBTIKRNpfaUVkDl9r7EvIpZ4Ec4=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/has-gulplog/download/has-gulplog-0.1.0.tgz}
     name: has-gulplog
@@ -8188,6 +8174,20 @@ packages:
     version: 1.4.0
     dev: true
 
+  registry.nlark.com/needle/2.9.1:
+    resolution: {integrity: sha1-ItHf++NJDCuD4wH3cJtnNs2PJoQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/needle/download/needle-2.9.1.tgz}
+    name: needle
+    version: 2.9.1
+    engines: {node: '>= 4.4.x'}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      debug: registry.nlark.com/debug/3.2.7
+      iconv-lite: registry.nlark.com/iconv-lite/0.4.24
+      sax: registry.nlark.com/sax/1.2.4
+    dev: true
+    optional: true
+
   registry.nlark.com/negotiator/0.6.2:
     resolution: {integrity: sha1-/qz3zPUlp3rpY0Q2pkiD/+yjRvs=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/negotiator/download/negotiator-0.6.2.tgz}
     name: negotiator
@@ -10136,7 +10136,6 @@ packages:
     resolution: {integrity: sha1-/klREuGEaVUAqPUeA4nxV3TLHPw=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/resize-detector/download/resize-detector-0.3.0.tgz}
     name: resize-detector
     version: 0.3.0
-    dev: false
 
   registry.nlark.com/resolve-cwd/2.0.0:
     resolution: {integrity: sha1-AKn3OHVW4nA46uIyyqNypqWbZlo=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/resolve-cwd/download/resolve-cwd-2.0.0.tgz}
@@ -12198,7 +12197,6 @@ packages:
     version: 5.2.1
     dependencies:
       tslib: registry.npmmirror.com/tslib/2.3.0
-    dev: false
 
   registry.npmmirror.com/@babel/code-frame/7.15.8:
     resolution: {integrity: sha1-RZkMR62tsAwDZ3uqiSIffMI9JQM=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@babel/code-frame/download/@babel/code-frame-7.15.8.tgz}
@@ -15967,12 +15965,16 @@ packages:
     version: 2.2.0
     dev: true
 
-  registry.npmmirror.com/datumwealth-vue-components/0.1.12:
-    resolution: {integrity: sha512-BmMddi0lA3uc92HX+t/fpW+34It3f2QX27shrw4MP65gywDcHHvHIytbBxXA7zxG4lx+UvkIvLjrrpEL0yFdYg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/datumwealth-vue-components/download/datumwealth-vue-components-0.1.12.tgz}
+  registry.npmmirror.com/datumwealth-vue-components/0.1.14:
+    resolution: {integrity: sha512-I6fmFvXFobiRvu55RRxVtOucVjLW7WqznY6dIhXL9Jtv3U9RpB1dzQDiGeARUf0tVLehIaq7PZTpDKuYx1IVrQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/datumwealth-vue-components/download/datumwealth-vue-components-0.1.14.tgz}
     name: datumwealth-vue-components
-    version: 0.1.12
+    version: 0.1.14
     dependencies:
+      echarts: registry.npmmirror.com/echarts/5.2.2
       vue: registry.npmmirror.com/vue/3.2.20
+      vue-echarts: registry.npmmirror.com/vue-echarts/6.0.0_echarts@5.2.2+vue@3.2.20
+    transitivePeerDependencies:
+      - '@vue/composition-api'
     dev: true
 
   registry.npmmirror.com/debug/4.3.2:
@@ -16070,7 +16072,6 @@ packages:
     dependencies:
       tslib: registry.npmmirror.com/tslib/2.3.0
       zrender: registry.nlark.com/zrender/5.2.1
-    dev: false
 
   registry.npmmirror.com/ejs/2.7.4:
     resolution: {integrity: sha1-SGYSh1c9zFPjZsehrlLDoSDuybo=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ejs/download/ejs-2.7.4.tgz}
@@ -17036,6 +17037,20 @@ packages:
       har-schema: registry.nlark.com/har-schema/2.0.0
     dev: true
 
+  registry.npmmirror.com/has-flag/3.0.0:
+    resolution: {integrity: sha1-tdRU3CGZriJWmfNGfloH87lVuv0=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/has-flag/download/has-flag-3.0.0.tgz}
+    name: has-flag
+    version: 3.0.0
+    engines: {node: '>=4'}
+    dev: true
+
+  registry.npmmirror.com/has-flag/4.0.0:
+    resolution: {integrity: sha1-lEdx/ZyByBJlxNaUGGDaBrtZR5s=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/has-flag/download/has-flag-4.0.0.tgz}
+    name: has-flag
+    version: 4.0.0
+    engines: {node: '>=8'}
+    dev: true
+
   registry.npmmirror.com/highlight.js/10.7.3:
     resolution: {integrity: sha1-aXJy45kTVuQMPKxWanTu9oF1ZTE=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/highlight.js/download/highlight.js-10.7.3.tgz}
     name: highlight.js
@@ -17383,7 +17398,7 @@ packages:
       image-size: registry.npmmirror.com/image-size/0.5.5
       make-dir: registry.nlark.com/make-dir/2.1.0
       mime: registry.npmmirror.com/mime/1.6.0
-      needle: registry.npmmirror.com/needle/2.9.1
+      needle: registry.nlark.com/needle/2.9.1
       source-map: registry.nlark.com/source-map/0.6.1
     dev: true
 
@@ -17748,20 +17763,6 @@ packages:
     version: 3.1.30
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
-
-  registry.npmmirror.com/needle/2.9.1:
-    resolution: {integrity: sha1-ItHf++NJDCuD4wH3cJtnNs2PJoQ=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/needle/download/needle-2.9.1.tgz}
-    name: needle
-    version: 2.9.1
-    engines: {node: '>= 4.4.x'}
-    hasBin: true
-    requiresBuild: true
-    dependencies:
-      debug: registry.nlark.com/debug/3.2.7
-      iconv-lite: registry.nlark.com/iconv-lite/0.4.24
-      sax: registry.nlark.com/sax/1.2.4
-    dev: true
-    optional: true
 
   registry.npmmirror.com/node-kissdi/1.0.3:
     resolution: {integrity: sha1-36zk/YuNFYUA3CccCXS+lAlZqbA=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/node-kissdi/download/node-kissdi-1.0.3.tgz}
@@ -18969,7 +18970,7 @@ packages:
     version: 5.5.0
     engines: {node: '>=4'}
     dependencies:
-      has-flag: registry.nlark.com/has-flag/3.0.0
+      has-flag: registry.npmmirror.com/has-flag/3.0.0
     dev: true
 
   registry.npmmirror.com/supports-color/6.1.0:
@@ -18978,7 +18979,7 @@ packages:
     version: 6.1.0
     engines: {node: '>=6'}
     dependencies:
-      has-flag: registry.nlark.com/has-flag/3.0.0
+      has-flag: registry.npmmirror.com/has-flag/3.0.0
     dev: true
 
   registry.npmmirror.com/supports-color/7.2.0:
@@ -18987,7 +18988,7 @@ packages:
     version: 7.2.0
     engines: {node: '>=8'}
     dependencies:
-      has-flag: registry.nlark.com/has-flag/4.0.0
+      has-flag: registry.npmmirror.com/has-flag/4.0.0
     dev: true
 
   registry.npmmirror.com/sver-compat/1.5.0:
@@ -19209,7 +19210,6 @@ packages:
     resolution: {integrity: sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tslib/download/tslib-2.3.0.tgz}
     name: tslib
     version: 2.3.0
-    dev: false
 
   registry.npmmirror.com/tslib/2.3.1:
     resolution: {integrity: sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tslib/download/tslib-2.3.1.tgz}
@@ -19640,7 +19640,6 @@ packages:
         optional: true
     dependencies:
       vue: registry.npmmirror.com/vue/3.2.20
-    dev: false
 
   registry.npmmirror.com/vue-demi/0.12.0_vue@3.2.20:
     resolution: {integrity: sha1-sgKgHN/GNUQ+QfrqaX1iTKrA+nM=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vue-demi/download/vue-demi-0.12.0.tgz}
@@ -19678,7 +19677,6 @@ packages:
       resize-detector: registry.nlark.com/resize-detector/0.3.0
       vue: registry.npmmirror.com/vue/3.2.20
       vue-demi: registry.npmmirror.com/vue-demi/0.11.4_vue@3.2.20
-    dev: false
 
   registry.npmmirror.com/vue-eslint-parser/7.11.0_eslint@8.0.1:
     resolution: {integrity: sha1-IUtd6pYQB/z/su5luJEjB2KNDa8=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vue-eslint-parser/download/vue-eslint-parser-7.11.0.tgz}
