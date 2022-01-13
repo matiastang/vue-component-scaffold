@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-13 10:12:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-13 10:14:05
+ * @LastEditTime: 2022-01-13 17:42:01
  * @FilePath: /dw-vue-components/global.d.ts
  * @Description: 全局组件声明
  */
@@ -15,6 +15,7 @@ declare module 'vue' {
         DwPortfolioLine: typeof import('datumwealth-vue-components')['DwPortfolioLine']
         DwPortfolioPie: typeof import('datumwealth-vue-components')['DwPortfolioPie']
         DwPortfolioIndustry: typeof import('datumwealth-vue-components')['DwPortfolioIndustry']
+        DwStocksAnalysisLine: typeof import('datumwealth-vue-components')['DwStocksAnalysisLine']
     }
 }
 

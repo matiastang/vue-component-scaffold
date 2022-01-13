@@ -81,6 +81,7 @@
         "components/**/*.tsx",
         "components/**/*.vue",
         "env.d.ts",
+        "components/**/index.d.ts",
     ],
     "exclude": ["node_modules"]
 }

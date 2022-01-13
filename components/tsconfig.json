@@ -17,5 +17,7 @@
     },
     "include": [
         "shims-vue.d.ts",
+        "glpbal.d.ts",
+        "./dwPortfolioTypes/index.d.ts",
     ],
 }

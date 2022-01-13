@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-13 10:12:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-13 10:33:53
+ * @LastEditTime: 2022-01-13 18:50:30
  * @FilePath: /dw-vue-components/README.md
  * @Description: datumwealth-vue-components
 -->
@@ -99,6 +99,10 @@ const redirect_uri = computed(() => {
 ```
 
 ## 版本
+
+### 0.1.17
+
+* 添加`DwStocksAnalysisLine`组件，西筹“个股分析”小程序，折线图
 
 ### 0.1.16
 

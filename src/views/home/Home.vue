@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-29 10:52:57
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-13 11:19:31
+ * @LastEditTime: 2022-01-13 17:53:39
  * @FilePath: /dw-vue-components/src/views/home/Home.vue
  * @Description: 
 -->
@@ -12,6 +12,7 @@
             class="home-bg"
             left-top-url="static/bg/bg-left-top.png"
             right-bottom-url="static/bg/bg-right-bottom.png"
+            style="height: auto"
         >
             <div class="text">{{ text }}</div>
             <!-- <DwWechatLogin
@@ -21,6 +22,12 @@
                 :redirect_uri="redirect_uri"
             ></DwWechatLogin> -->
             <!-- <DwDragVerify @dragSuccess="dragSuccess"></DwDragVerify> -->
+            <DwStocksAnalysisLine
+                :analyzeType="AnalyzeType.HLD_MKT_VALUE"
+                :reportType="ReportType.QUAETER"
+                @arge-screen="argeScreenAction"
+                fullScreenUrl="static/openAlpha/full-screen.png"
+            />
             <DwPortfolioIcon />
             <DwPortfolioLine />
             <DwPortfolioPie :data="pieData" />
@@ -37,17 +44,30 @@ import { ElMessage } from 'element-plus'
 //     DwDragVerify,
 //     DwPortfolioBg,
 //     DwPortfolioIcon,
+//     DwPortfolioLine,
+//     DwPortfolioPie,
+//     DwPortfolioIndustry,
 // } from 'datumwealth-vue-components'
+// import {
+//     IndustryBondStockData,
+//     IndustryMainData,
+// } from 'datumwealth-vue-components/components/dwPortfolioTypes/index'
 import {
-    // IndustryBondStockData,
-    // IndustryMainData,
     DwPortfolioBg,
     DwPortfolioIcon,
     DwPortfolioLine,
     DwPortfolioPie,
     DwPortfolioIndustry,
+    DwStocksAnalysisLine,
+    AnalyzeType,
+    ReportType,
 } from 'root/components/index'
+// import DwStocksAnalysisLine, { AnalyzeType, ReportType } from 'root/components/dwStocksAnalysisLine'
 import { IndustryBondStockData, IndustryMainData } from 'root/components/dwPortfolioTypes'
+
+const argeScreenAction = () => {
+    console.log('点击了大屏查看')
+}
 
 // const pieData = reactive({
 //     value: [
