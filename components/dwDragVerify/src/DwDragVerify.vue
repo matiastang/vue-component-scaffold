@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-01-05 10:33:42
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-05 10:45:56
+ * @LastEditTime: 2022-01-13 10:23:33
  * @FilePath: /dw-vue-components/components/dwDragVerify/src/DwDragVerify.vue
  * @Description: 拖拽验证
 -->
@@ -20,115 +20,131 @@
     </div>
 </template>
 
-<script setup lang="ts">
-import { defineProps, defineEmits, ref, Ref, onMounted, reactive, nextTick } from 'vue'
+<script lang="ts">
+import { ref, Ref, onMounted, reactive, nextTick, defineComponent } from 'vue'
 
-const props = defineProps({
-    /**
-     * placeholder提示文字
-     */
-    placeholder: {
-        type: String,
-        default: '请按住滑块，拖动到最右边',
+export default defineComponent({
+    name: 'DwDragVerify',
+    props: {
+        /**
+         * placeholder提示文字
+         */
+        placeholder: {
+            type: String,
+            default: '请按住滑块，拖动到最右边',
+        },
+        /**
+         * 验证通过提示文字
+         */
+        confirmText: {
+            type: String,
+            default: '验证通过',
+        },
     },
-    /**
-     * 验证通过提示文字
-     */
-    confirmText: {
-        type: String,
-        default: '验证通过',
+    emits: {
+        /**
+         * 验证通过回调
+         */
+        dragSuccess: () => {
+            return true
+        },
     },
-})
-const emit = defineEmits({
-    /**
-     * 验证通过回调
-     */
-    dragSuccess: () => {
-        return true
-    },
-})
-const dragDivRef: Ref<HTMLElement | null> = ref(null)
-const dragMoveRef: Ref<HTMLElement | null> = ref(null)
-const beginClientLeft = ref(0) // 初始距离屏幕左端距离
-const mouseMoveStatus = ref(false) // 拖动中
-const maxwidth = ref(0) // 拖动最大宽度，依据滑块宽度算出来的
-const confirmWords = ref(props.placeholder) // 滑块文字
-const confirmSuccess = ref(false) // 验证成功判断
-const dragBgStyle = reactive({
-    width: '0px',
-})
-const dragStyle = reactive({
-    left: '0px',
-})
-const dragTextStyle = reactive({
-    color: '#8c8c8c',
-})
+    setup(props, context) {
+        const dragDivRef: Ref<HTMLElement | null> = ref(null)
+        const dragMoveRef: Ref<HTMLElement | null> = ref(null)
+        const beginClientLeft = ref(0) // 初始距离屏幕左端距离
+        const mouseMoveStatus = ref(false) // 拖动中
+        const maxwidth = ref(0) // 拖动最大宽度，依据滑块宽度算出来的
+        const confirmWords = ref(props.placeholder) // 滑块文字
+        const confirmSuccess = ref(false) // 验证成功判断
+        const dragBgStyle = reactive({
+            width: '0px',
+        })
+        const dragStyle = reactive({
+            left: '0px',
+        })
+        const dragTextStyle = reactive({
+            color: '#8c8c8c',
+        })
 
-onMounted(() => {
-    nextTick(() => {
-        if (!dragDivRef.value || !dragMoveRef.value) {
-            return
+        onMounted(() => {
+            nextTick(() => {
+                if (!dragDivRef.value || !dragMoveRef.value) {
+                    return
+                }
+                // 根据滑块宽度计算可拖动最大宽度
+                maxwidth.value = dragDivRef.value.clientWidth - dragMoveRef.value.clientWidth
+            })
+            // 监听手指的触摸事件
+            document.getElementsByTagName('html')[0].addEventListener('mousemove', dragMousemove)
+            // 监听手指离开事件
+            document.getElementsByTagName('html')[0].addEventListener('mouseup', dragMoseUp)
+        })
+        /**
+         * mousedown事件
+         * @param e
+         */
+        const dragMousedown = (e: MouseEvent) => {
+            if (!confirmSuccess.value) {
+                e.preventDefault && e.preventDefault() //阻止文字选中等 浏览器默认事件
+                mouseMoveStatus.value = true
+                beginClientLeft.value = e.clientX
+            }
         }
-        // 根据滑块宽度计算可拖动最大宽度
-        maxwidth.value = dragDivRef.value.clientWidth - dragMoveRef.value.clientWidth
-    })
-    // 监听手指的触摸事件
-    document.getElementsByTagName('html')[0].addEventListener('mousemove', dragMousemove)
-    // 监听手指离开事件
-    document.getElementsByTagName('html')[0].addEventListener('mouseup', dragMoseUp)
+
+        /**
+         * mousemove事件
+         * @param e
+         */
+        const dragMousemove = (e: MouseEvent) => {
+            if (mouseMoveStatus.value) {
+                let width = e.clientX - beginClientLeft.value
+                if (width > 0 && width <= maxwidth.value) {
+                    dragStyle.left = `${width}px`
+                    dragBgStyle.width = `${width}px`
+                } else if (width > maxwidth.value) dragSuccess()
+            }
+        }
+        /**
+         * mouseup事件
+         * @param e
+         */
+        const dragMoseUp = (e: MouseEvent) => {
+            mouseMoveStatus.value = false
+            var width = e.clientX - beginClientLeft.value
+            if (width < maxwidth.value) {
+                dragStyle.left = '0px'
+                dragBgStyle.width = '0px'
+            }
+        }
+
+        /**
+         * 验证通过
+         */
+        const dragSuccess = () => {
+            confirmSuccess.value = true
+            confirmWords.value = props.confirmText
+            dragTextStyle.color = '#fff'
+            dragStyle.left = `${maxwidth.value}px`
+            dragBgStyle.width = `${maxwidth.value}px`
+            context.emit('dragSuccess')
+            // 移除
+            document.getElementsByTagName('html')[0].removeEventListener('mousemove', dragMousemove)
+            document.getElementsByTagName('html')[0].removeEventListener('mouseup', dragMoseUp)
+        }
+        return {
+            confirmWords,
+            confirmSuccess,
+            dragBgStyle,
+            dragTextStyle,
+            dragStyle,
+            dragMousedown,
+            dragMousemove,
+            dragMoseUp,
+            dragSuccess,
+        }
+    },
 })
-/**
- * mousedown事件
- * @param e
- */
-const dragMousedown = (e: MouseEvent) => {
-    if (!confirmSuccess.value) {
-        e.preventDefault && e.preventDefault() //阻止文字选中等 浏览器默认事件
-        mouseMoveStatus.value = true
-        beginClientLeft.value = e.clientX
-    }
-}
-
-/**
- * mousemove事件
- * @param e
- */
-const dragMousemove = (e: MouseEvent) => {
-    if (mouseMoveStatus.value) {
-        let width = e.clientX - beginClientLeft.value
-        if (width > 0 && width <= maxwidth.value) {
-            dragStyle.left = `${width}px`
-            dragBgStyle.width = `${width}px`
-        } else if (width > maxwidth.value) dragSuccess()
-    }
-}
-/**
- * mouseup事件
- * @param e
- */
-const dragMoseUp = (e: MouseEvent) => {
-    mouseMoveStatus.value = false
-    var width = e.clientX - beginClientLeft.value
-    if (width < maxwidth.value) {
-        dragStyle.left = '0px'
-        dragBgStyle.width = '0px'
-    }
-}
-
-/**
- * 验证通过
- */
-const dragSuccess = () => {
-    confirmSuccess.value = true
-    confirmWords.value = props.confirmText
-    dragTextStyle.color = '#fff'
-    dragStyle.left = `${maxwidth.value}px`
-    dragBgStyle.width = `${maxwidth.value}px`
-    emit('dragSuccess')
-    // 移除
-    document.getElementsByTagName('html')[0].removeEventListener('mousemove', dragMousemove)
-    document.getElementsByTagName('html')[0].removeEventListener('mouseup', dragMoseUp)
-}
 </script>
 
 <style lang="scss" scoped>
