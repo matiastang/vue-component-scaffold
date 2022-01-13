@@ -2,18 +2,18 @@
  * @Author: matiastang
  * @Date: 2022-01-13 09:55:03
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-13 10:01:03
+ * @LastEditTime: 2022-01-13 11:29:47
  * @FilePath: /dw-vue-components/components/dwPortfolioTypes/index.d.ts
  * @Description: DwPortfolio相关类型
  */
-export interface IndustryBondStockData {
+interface IndustryBondStockData {
     backWeight: number | null
     bondWeight: number
     stockWeight: number
     tradeDt: string
 }
 
-export interface IndustryMainData {
+interface IndustryMainData {
     backWeight: number
     commonWeight: number
     consumerWeight: number
@@ -25,7 +25,9 @@ export interface IndustryMainData {
     tradeDt: string
 }
 
-export interface PieBondStockData {
+interface PieBondStockData {
     value: number
     name: string
 }
+
+export { IndustryBondStockData, IndustryMainData, PieBondStockData }

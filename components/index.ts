@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-30 15:31:25
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-13 10:24:00
+ * @LastEditTime: 2022-01-13 13:52:41
  * @FilePath: /dw-vue-components/components/index.ts
  * @Description: 导出所有组件
  */
@@ -35,16 +35,18 @@ const install = (app: App): void => {
 }
 
 export {
-    DwWechatLogin,
-    DwDragVerify,
+    // 西筹“基金组合小程序”
     DwPortfolioBg,
     DwPortfolioIcon,
     DwPortfolioLine,
     DwPortfolioPie,
     DwPortfolioIndustry,
+    // 西筹通用组件
+    DwWechatLogin,
+    DwDragVerify,
 }
 
 export default {
-    version: '0.1.15',
+    version: '0.1.16',
     install,
 }

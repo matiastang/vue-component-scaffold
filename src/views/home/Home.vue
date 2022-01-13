@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-29 10:52:57
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-13 10:29:48
+ * @LastEditTime: 2022-01-13 11:19:31
  * @FilePath: /dw-vue-components/src/views/home/Home.vue
  * @Description: 
 -->
@@ -39,6 +39,8 @@ import { ElMessage } from 'element-plus'
 //     DwPortfolioIcon,
 // } from 'datumwealth-vue-components'
 import {
+    // IndustryBondStockData,
+    // IndustryMainData,
     DwPortfolioBg,
     DwPortfolioIcon,
     DwPortfolioLine,
