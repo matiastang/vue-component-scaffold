@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-01-11 11:26:01
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-13 10:18:38
+ * @LastEditTime: 2022-01-13 19:16:43
  * @FilePath: /dw-vue-components/components/dwPortfolioBg/src/DwPortfolioBg.vue
  * @Description: 西筹“基金组合”背景页面
 -->
@@ -62,7 +62,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .dw-portfolio-bg {
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
     position: relative;
     background: #f0f0f0;

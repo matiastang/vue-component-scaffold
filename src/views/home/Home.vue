@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-29 10:52:57
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-13 17:53:39
+ * @LastEditTime: 2022-01-13 18:55:04
  * @FilePath: /dw-vue-components/src/views/home/Home.vue
  * @Description: 
 -->
@@ -39,30 +39,31 @@
 <script setup lang="ts">
 import { ref, computed, reactive } from 'vue'
 import { ElMessage } from 'element-plus'
-// import {
-//     DwWechatLogin,
-//     DwDragVerify,
-//     DwPortfolioBg,
-//     DwPortfolioIcon,
-//     DwPortfolioLine,
-//     DwPortfolioPie,
-//     DwPortfolioIndustry,
-// } from 'datumwealth-vue-components'
-// import {
-//     IndustryBondStockData,
-//     IndustryMainData,
-// } from 'datumwealth-vue-components/components/dwPortfolioTypes/index'
 import {
+    DwWechatLogin,
+    DwDragVerify,
     DwPortfolioBg,
     DwPortfolioIcon,
     DwPortfolioLine,
     DwPortfolioPie,
     DwPortfolioIndustry,
-    DwStocksAnalysisLine,
-    AnalyzeType,
-    ReportType,
-} from 'root/components/index'
-// import DwStocksAnalysisLine, { AnalyzeType, ReportType } from 'root/components/dwStocksAnalysisLine'
+} from 'datumwealth-vue-components'
+import { DwStocksAnalysisLine, AnalyzeType, ReportType } from 'datumwealth-vue-components'
+// import {
+//     IndustryBondStockData,
+//     IndustryMainData,
+// } from 'datumwealth-vue-components/components/dwPortfolioTypes/index'
+// import {
+//     DwPortfolioBg,
+//     DwPortfolioIcon,
+//     DwPortfolioLine,
+//     DwPortfolioPie,
+//     DwPortfolioIndustry,
+//     DwStocksAnalysisLine,
+//     AnalyzeType,
+//     ReportType,
+// } from 'root/components/index'
+// // import DwStocksAnalysisLine, { AnalyzeType, ReportType } from 'root/components/dwStocksAnalysisLine'
 import { IndustryBondStockData, IndustryMainData } from 'root/components/dwPortfolioTypes'
 
 const argeScreenAction = () => {

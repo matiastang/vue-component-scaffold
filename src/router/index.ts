@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-28 19:31:46
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-11 15:02:56
+ * @LastEditTime: 2022-01-13 19:13:16
  * @FilePath: /dw-vue-components/src/router/index.ts
  * @Description: 路由
  */
@@ -11,6 +11,8 @@ import { createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw } 
 import Layout from '@/components/layout/Layout.vue'
 // web
 import Home from '@/views/home/Home.vue'
+// test
+import DwStocksAnalysisLineTest from '@/views/test/DwStocksAnalysisLineTest.vue'
 // NotFound
 import NotFound from '@/views/NotFound.vue'
 
@@ -29,6 +31,15 @@ const routes: Array<RouteRecordRaw> = [
         path: '/',
         name: 'home',
         component: Home,
+        beforeEnter: (to, from) => {
+            console.log(`web路由卫士：即将从${from.path}跳转到${to.path}`)
+            return true
+        },
+    },
+    {
+        path: '/dwStocksAnalysisLine',
+        name: 'dwStocksAnalysisLine',
+        component: DwStocksAnalysisLineTest,
         beforeEnter: (to, from) => {
             console.log(`web路由卫士：即将从${from.path}跳转到${to.path}`)
             return true
@@ -65,6 +76,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
     // TODO: - 登录校验
     // import { localStorageKey, localStorageRead } from 'utils/storage/localStorage'
+    // import { vue } from '@vitejs/plugin-vue';
     // if (to.matched.some((record) => record.meta.requiresAuth)) {
     //     // 用户token
     //     const userToken = localStorageRead<string>(localStorageKey.userTokenKey)
