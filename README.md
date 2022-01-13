@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-13 10:12:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-12 13:49:05
+ * @LastEditTime: 2022-01-13 10:33:53
  * @FilePath: /dw-vue-components/README.md
  * @Description: datumwealth-vue-components
 -->
@@ -99,6 +99,11 @@ const redirect_uri = computed(() => {
 ```
 
 ## 版本
+
+### 0.1.16
+
+* 添加`DwPortfolioIndustry`组件，西筹“基金组合”结果页，行业沉积图
+* 添加`DwPortfolioPie`组件，西筹“基金组合”结果页，行业饼图
 
 ### 0.1.15
 
