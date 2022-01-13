@@ -1,4 +1,4 @@
-declare const _sfc_main: import("vue").DefineComponent<{
+declare const _default: import("vue").DefineComponent<{
     /**
      * 非必传，默认值为false
      * true：手机点击确认登录后可以在 iframe 内跳转到 redirect_uri
@@ -79,22 +79,6 @@ declare const _sfc_main: import("vue").DefineComponent<{
         default: number;
     };
 }, {
-    prop: Readonly<{
-        [x: string & `on${string}`]: ((...args: any[]) => any) | ((...args: unknown[]) => any) | undefined;
-        self_redirect: boolean;
-        appid: string | undefined;
-        scope: string | undefined;
-        redirect_uri: string | undefined;
-        state: string | undefined;
-        style: string | undefined;
-        href: string | undefined;
-        styletype: string | undefined;
-        sizetype: string | undefined;
-        bgcolor: string | undefined;
-        rst: string | undefined;
-        iframeWidth: number;
-        iframeHeight: number;
-    }>;
     hidden: import("vue").ComputedRef<boolean>;
     loginSrc: import("vue").ComputedRef<string>;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<{
@@ -131,4 +115,4 @@ declare const _sfc_main: import("vue").DefineComponent<{
     iframeWidth: number;
     iframeHeight: number;
 }>;
-export default _sfc_main;
+export default _default;

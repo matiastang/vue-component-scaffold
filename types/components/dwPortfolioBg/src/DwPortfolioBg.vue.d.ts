@@ -1,4 +1,4 @@
-declare const _sfc_main: import("vue").DefineComponent<{
+declare const _default: import("vue").DefineComponent<{
     /**
      * 图片地址
      */
@@ -31,15 +31,7 @@ declare const _sfc_main: import("vue").DefineComponent<{
             width: string;
         };
     };
-}, {
-    props: Readonly<{
-        [x: string & `on${string}`]: ((...args: any[]) => any) | ((...args: unknown[]) => any) | undefined;
-        leftTopUrl: string | undefined;
-        leftTopStyle: Record<string, any>;
-        rightBottomUrl: string | undefined;
-        rightBottomStyle: Record<string, any>;
-    }>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<{
+}, unknown, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<{
     leftTopUrl?: unknown;
     leftTopStyle?: unknown;
     rightBottomUrl?: unknown;
@@ -54,4 +46,4 @@ declare const _sfc_main: import("vue").DefineComponent<{
     leftTopStyle: Record<string, any>;
     rightBottomStyle: Record<string, any>;
 }>;
-export default _sfc_main;
+export default _default;

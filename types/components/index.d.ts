@@ -4,7 +4,9 @@ import DwDragVerify from './dwDragVerify/src/DwDragVerify.vue';
 import DwPortfolioBg from './dwPortfolioBg/src/DwPortfolioBg.vue';
 import DwPortfolioIcon from './dwPortfolioIcon/src/DwPortfolioIcon.vue';
 import DwPortfolioLine from './dwPortfolioLine/src/DwPortfolioLine.vue';
-export { DwWechatLogin, DwDragVerify, DwPortfolioBg, DwPortfolioIcon, DwPortfolioLine };
+import DwPortfolioPie from './dwPortfolioPie/src/DwPortfolioPie.vue';
+import DwPortfolioIndustry from './dwPortfolioIndustry/src/DwPortfolioIndustry.vue';
+export { DwWechatLogin, DwDragVerify, DwPortfolioBg, DwPortfolioIcon, DwPortfolioLine, DwPortfolioPie, DwPortfolioIndustry, };
 declare const _default: {
     version: string;
     install: (app: App<any>) => void;

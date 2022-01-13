@@ -1,4 +1,4 @@
-interface LineYData {
+interface lineYData {
     lineOneData: number[];
     lineTwoData: number[];
 }
@@ -21,7 +21,7 @@ declare const _default: import("vue").DefineComponent<{
      * y轴数据
      */
     yData: {
-        type: () => LineYData;
+        type: () => lineYData;
         default: () => {
             lineOneData: number[];
             lineTwoData: number[];
@@ -59,7 +59,7 @@ declare const _default: import("vue").DefineComponent<{
         default: string;
     };
 }, {
-    echartsOption: {
+    echartsOption: import("vue").ComputedRef<{
         grid: {
             left: string;
             right: string;
@@ -199,7 +199,7 @@ declare const _default: import("vue").DefineComponent<{
             markPoint?: undefined;
             markLine?: undefined;
         })[];
-    };
+    }>;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<{
     themeKey?: unknown;
     xData?: unknown;
@@ -211,7 +211,7 @@ declare const _default: import("vue").DefineComponent<{
 } & {
     themeKey: string;
     xData: string[];
-    yData: LineYData;
+    yData: lineYData;
     chartStyle: Record<string, any>;
     createPoint: boolean;
     currCheckedIndex: number;
@@ -219,7 +219,7 @@ declare const _default: import("vue").DefineComponent<{
 } & {}>, {
     themeKey: string;
     xData: string[];
-    yData: LineYData;
+    yData: lineYData;
     chartStyle: Record<string, any>;
     createPoint: boolean;
     currCheckedIndex: number;

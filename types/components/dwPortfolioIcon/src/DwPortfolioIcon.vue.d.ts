@@ -52,7 +52,7 @@ declare const _default: import("vue").DefineComponent<{
         default: () => {};
     };
 }, {
-    echartsOption: {
+    echartsOption: import("vue").ComputedRef<{
         grid: {
             left: string;
             right: string;
@@ -106,7 +106,7 @@ declare const _default: import("vue").DefineComponent<{
                 symbolSize: number;
             }[];
         }[];
-    };
+    }>;
 }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, Record<string, any>, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<{
     themeKey?: unknown;
     xData?: unknown;
