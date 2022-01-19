@@ -127,6 +127,7 @@ declare const _default: import("vue").DefineComponent<{
         default: boolean;
     };
 }, {
+    vEchart: Ref<any>;
     selectDateIndex: Ref<number>;
     dateList: import("vue").ComputedRef<{
         selected: boolean;

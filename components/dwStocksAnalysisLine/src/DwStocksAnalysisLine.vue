@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-01-13 14:21:48
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-19 17:28:34
+ * @LastEditTime: 2022-01-19 17:57:38
  * @FilePath: /dw-vue-components/components/dwStocksAnalysisLine/src/DwStocksAnalysisLine.vue
  * @Description: 西筹“个股分析”小程序，折线图
 -->
@@ -674,21 +674,23 @@ export default defineComponent({
         // const vEchart: Ref<typeof VChart | null> = ref(null)
         const vEchart: Ref<any | null> = ref(null)
         const resizeChart = () => {
-            if (vEchart.value && props.autoResize) {
+            if (vEchart.value !== null) {
                 vEchart.value.resize()
             }
         }
-        onMounted(() => {
-            window.addEventListener('resize', resizeChart)
-        })
-        onBeforeUnmount(() => {
-            window.removeEventListener('resize', resizeChart)
-        })
+        if (props.autoResize) {
+            onMounted(() => {
+                window.addEventListener('resize', resizeChart)
+            })
+            onBeforeUnmount(() => {
+                window.removeEventListener('resize', resizeChart)
+            })
+        }
         context.expose({
             resizeChart,
         })
         return {
-            // vEchart,
+            vEchart,
             selectDateIndex,
             dateList,
             echartsOption,
