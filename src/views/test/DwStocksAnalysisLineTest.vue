@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-01-13 19:00:54
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-13 19:18:02
+ * @LastEditTime: 2022-01-19 16:37:57
  * @FilePath: /dw-vue-components/src/views/test/DwStocksAnalysisLineTest.vue
  * @Description: DwStocksAnalysisLine组件测试
 -->
@@ -15,24 +15,36 @@
         >
             <div class="text">{{ title }}</div>
             <DwStocksAnalysisLine
+                ref="vueEchart"
                 :y-data="stocksAnalysisData.value"
                 :analyzeType="analyzeType"
                 :reportType="ReportType.QUAETER"
+                :chartStyle="chartStyle"
+                :fullScreenStyle="fullScreenStyle"
+                :autoResize="false"
                 @arge-screen="argeScreenAction"
-                fullScreenUrl="static/openAlpha/full-screen.png"
-            />
+                :showFullScreen="true"
+            >
+                <template v-slot:fullScreenImg>
+                    <img
+                        src="static/openAlpha/full-screen.png"
+                        style="width: 2.8rem; height: 2.8rem"
+                    />
+                </template>
+            </DwStocksAnalysisLine>
             <div @click="stocksAnalysisDataChangeAction">切换数据</div>
         </DwPortfolioBg>
     </div>
 </template>
 <script setup lang="ts">
-import { ref, reactive } from 'vue'
+import { Ref, ref, reactive, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import {
     DwPortfolioBg,
-    DwStocksAnalysisLine,
-    AnalyzeType,
-    ReportType,
+    // DwStocksAnalysisLine,
+    // AnalyzeType,
+    // ReportType,
 } from 'datumwealth-vue-components'
+import DwStocksAnalysisLine, { AnalyzeType, ReportType } from 'root/components/dwStocksAnalysisLine'
 
 const argeScreenAction = () => {
     console.log('点击了大屏查看')
@@ -95,6 +107,35 @@ const stocksAnalysisDataChangeAction = () => {
 }
 
 const title = ref('DwStocksAnalysisLine组件测试')
+
+const chartStyle = reactive({ width: '100%', height: '30.5rem', padding: '0rem' })
+const fullScreenStyle = reactive({ right: '1.6rem' })
+
+// 图标自适应相关
+const vueEchart: Ref<typeof DwStocksAnalysisLine | null> = ref(null)
+
+const monitorScreen = () => {
+    if (window.orientation === 0 || window.orientation === 180) {
+        console.info('横屏')
+        chartStyle.padding = '0rem 3rem'
+        fullScreenStyle.right = '4.6rem'
+    } else if (window.orientation === 90 || window.orientation === -90) {
+        console.info('竖屏')
+        chartStyle.padding = '0rem'
+        fullScreenStyle.right = '1.6rem'
+    }
+    nextTick(() => {
+        if (vueEchart.value) {
+            vueEchart.value.resizeChart()
+        }
+    })
+}
+onMounted(() => {
+    window.addEventListener('resize', monitorScreen)
+})
+onBeforeUnmount(() => {
+    window.removeEventListener('resize', monitorScreen)
+})
 </script>
 
 <style lang="scss" scoped>
@@ -109,10 +150,11 @@ const title = ref('DwStocksAnalysisLine组件测试')
         justify-content: flex-start;
         align-items: center;
         .text {
+            height: 3rem;
             font-size: fontSize(14px);
             @include defaultFont;
             color: $placeholderColor;
-            line-height: 20px;
+            line-height: 3rem;
             text-align: center;
         }
     }

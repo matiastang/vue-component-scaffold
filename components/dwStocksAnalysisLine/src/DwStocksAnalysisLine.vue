@@ -2,20 +2,28 @@
  * @Author: matiastang
  * @Date: 2022-01-13 14:21:48
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-13 19:05:08
+ * @LastEditTime: 2022-01-19 16:36:58
  * @FilePath: /dw-vue-components/components/dwStocksAnalysisLine/src/DwStocksAnalysisLine.vue
  * @Description: 西筹“个股分析”小程序，折线图
 -->
 <template>
     <div class="dw-stocks-analysis-line">
         <div class="dw-stocks-analysis-content">
-            <VChart class="dw-stocks-analysis-chart" :option="echartsOption" :style="chartStyle" />
-            <img
-                v-show="xData.length > 0 && fullScreenUrl"
-                class="check-icon"
-                :src="fullScreenUrl"
-                @click="argeScreenAction"
+            <VChart
+                class="dw-stocks-analysis-chart"
+                ref="vueEchart"
+                :option="echartsOption"
+                :style="chartStyle"
+                :auto-resize="true"
             />
+            <div
+                v-show="xData.length > 0 && showFullScreen"
+                class="check-icon"
+                :style="fullScreenStyle"
+                @click="argeScreenAction"
+            >
+                <slot name="fullScreenImg"></slot>
+            </div>
             <div v-if="xData.length <= 0" class="load-content">
                 <div>暂无数据</div>
             </div>
@@ -43,7 +51,7 @@
 </template>
 
 <script lang="ts">
-import { ref, computed, defineComponent, provide } from 'vue'
+import { Ref, ref, computed, defineComponent, provide, onMounted, onBeforeUnmount } from 'vue'
 import { use } from 'echarts/core'
 import { CanvasRenderer } from 'echarts/renderers'
 import { LineChart } from 'echarts/charts'
@@ -54,7 +62,7 @@ import {
     MarkPointComponent,
 } from 'echarts/components'
 import VChart, { THEME_KEY } from 'vue-echarts'
-import { bigDataFormatter, moneyFormatter } from '../../utils'
+import { bigDataFormatter, moneyFormatter, removeZeroSuffix } from '../../utils'
 
 use([
     CanvasRenderer,
@@ -116,7 +124,7 @@ interface TooltipItem {
     dataIndex: number //
     dataType: undefined
     dimensionNames: string[] //['x', 'y']
-    marker: string //"<span style=\"display:inline-block;margin-right:4px;border-radius:10px;width:10px;height:10px;background-color:#D65928;\"></span>"
+    marker: string //"<span style=\"display:inline-block;margin-right:0.4rem;border-radius:1rem;width:1rem;height:1rem;background-color:#D65928;\"></span>"
     name: string //"2016-09-30"
     seriesId: string //"\u0000数量\u00000
     seriesIndex: number //
@@ -277,10 +285,29 @@ export default defineComponent({
             },
         },
         /**
-         * 大屏查看图片地址
+         * chart样式
          */
-        fullScreenUrl: {
-            type: String,
+        fullScreenStyle: {
+            type: Object,
+            default: () => {
+                return {
+                    right: '1.6rem',
+                }
+            },
+        },
+        /**
+         * 是否支持大屏查看
+         */
+        showFullScreen: {
+            type: Boolean,
+            default: true,
+        },
+        /**
+         * 自适应刷新
+         */
+        autoResize: {
+            type: Boolean,
+            default: true,
         },
     },
     emits: {
@@ -515,7 +542,7 @@ export default defineComponent({
                         }
                         if (props.analyzeType === AnalyzeType.MKT_VAL_NET_ASSET) {
                             valueTitle = '持仓占比'
-                            number = `${item.value.toFixed(2)}%`
+                            number = `${removeZeroSuffix(item.value.toFixed(2))}%`
                         }
                         return `${item.axisValue.replace(/-/g, '.')}<br/>${
                             item.marker
@@ -524,7 +551,7 @@ export default defineComponent({
                 },
                 grid: {
                     left: '8',
-                    right: '20',
+                    right: '10',
                     top: '10',
                     bottom: '10',
                     containLabel: true,
@@ -595,7 +622,7 @@ export default defineComponent({
                                 return moneyFormatter(value)
                             }
                             if (props.analyzeType === AnalyzeType.MKT_VAL_NET_ASSET) {
-                                return `${value.toFixed(2)}%`
+                                return `${removeZeroSuffix(value.toFixed(2))}%`
                             }
                             return value
                         },
@@ -641,11 +668,39 @@ export default defineComponent({
         })
         const argeScreenAction = () => {
             context.emit('argeScreen')
+            resizeChart()
         }
         const onDateAction = (index: number) => {
             selectDateIndex.value = index
         }
+        // 图标自适应相关
+        const vueEchart: Ref<typeof VChart | null> = ref(null)
+        const resizeChart = () => {
+            if (vueEchart.value) {
+                vueEchart.value.resize()
+            }
+        }
+        // const monitorScreen = () => {
+        //     console.log(window.orientation)
+        //     if (window.orientation == 0) {
+        //         console.log('竖屏')
+        //     } else if (window.orientation == 90) {
+        //         console.log('横屏')
+        //     }
+        // }
+        if (props.autoResize) {
+            onMounted(() => {
+                window.addEventListener('resize', resizeChart)
+            })
+            onBeforeUnmount(() => {
+                window.removeEventListener('resize', resizeChart)
+            })
+        }
+        context.expose({
+            resizeChart,
+        })
         return {
+            vueEchart,
             selectDateIndex,
             dateList,
             echartsOption,
@@ -661,10 +716,11 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .dw-stocks-analysis-line {
+    box-sizing: border-box;
     max-height: 100vh;
     max-width: 100vw;
     width: 100%;
-    height: 39rem;
+    // height: 34.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -673,52 +729,53 @@ export default defineComponent({
 
     .dw-stocks-analysis-content {
         width: 100%;
-        height: 35rem;
+        // height: 30.5rem;
         position: relative;
         .dw-stocks-analysis-chart {
             width: 100%;
             height: 100%;
+            box-sizing: border-box;
         }
         .check-icon {
             position: absolute;
-            right: 16px;
-            bottom: 28px;
-            width: 28px;
+            right: 1.6rem;
+            bottom: 2.8rem;
+            width: 2.8rem;
             text-align: center;
-            height: 28px;
+            height: 2.8rem;
         }
         .tooltip-content {
             position: absolute;
-            top: 0px;
-            left: 0px;
+            top: 0rem;
+            left: 0rem;
             display: flex;
             align-items: center;
             background: rgba(#535353, 0.3);
-            border-radius: 8px;
-            padding: 8px;
+            border-radius: 0.8rem;
+            padding: 0.8rem;
             .tooltip-content-left {
-                width: 5px;
-                min-height: 32px;
+                width: 0.5rem;
+                min-height: 3.2rem;
                 background: #d65928;
             }
             .tooltip-content-right {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                margin-left: 10px;
+                margin-left: 1rem;
                 align-items: center;
                 .tooltip-content-date {
-                    font-size: 10px;
+                    font-size: 1rem;
                     font-family: PingFangSC-Regular, PingFang SC;
                     font-weight: 400;
-                    line-height: 16px;
+                    line-height: 1.6rem;
                     color: #d65928;
                 }
                 .tooltip-content-value {
-                    font-size: 10px;
+                    font-size: 1rem;
                     font-family: PingFangSC-Regular, PingFang SC;
                     font-weight: 400;
-                    line-height: 16px;
+                    line-height: 1.6rem;
                     color: #d65928;
                 }
             }
@@ -727,9 +784,9 @@ export default defineComponent({
     .load-content {
         position: absolute;
         width: 100%;
-        height: 350px;
-        top: 0px;
-        left: 0px;
+        // height: 30.5rem;
+        top: 0rem;
+        left: 0rem;
         flex-grow: 0;
         flex-shrink: 0;
         box-sizing: border-box;
@@ -748,26 +805,53 @@ export default defineComponent({
         .charts-bottom-item {
             flex-grow: 1;
             .charts-bottom-value {
-                font-size: 15px;
+                font-size: 1.5rem;
                 font-family: PingFang SC-Medium, PingFang SC;
                 font-weight: 500;
                 color: #191919;
-                line-height: 40px;
-                padding: 0px 10px;
+                line-height: 4rem;
+                padding: 0rem 1rem;
                 background: #f7f7f7;
                 text-align: center;
             }
             .charts-bottom-select-value {
-                font-size: 15px;
+                font-size: 1.5rem;
                 font-family: PingFang SC-Medium, PingFang SC;
                 font-weight: 500;
                 color: #ffffff;
-                line-height: 40px;
-                padding: 0px 10px;
+                line-height: 4rem;
+                padding: 0rem 1rem;
                 background: #d65928;
                 text-align: center;
             }
         }
     }
 }
+// /*横屏*/
+// @media (orientation: landscape) {
+//     .dw-stocks-analysis-line {
+//         .dw-stocks-analysis-content {
+//             .dw-stocks-analysis-chart {
+//                 padding: 0rem 3rem;
+//             }
+//             .check-icon {
+//                 right: 4.6rem;
+//             }
+//         }
+//     }
+// }
+
+// /*竖屏*/
+// @media (orientation: portrait) {
+//     .dw-stocks-analysis-line {
+//         .dw-stocks-analysis-content {
+//             .dw-stocks-analysis-chart {
+//                 padding: 0rem;
+//             }
+//             .check-icon {
+//                 right: 1.6rem;
+//             }
+//         }
+//     }
+// }
 </style>

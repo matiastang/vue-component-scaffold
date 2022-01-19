@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-13 10:12:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-13 18:50:30
+ * @LastEditTime: 2022-01-19 16:42:52
  * @FilePath: /dw-vue-components/README.md
  * @Description: datumwealth-vue-components
 -->
@@ -99,6 +99,14 @@ const redirect_uri = computed(() => {
 ```
 
 ## 版本
+
+### 0.1.17
+
+* `DwStocksAnalysisLine`组件优化：
+
+1. 添加自适应功能
+2. 开放大屏查看按钮插槽
+3. UI微调
 
 ### 0.1.17
 
