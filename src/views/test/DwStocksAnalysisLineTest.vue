@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-01-13 19:00:54
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-19 16:37:57
+ * @LastEditTime: 2022-01-19 17:34:26
  * @FilePath: /dw-vue-components/src/views/test/DwStocksAnalysisLineTest.vue
  * @Description: DwStocksAnalysisLine组件测试
 -->
@@ -40,11 +40,11 @@
 import { Ref, ref, reactive, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import {
     DwPortfolioBg,
-    // DwStocksAnalysisLine,
-    // AnalyzeType,
-    // ReportType,
+    DwStocksAnalysisLine,
+    AnalyzeType,
+    ReportType,
 } from 'datumwealth-vue-components'
-import DwStocksAnalysisLine, { AnalyzeType, ReportType } from 'root/components/dwStocksAnalysisLine'
+// import DwStocksAnalysisLine, { AnalyzeType, ReportType } from 'root/components/dwStocksAnalysisLine'
 
 const argeScreenAction = () => {
     console.log('点击了大屏查看')
