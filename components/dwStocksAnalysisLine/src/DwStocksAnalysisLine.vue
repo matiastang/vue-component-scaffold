@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-01-13 14:21:48
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-19 16:36:58
+ * @LastEditTime: 2022-01-19 17:28:34
  * @FilePath: /dw-vue-components/components/dwStocksAnalysisLine/src/DwStocksAnalysisLine.vue
  * @Description: 西筹“个股分析”小程序，折线图
 -->
@@ -11,7 +11,7 @@
         <div class="dw-stocks-analysis-content">
             <VChart
                 class="dw-stocks-analysis-chart"
-                ref="vueEchart"
+                ref="vEchart"
                 :option="echartsOption"
                 :style="chartStyle"
                 :auto-resize="true"
@@ -89,7 +89,6 @@ export enum AnalyzeType {
      */
     MKT_VAL_NET_ASSET = 2,
 }
-
 /**
  * 数据来源
  */
@@ -107,7 +106,6 @@ export enum ReportType {
      */
     YEAR = 3,
 }
-
 interface TooltipItem {
     axisDim: string // "x"
     axisId: string //"\u0000series\u00000\u00000
@@ -668,39 +666,29 @@ export default defineComponent({
         })
         const argeScreenAction = () => {
             context.emit('argeScreen')
-            resizeChart()
         }
         const onDateAction = (index: number) => {
             selectDateIndex.value = index
         }
         // 图标自适应相关
-        const vueEchart: Ref<typeof VChart | null> = ref(null)
+        // const vEchart: Ref<typeof VChart | null> = ref(null)
+        const vEchart: Ref<any | null> = ref(null)
         const resizeChart = () => {
-            if (vueEchart.value) {
-                vueEchart.value.resize()
+            if (vEchart.value && props.autoResize) {
+                vEchart.value.resize()
             }
         }
-        // const monitorScreen = () => {
-        //     console.log(window.orientation)
-        //     if (window.orientation == 0) {
-        //         console.log('竖屏')
-        //     } else if (window.orientation == 90) {
-        //         console.log('横屏')
-        //     }
-        // }
-        if (props.autoResize) {
-            onMounted(() => {
-                window.addEventListener('resize', resizeChart)
-            })
-            onBeforeUnmount(() => {
-                window.removeEventListener('resize', resizeChart)
-            })
-        }
+        onMounted(() => {
+            window.addEventListener('resize', resizeChart)
+        })
+        onBeforeUnmount(() => {
+            window.removeEventListener('resize', resizeChart)
+        })
         context.expose({
             resizeChart,
         })
         return {
-            vueEchart,
+            // vEchart,
             selectDateIndex,
             dateList,
             echartsOption,

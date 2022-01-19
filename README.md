@@ -100,7 +100,7 @@ const redirect_uri = computed(() => {
 
 ## 版本
 
-### 0.1.17
+### 0.1.18
 
 * `DwStocksAnalysisLine`组件优化：
 
