@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-01-13 14:21:48
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-19 17:57:38
+ * @LastEditTime: 2022-02-09 09:43:41
  * @FilePath: /dw-vue-components/components/dwStocksAnalysisLine/src/DwStocksAnalysisLine.vue
  * @Description: 西筹“个股分析”小程序，折线图
 -->
@@ -307,6 +307,13 @@ export default defineComponent({
             type: Boolean,
             default: true,
         },
+        /**
+         * 数据更新动画
+         */
+        animation: {
+            type: Boolean,
+            default: true,
+        },
     },
     emits: {
         /**
@@ -317,6 +324,8 @@ export default defineComponent({
         },
     },
     setup(props, context) {
+        // provide(LOADING_OPTIONS_KEY, { notMerge: true })
+        // :update-options="{notMerge:true}"
         // 主题
         provide(THEME_KEY, props.themeKey)
         const selectDateIndex = ref(3)
@@ -510,6 +519,7 @@ export default defineComponent({
         // echarts option
         const echartsOption = computed(() => {
             return {
+                animation: props.animation,
                 tooltip: {
                     trigger: 'axis',
                     axisPointer: {

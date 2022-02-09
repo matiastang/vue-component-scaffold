@@ -126,6 +126,13 @@ declare const _default: import("vue").DefineComponent<{
         type: BooleanConstructor;
         default: boolean;
     };
+    /**
+     * 数据更新动画
+     */
+    animation: {
+        type: BooleanConstructor;
+        default: boolean;
+    };
 }, {
     vEchart: Ref<any>;
     selectDateIndex: Ref<number>;
@@ -134,6 +141,7 @@ declare const _default: import("vue").DefineComponent<{
         value: string;
     }[]>;
     echartsOption: import("vue").ComputedRef<{
+        animation: boolean;
         tooltip: {
             trigger: string;
             axisPointer: {
@@ -245,6 +253,7 @@ declare const _default: import("vue").DefineComponent<{
     fullScreenStyle?: unknown;
     showFullScreen?: unknown;
     autoResize?: unknown;
+    animation?: unknown;
 } & {
     themeKey: string;
     xData: string[];
@@ -255,6 +264,7 @@ declare const _default: import("vue").DefineComponent<{
     fullScreenStyle: Record<string, any>;
     showFullScreen: boolean;
     autoResize: boolean;
+    animation: boolean;
 } & {}> & {
     onArgeScreen?: (() => any) | undefined;
 }, {
@@ -267,5 +277,6 @@ declare const _default: import("vue").DefineComponent<{
     fullScreenStyle: Record<string, any>;
     showFullScreen: boolean;
     autoResize: boolean;
+    animation: boolean;
 }>;
 export default _default;
