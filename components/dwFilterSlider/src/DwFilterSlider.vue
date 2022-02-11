@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-02-11 11:31:36
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-11 17:46:33
+ * @LastEditTime: 2022-02-11 17:50:47
  * @FilePath: /dw-vue-components/components/dwFilterSlider/src/DwFilterSlider.vue
  * @Description: 
 -->
@@ -51,14 +51,14 @@ export default defineComponent({
     name: 'DwFilterSlider',
     props: {
         /**
-         * 开始位置
+         * 开始位置, 当小于0时表示固定最小值为0
          */
         startValue: {
             type: Number,
             default: Number.MIN_SAFE_INTEGER,
         },
         /**
-         * 结束位置
+         * 结束位置, 当大于100时表示固定最大值为100
          */
         endValue: {
             type: Number,

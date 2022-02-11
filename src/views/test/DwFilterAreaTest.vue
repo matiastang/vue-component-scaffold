@@ -1,10 +1,10 @@
 <!--
  * @Author: matiastang
- * @Date: 2022-02-11 16:24:17
+ * @Date: 2022-02-11 17:54:53
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-11 17:55:12
- * @FilePath: /dw-vue-components/src/views/test/DwFilterSliderTest.vue
- * @Description: DwFilterSlider组件测试
+ * @LastEditTime: 2022-02-11 17:56:53
+ * @FilePath: /dw-vue-components/src/views/test/DwFilterAreaTest.vue
+ * @Description: dwFilterArea组件测试
 -->
 <template>
     <div class="home">
@@ -14,6 +14,7 @@
             right-bottom-url="static/bg/bg-right-bottom.png"
         >
             <div class="text">{{ oneTitle }}</div>
+            <DwFilterArea></DwFilterArea>
             <DwFilterSlider
                 class="dw-filter-slider"
                 v-model:startValue="oneStart"
@@ -34,6 +35,7 @@
                 </template>
             </DwFilterSlider>
             <div class="text">{{ twoTitle }}</div>
+            <DwFilterArea></DwFilterArea>
             <DwFilterSlider
                 class="dw-filter-slider"
                 v-model:startValue="twoStart"
@@ -54,6 +56,7 @@
                 </template>
             </DwFilterSlider>
             <div class="text">{{ threeTitle }}</div>
+            <DwFilterArea></DwFilterArea>
             <DwFilterSlider
                 class="dw-filter-slider"
                 v-model:startValue="threeStart"
@@ -83,6 +86,7 @@ import {
     // DwStocksAnalysisLine,
 } from 'datumwealth-vue-components'
 import DwFilterSlider from 'root/components/dwFilterSlider'
+import DwFilterArea from 'root/components/dwFilterArea'
 
 const oneStart = ref(Number.MIN_SAFE_INTEGER)
 const oneEnd = ref(90)

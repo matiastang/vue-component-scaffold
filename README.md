@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-13 10:12:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-09 10:08:54
+ * @LastEditTime: 2022-02-11 17:49:18
  * @FilePath: /dw-vue-components/README.md
  * @Description: datumwealth-vue-components
 -->
@@ -99,6 +99,10 @@ const redirect_uri = computed(() => {
 ```
 
 ## 版本
+
+### 0.2.0
+
+* 添加**基金筛选**小程序滑块组件：`DwFilterSlider`
 
 ### 0.1.20
 

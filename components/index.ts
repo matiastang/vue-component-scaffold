@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-30 15:31:25
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-11 16:23:38
+ * @LastEditTime: 2022-02-11 17:54:33
  * @FilePath: /dw-vue-components/components/index.ts
  * @Description: 导出所有组件
  */
@@ -21,7 +21,8 @@ import DwStocksAnalysisLine, {
     ReportType,
 } from './dwStocksAnalysisLine/src/DwStocksAnalysisLine.vue'
 // 基金筛选
-import DwFilterSlider from './DwFilterSlider/src/DwFilterSlider.vue'
+import DwFilterSlider from './dwFilterSlider/src/DwFilterSlider.vue'
+import DwFilterArea from './dwFilterArea/src/DwFilterArea.vue'
 
 // 所有组件列表
 const components = [
@@ -34,6 +35,7 @@ const components = [
     DwPortfolioIndustry,
     DwStocksAnalysisLine,
     DwFilterSlider,
+    DwFilterArea,
 ]
 
 // 定义 install 方法， App 作为参数, options
@@ -47,6 +49,7 @@ const install = (app: App): void => {
 export {
     // 西筹“基金筛选”小程序
     DwFilterSlider,
+    DwFilterArea,
     // 西筹“个股分析”小程序
     DwStocksAnalysisLine,
     AnalyzeType,
