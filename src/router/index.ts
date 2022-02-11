@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-28 19:31:46
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-19 17:29:28
+ * @LastEditTime: 2022-02-11 16:34:52
  * @FilePath: /dw-vue-components/src/router/index.ts
  * @Description: 路由
  */
@@ -13,6 +13,7 @@ import Layout from '@/components/layout/Layout.vue'
 import Home from '@/views/home/Home.vue'
 // test
 import DwStocksAnalysisLineTest from '@/views/test/DwStocksAnalysisLineTest.vue'
+import DwFilterSliderTest from '@/views/test/DwFilterSliderTest.vue'
 // NotFound
 import NotFound from '@/views/NotFound.vue'
 
@@ -40,6 +41,15 @@ const routes: Array<RouteRecordRaw> = [
         path: '/dwStocksAnalysisLine',
         name: 'dwStocksAnalysisLine',
         component: DwStocksAnalysisLineTest,
+        beforeEnter: (to, from) => {
+            console.log(`web路由卫士：即将从${from.path}跳转到${to.path}`)
+            return true
+        },
+    },
+    {
+        path: '/dwFilterSlider',
+        name: 'dwFilterSlider',
+        component: DwFilterSliderTest,
         beforeEnter: (to, from) => {
             console.log(`web路由卫士：即将从${from.path}跳转到${to.path}`)
             return true
@@ -77,18 +87,21 @@ router.beforeEach((to, from, next) => {
     // TODO: - 登录校验
     // import { localStorageKey, localStorageRead } from 'utils/storage/localStorage'
     // import { vue } from '@vitejs/plugin-vue';
-    // if (to.matched.some((record) => record.meta.requiresAuth)) {
-    //     // 用户token
-    //     const userToken = localStorageRead<string>(localStorageKey.userTokenKey)
-    //     if (!userToken || userToken.trim() === '') {
-    //         // 未登录
-    //         next({
-    //             path: '/login',
-    //             replace: true,
-    //         })
-    //         return
-    //     }
-    // }
+    // import DwFilterSlider from '../../components/dwFilterSlider/index';
+    if (to.matched.some((record) => record.meta.requiresAuth)) {
+        //     // 用户token
+        //     const userToken = localStorageRead<string>(localStorageKey.userTokenKey)
+        //     if (!userToken || userToken.trim() === '') {
+        //         // 未登录
+        //         next({
+        //             path: '/login',
+        //             replace: true,
+        //         })
+        //         return
+        //     }
+        // }
+        next()
+    }
     next()
 })
 
