@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-02-11 11:31:36
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-11 17:50:47
+ * @LastEditTime: 2022-02-14 11:09:46
  * @FilePath: /dw-vue-components/components/dwFilterSlider/src/DwFilterSlider.vue
  * @Description: 
 -->
@@ -195,7 +195,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .dw-slider {
     width: 100%;
-    padding: 15px 0;
+    padding: 1.5rem 0;
     .dw-slider-track {
         width: 100%;
         height: 2px;

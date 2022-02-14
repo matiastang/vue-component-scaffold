@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-02-11 16:24:17
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-11 17:55:12
+ * @LastEditTime: 2022-02-14 16:07:17
  * @FilePath: /dw-vue-components/src/views/test/DwFilterSliderTest.vue
  * @Description: DwFilterSlider组件测试
 -->
@@ -14,6 +14,7 @@
             right-bottom-url="static/bg/bg-right-bottom.png"
         >
             <div class="text">{{ oneTitle }}</div>
+            <DwFilterRuler></DwFilterRuler>
             <DwFilterSlider
                 class="dw-filter-slider"
                 v-model:startValue="oneStart"
@@ -34,6 +35,7 @@
                 </template>
             </DwFilterSlider>
             <div class="text">{{ twoTitle }}</div>
+            <DwFilterRuler></DwFilterRuler>
             <DwFilterSlider
                 class="dw-filter-slider"
                 v-model:startValue="twoStart"
@@ -54,6 +56,7 @@
                 </template>
             </DwFilterSlider>
             <div class="text">{{ threeTitle }}</div>
+            <DwFilterRuler></DwFilterRuler>
             <DwFilterSlider
                 class="dw-filter-slider"
                 v-model:startValue="threeStart"
@@ -83,9 +86,10 @@ import {
     // DwStocksAnalysisLine,
 } from 'datumwealth-vue-components'
 import DwFilterSlider from 'root/components/dwFilterSlider'
+import DwFilterRuler from 'root/components/dwFilterRuler'
 
 const oneStart = ref(Number.MIN_SAFE_INTEGER)
-const oneEnd = ref(90)
+const oneEnd = ref(50)
 const oneTitle = computed(() => {
     return `start=${oneStart.value}~end=${oneEnd.value}`
 })
@@ -125,7 +129,7 @@ const threeTitle = computed(() => {
         }
         .dw-filter-slider {
             width: 100%;
-            padding: 0rem 1.4rem;
+            padding: 1.4rem;
             box-sizing: border-box;
         }
     }

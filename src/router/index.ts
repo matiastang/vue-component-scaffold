@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-28 19:31:46
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-11 18:05:00
+ * @LastEditTime: 2022-02-14 10:39:04
  * @FilePath: /dw-vue-components/src/router/index.ts
  * @Description: 路由
  */
@@ -14,7 +14,7 @@ import Home from '@/views/home/Home.vue'
 // test
 import DwStocksAnalysisLineTest from '@/views/test/DwStocksAnalysisLineTest.vue'
 import DwFilterSliderTest from '@/views/test/DwFilterSliderTest.vue'
-import DwFilterArea from '@/views/test/DwFilterArea.vue'
+import DwFilterAreaTest from '@/views/test/DwFilterAreaTest.vue'
 // NotFound
 import NotFound from '@/views/NotFound.vue'
 
@@ -57,9 +57,9 @@ const routes: Array<RouteRecordRaw> = [
         },
     },
     {
-        path: '/dwFilterSliderTest',
-        name: 'dwFilterSliderTest',
-        component: DwFilterSliderTest,
+        path: '/dwFilterArea',
+        name: 'dwFilterArea',
+        component: DwFilterAreaTest,
         beforeEnter: (to, from) => {
             console.log(`web路由卫士：即将从${from.path}跳转到${to.path}`)
             return true
@@ -96,10 +96,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
     // TODO: - 登录校验
     // import { localStorageKey, localStorageRead } from 'utils/storage/localStorage'
-    // import { vue } from '@vitejs/plugin-vue';
-    // import DwFilterSlider from '../../components/dwFilterSlider/index';
-    if import DwFilterArea from '../../components/dwFilterArea/index';
-(to.matched.some((record) => record.meta.requiresAuth)) {
+    if (to.matched.some((record) => record.meta.requiresAuth)) {
         //     // 用户token
         //     const userToken = localStorageRead<string>(localStorageKey.userTokenKey)
         //     if (!userToken || userToken.trim() === '') {

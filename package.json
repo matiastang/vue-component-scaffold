@@ -1,6 +1,6 @@
 {
     "name": "datumwealth-vue-components",
-    "version": "0.1.20",
+    "version": "0.2.0",
     "description": "西筹金融科技Vue组件库",
     "main": "./components/index.ts",
     "source": "./dist/components/index.d.ts",

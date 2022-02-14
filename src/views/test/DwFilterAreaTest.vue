@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-02-11 17:54:53
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-11 17:56:53
+ * @LastEditTime: 2022-02-14 15:33:00
  * @FilePath: /dw-vue-components/src/views/test/DwFilterAreaTest.vue
  * @Description: dwFilterArea组件测试
 -->
@@ -14,7 +14,7 @@
             right-bottom-url="static/bg/bg-right-bottom.png"
         >
             <div class="text">{{ oneTitle }}</div>
-            <DwFilterArea></DwFilterArea>
+            <DwFilterArea class="dw-filter-area" :start="oneStart" :end="oneEnd"></DwFilterArea>
             <DwFilterSlider
                 class="dw-filter-slider"
                 v-model:startValue="oneStart"
@@ -35,7 +35,7 @@
                 </template>
             </DwFilterSlider>
             <div class="text">{{ twoTitle }}</div>
-            <DwFilterArea></DwFilterArea>
+            <DwFilterArea class="dw-filter-area" :start="twoStart" :end="twoEnd"></DwFilterArea>
             <DwFilterSlider
                 class="dw-filter-slider"
                 v-model:startValue="twoStart"
@@ -56,7 +56,7 @@
                 </template>
             </DwFilterSlider>
             <div class="text">{{ threeTitle }}</div>
-            <DwFilterArea></DwFilterArea>
+            <DwFilterArea class="dw-filter-area" :start="threeStart" :end="threeEnd"></DwFilterArea>
             <DwFilterSlider
                 class="dw-filter-slider"
                 v-model:startValue="threeStart"
@@ -89,7 +89,7 @@ import DwFilterSlider from 'root/components/dwFilterSlider'
 import DwFilterArea from 'root/components/dwFilterArea'
 
 const oneStart = ref(Number.MIN_SAFE_INTEGER)
-const oneEnd = ref(90)
+const oneEnd = ref(50)
 const oneTitle = computed(() => {
     return `start=${oneStart.value}~end=${oneEnd.value}`
 })
@@ -127,9 +127,14 @@ const threeTitle = computed(() => {
             line-height: 3rem;
             text-align: center;
         }
-        .dw-filter-slider {
+        .dw-filter-area {
             width: 100%;
             padding: 0rem 1.4rem;
+            box-sizing: border-box;
+        }
+        .dw-filter-slider {
+            width: 100%;
+            padding: 1.4rem;
             box-sizing: border-box;
         }
     }
