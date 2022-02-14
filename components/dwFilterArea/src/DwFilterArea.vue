@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-02-11 17:52:50
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-14 16:42:48
+ * @LastEditTime: 2022-02-14 17:27:52
  * @FilePath: /dw-vue-components/components/dwFilterArea/src/DwFilterArea.vue
  * @Description: DwFilterArea
 -->
@@ -13,22 +13,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref, Ref, toRefs, computed, onMounted, nextTick, watchEffect } from 'vue'
-
-/**
- * 图谱数据类型
- */
-export interface ChartItem {
-    data: number
-    number: number
-}
-
-/**
- * canvas数据渲染类型
- */
-export interface CanvasItem {
-    x: number
-    y: number
-}
+import { ChartItem, CanvasItem } from './interface'
 
 export default defineComponent({
     name: 'DwFilterArea',
@@ -45,7 +30,7 @@ export default defineComponent({
                 { data: 3, number: 1160 },
                 { data: 4, number: 1169 },
                 { data: 5, number: 1394 },
-                { data: 6, number: 3727 }, // 1022
+                { data: 6, number: 1022 },
                 { data: 7, number: 483 },
                 { data: 8, number: 362 },
                 { data: 9, number: -261 },

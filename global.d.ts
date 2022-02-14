@@ -2,12 +2,15 @@
  * @Author: matiastang
  * @Date: 2021-12-13 10:12:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-13 17:42:01
+ * @LastEditTime: 2022-02-14 16:47:49
  * @FilePath: /dw-vue-components/global.d.ts
  * @Description: 全局组件声明
  */
 declare module 'vue' {
     export interface GlobalComponents {
+        DwFilterSlider: typeof import('datumwealth-vue-components')['DwFilterSlider']
+        DwFilterArea: typeof import('datumwealth-vue-components')['DwFilterArea']
+        DwFilterRuler: typeof import('datumwealth-vue-components')['DwFilterRuler']
         DwWechatLogin: typeof import('datumwealth-vue-components')['DwWechatLogin']
         DwDragVerify: typeof import('datumwealth-vue-components')['DwDragVerify']
         DwPortfolioBg: typeof import('datumwealth-vue-components')['DwPortfolioBg']

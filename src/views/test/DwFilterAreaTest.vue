@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-02-11 17:54:53
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-14 15:33:00
+ * @LastEditTime: 2022-02-14 18:04:57
  * @FilePath: /dw-vue-components/src/views/test/DwFilterAreaTest.vue
  * @Description: dwFilterArea组件测试
 -->
@@ -14,7 +14,23 @@
             right-bottom-url="static/bg/bg-right-bottom.png"
         >
             <div class="text">{{ oneTitle }}</div>
-            <DwFilterArea class="dw-filter-area" :start="oneStart" :end="oneEnd"></DwFilterArea>
+            <div class="text" @click="yxAction">优选</div>
+            <DwFilterAreaSlider v-model:start="oneStart" v-model:end="oneEnd">
+                <template v-slot:greaterImg>
+                    <img
+                        src="static/filter/slider-greater.svg"
+                        style="width: 2.8rem; height: 2.8rem"
+                    />
+                </template>
+                <template v-slot:lessImg>
+                    <img
+                        src="static/filter/slider-less.svg"
+                        style="width: 2.8rem; height: 2.8rem"
+                    />
+                </template>
+            </DwFilterAreaSlider>
+
+            <!-- <DwFilterArea class="dw-filter-area" :start="oneStart" :end="oneEnd"></DwFilterArea> -->
             <DwFilterSlider
                 class="dw-filter-slider"
                 v-model:startValue="oneStart"
@@ -35,7 +51,21 @@
                 </template>
             </DwFilterSlider>
             <div class="text">{{ twoTitle }}</div>
-            <DwFilterArea class="dw-filter-area" :start="twoStart" :end="twoEnd"></DwFilterArea>
+            <DwFilterAreaSlider v-model:start="twoStart" v-model:end="twoEnd">
+                <template v-slot:greaterImg>
+                    <img
+                        src="static/filter/slider-greater.svg"
+                        style="width: 2.8rem; height: 2.8rem"
+                    />
+                </template>
+                <template v-slot:lessImg>
+                    <img
+                        src="static/filter/slider-less.svg"
+                        style="width: 2.8rem; height: 2.8rem"
+                    />
+                </template>
+            </DwFilterAreaSlider>
+            <!-- <DwFilterArea class="dw-filter-area" :start="twoStart" :end="twoEnd"></DwFilterArea> -->
             <DwFilterSlider
                 class="dw-filter-slider"
                 v-model:startValue="twoStart"
@@ -56,7 +86,21 @@
                 </template>
             </DwFilterSlider>
             <div class="text">{{ threeTitle }}</div>
-            <DwFilterArea class="dw-filter-area" :start="threeStart" :end="threeEnd"></DwFilterArea>
+            <DwFilterAreaSlider v-model:start="threeStart" v-model:end="threeEnd">
+                <template v-slot:greaterImg>
+                    <img
+                        src="static/filter/slider-greater.svg"
+                        style="width: 2.8rem; height: 2.8rem"
+                    />
+                </template>
+                <template v-slot:lessImg>
+                    <img
+                        src="static/filter/slider-less.svg"
+                        style="width: 2.8rem; height: 2.8rem"
+                    />
+                </template>
+            </DwFilterAreaSlider>
+            <!-- <DwFilterArea class="dw-filter-area" :start="threeStart" :end="threeEnd"></DwFilterArea> -->
             <DwFilterSlider
                 class="dw-filter-slider"
                 v-model:startValue="threeStart"
@@ -81,18 +125,20 @@
 </template>
 <script setup lang="ts">
 import { Ref, ref, reactive, onMounted, onBeforeUnmount, nextTick, computed } from 'vue'
-import {
-    DwPortfolioBg,
-    // DwStocksAnalysisLine,
-} from 'datumwealth-vue-components'
+// import { DwPortfolioBg, DwFilterArea, DwFilterSlider } from 'datumwealth-vue-components'
+import { DwPortfolioBg } from 'datumwealth-vue-components'
 import DwFilterSlider from 'root/components/dwFilterSlider'
 import DwFilterArea from 'root/components/dwFilterArea'
+import DwFilterAreaSlider from 'root/components/dwFilterAreaSlider'
 
 const oneStart = ref(Number.MIN_SAFE_INTEGER)
 const oneEnd = ref(50)
 const oneTitle = computed(() => {
     return `start=${oneStart.value}~end=${oneEnd.value}`
 })
+const yxAction = () => {
+    oneEnd.value = 40
+}
 
 const twoStart = ref(10)
 const twoEnd = ref(Number.MAX_SAFE_INTEGER)

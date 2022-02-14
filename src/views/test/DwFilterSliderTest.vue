@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-02-11 16:24:17
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-14 16:07:17
+ * @LastEditTime: 2022-02-14 16:49:50
  * @FilePath: /dw-vue-components/src/views/test/DwFilterSliderTest.vue
  * @Description: DwFilterSlider组件测试
 -->
@@ -81,10 +81,8 @@
 </template>
 <script setup lang="ts">
 import { Ref, ref, reactive, onMounted, onBeforeUnmount, nextTick, computed } from 'vue'
-import {
-    DwPortfolioBg,
-    // DwStocksAnalysisLine,
-} from 'datumwealth-vue-components'
+// import { DwPortfolioBg, DwFilterSlider, DwFilterRuler } from 'datumwealth-vue-components'
+import { DwPortfolioBg } from 'datumwealth-vue-components'
 import DwFilterSlider from 'root/components/dwFilterSlider'
 import DwFilterRuler from 'root/components/dwFilterRuler'
 
