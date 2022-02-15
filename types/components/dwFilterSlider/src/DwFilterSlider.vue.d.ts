@@ -14,6 +14,13 @@ declare const _default: import("vue").DefineComponent<{
         type: NumberConstructor;
         default: number;
     };
+    /**
+     * 开始位置与结束位置最小间隔
+     */
+    minDiff: {
+        type: NumberConstructor;
+        default: number;
+    };
 }, {
     sliderTrackElement: Ref<HTMLElement | null>;
     leftWidth: import("vue").ComputedRef<number>;
@@ -39,17 +46,25 @@ declare const _default: import("vue").DefineComponent<{
      * 更新结束位置
      */
     'update:endValue': (value: number) => true;
+    /**
+     * 更新结束位置
+     */
+    minDiffWarn: (start: number, end: number, diff: number) => true;
 }, string, import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<{
     startValue?: unknown;
     endValue?: unknown;
+    minDiff?: unknown;
 } & {
     startValue: number;
     endValue: number;
+    minDiff: number;
 } & {}> & {
     "onUpdate:startValue"?: ((value: number) => any) | undefined;
     "onUpdate:endValue"?: ((value: number) => any) | undefined;
+    onMinDiffWarn?: ((start: number, end: number, diff: number) => any) | undefined;
 }, {
     startValue: number;
     endValue: number;
+    minDiff: number;
 }>;
 export default _default;

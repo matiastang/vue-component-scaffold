@@ -9,9 +9,10 @@ import DwPortfolioIndustry from './dwPortfolioIndustry/src/DwPortfolioIndustry.v
 import DwStocksAnalysisLine, { AnalyzeType, ReportType } from './dwStocksAnalysisLine/src/DwStocksAnalysisLine.vue';
 import DwFilterSlider from './dwFilterSlider/src/DwFilterSlider.vue';
 import DwFilterArea from './dwFilterArea/src/DwFilterArea.vue';
-import { ChartItem, CanvasItem } from './dwFilterArea/src/interface';
 import DwFilterRuler from './dwFilterRuler/src/DwFilterRuler.vue';
-export { DwFilterSlider, DwFilterArea, ChartItem, CanvasItem, DwFilterRuler, DwStocksAnalysisLine, AnalyzeType, ReportType, DwPortfolioBg, DwPortfolioIcon, DwPortfolioLine, DwPortfolioPie, DwPortfolioIndustry, DwWechatLogin, DwDragVerify, };
+import DwFilterAreaSlider from './dwFilterAreaSlider/src/DwFilterAreaSlider.vue';
+import DwFilterRulerSlider from './dwFilterRulerSlider/src/DwFilterRulerSlider.vue';
+export { DwFilterSlider, DwFilterArea, DwFilterRuler, DwFilterAreaSlider, DwFilterRulerSlider, DwStocksAnalysisLine, AnalyzeType, ReportType, DwPortfolioBg, DwPortfolioIcon, DwPortfolioLine, DwPortfolioPie, DwPortfolioIndustry, DwWechatLogin, DwDragVerify, };
 declare const _default: {
     version: string;
     install: (app: App<any>) => void;
