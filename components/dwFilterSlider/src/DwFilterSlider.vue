@@ -2,9 +2,9 @@
  * @Author: matiastang
  * @Date: 2022-02-11 11:31:36
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-14 11:09:46
+ * @LastEditTime: 2022-02-15 10:45:20
  * @FilePath: /dw-vue-components/components/dwFilterSlider/src/DwFilterSlider.vue
- * @Description: 
+ * @Description: DwFilterSlider
 -->
 <template>
     <div class="dw-slider">
@@ -64,6 +64,13 @@ export default defineComponent({
             type: Number,
             default: Number.MAX_SAFE_INTEGER,
         },
+        /**
+         * 开始位置与结束位置最小间隔
+         */
+        minDiff: {
+            type: Number,
+            default: 5,
+        },
     },
     emits: {
         /**
@@ -78,10 +85,25 @@ export default defineComponent({
         'update:endValue': (value: number) => {
             return true
         },
+        /**
+         * 更新结束位置
+         */
+        minDiffWarn: (start: number, end: number, diff: number) => {
+            return true
+        },
     },
     setup(props, context) {
-        const { startValue, endValue } = toRefs(props)
+        const { startValue, endValue, minDiff } = toRefs(props)
         const sliderTrackElement: Ref<HTMLElement | null> = ref(null)
+        const diff = computed(() => {
+            if (minDiff.value < 0) {
+                return 0
+            }
+            if (minDiff.value > 100) {
+                return 100
+            }
+            return minDiff.value
+        })
         // left百分比
         const leftWidth = computed(() => {
             if (startValue.value < 0) {
@@ -125,7 +147,13 @@ export default defineComponent({
                 x = max
             }
             const startValue = (x / max) * 100
-            context.emit('update:startValue', startValue)
+            if (startValue < endValue.value && endValue.value - startValue >= diff.value) {
+                context.emit('update:startValue', startValue)
+            } else {
+                console.warn(`end=${endValue.value}-start=${startValue}<diff=${diff.value}`)
+                context.emit('update:startValue', endValue.value - diff.value)
+                context.emit('minDiffWarn', startValue, endValue.value, diff.value)
+            }
         }
         // 小于
         // 是否隐藏小于，当单边大于时隐藏
@@ -163,7 +191,13 @@ export default defineComponent({
                 x = max
             }
             const endValue = (x / max) * 100
-            context.emit('update:endValue', endValue)
+            if (endValue > startValue.value && endValue - startValue.value >= diff.value) {
+                context.emit('update:endValue', endValue)
+            } else {
+                console.warn(`end=${endValue}-start=${startValue.value}<diff=${diff.value}`)
+                context.emit('update:endValue', startValue.value + diff.value)
+                context.emit('minDiffWarn', startValue.value, endValue, diff.value)
+            }
         }
         // left百分比
         const rightWidth = computed(() => {
@@ -198,7 +232,7 @@ export default defineComponent({
     padding: 1.5rem 0;
     .dw-slider-track {
         width: 100%;
-        height: 2px;
+        height: 0.2rem;
         background-color: rgba(0, 0, 0, 0.1);
         position: relative;
         .dw-slider-greater {
@@ -211,8 +245,8 @@ export default defineComponent({
         }
         .dw-slider-center-track {
             position: absolute;
-            top: '0rem';
-            height: 2px;
+            top: 0rem;
+            height: 0.2rem;
             background: #ff6d1b;
         }
         .dw-slider-less {

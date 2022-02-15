@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-02-11 16:24:17
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-14 16:49:50
+ * @LastEditTime: 2022-02-15 10:02:51
  * @FilePath: /dw-vue-components/src/views/test/DwFilterSliderTest.vue
  * @Description: DwFilterSlider组件测试
 -->
@@ -14,7 +14,21 @@
             right-bottom-url="static/bg/bg-right-bottom.png"
         >
             <div class="text">{{ oneTitle }}</div>
-            <DwFilterRuler></DwFilterRuler>
+            <DwFilterRulerSlider v-model:start="oneStart" v-model:end="oneEnd" :trunc="true">
+                <template v-slot:greaterImg>
+                    <img
+                        src="static/filter/slider-greater.svg"
+                        style="width: 2.8rem; height: 2.8rem"
+                    />
+                </template>
+                <template v-slot:lessImg>
+                    <img
+                        src="static/filter/slider-less.svg"
+                        style="width: 2.8rem; height: 2.8rem"
+                    />
+                </template>
+            </DwFilterRulerSlider>
+            <!-- <DwFilterRuler></DwFilterRuler>
             <DwFilterSlider
                 class="dw-filter-slider"
                 v-model:startValue="oneStart"
@@ -33,9 +47,23 @@
                         style="width: 2.8rem; height: 2.8rem"
                     />
                 </template>
-            </DwFilterSlider>
+            </DwFilterSlider> -->
             <div class="text">{{ twoTitle }}</div>
-            <DwFilterRuler></DwFilterRuler>
+            <DwFilterRulerSlider v-model:start="twoStart" v-model:end="twoEnd" :trunc="true">
+                <template v-slot:greaterImg>
+                    <img
+                        src="static/filter/slider-greater.svg"
+                        style="width: 2.8rem; height: 2.8rem"
+                    />
+                </template>
+                <template v-slot:lessImg>
+                    <img
+                        src="static/filter/slider-less.svg"
+                        style="width: 2.8rem; height: 2.8rem"
+                    />
+                </template>
+            </DwFilterRulerSlider>
+            <!-- <DwFilterRuler></DwFilterRuler>
             <DwFilterSlider
                 class="dw-filter-slider"
                 v-model:startValue="twoStart"
@@ -54,9 +82,23 @@
                         style="width: 2.8rem; height: 2.8rem"
                     />
                 </template>
-            </DwFilterSlider>
+            </DwFilterSlider> -->
             <div class="text">{{ threeTitle }}</div>
-            <DwFilterRuler></DwFilterRuler>
+            <DwFilterRulerSlider v-model:start="threeStart" v-model:end="threeEnd" :trunc="true">
+                <template v-slot:greaterImg>
+                    <img
+                        src="static/filter/slider-greater.svg"
+                        style="width: 2.8rem; height: 2.8rem"
+                    />
+                </template>
+                <template v-slot:lessImg>
+                    <img
+                        src="static/filter/slider-less.svg"
+                        style="width: 2.8rem; height: 2.8rem"
+                    />
+                </template>
+            </DwFilterRulerSlider>
+            <!-- <DwFilterRuler></DwFilterRuler>
             <DwFilterSlider
                 class="dw-filter-slider"
                 v-model:startValue="threeStart"
@@ -75,7 +117,7 @@
                         style="width: 2.8rem; height: 2.8rem"
                     />
                 </template>
-            </DwFilterSlider>
+            </DwFilterSlider> -->
         </DwPortfolioBg>
     </div>
 </template>
@@ -85,6 +127,7 @@ import { Ref, ref, reactive, onMounted, onBeforeUnmount, nextTick, computed } fr
 import { DwPortfolioBg } from 'datumwealth-vue-components'
 import DwFilterSlider from 'root/components/dwFilterSlider'
 import DwFilterRuler from 'root/components/dwFilterRuler'
+import DwFilterRulerSlider from 'root/components/dwFilterRulerSlider'
 
 const oneStart = ref(Number.MIN_SAFE_INTEGER)
 const oneEnd = ref(50)

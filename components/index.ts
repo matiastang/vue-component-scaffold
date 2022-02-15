@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-30 15:31:25
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-14 17:40:11
+ * @LastEditTime: 2022-02-15 10:52:13
  * @FilePath: /dw-vue-components/components/index.ts
  * @Description: 导出所有组件
  */
@@ -25,7 +25,8 @@ import DwFilterSlider from './dwFilterSlider/src/DwFilterSlider.vue'
 import DwFilterArea from './dwFilterArea/src/DwFilterArea.vue'
 // import { ChartItem, CanvasItem } from './dwFilterArea/src/interface'
 import DwFilterRuler from './dwFilterRuler/src/DwFilterRuler.vue'
-import dwFilterAreaSlider from './dwFilterAreaSlider/src/dwFilterAreaSlider.vue'
+import DwFilterAreaSlider from './dwFilterAreaSlider/src/DwFilterAreaSlider.vue'
+import DwFilterRulerSlider from './dwFilterRulerSlider/src/DwFilterRulerSlider.vue'
 
 // 所有组件列表
 const components = [
@@ -40,7 +41,8 @@ const components = [
     DwFilterSlider,
     DwFilterArea,
     DwFilterRuler,
-    dwFilterAreaSlider,
+    DwFilterAreaSlider,
+    DwFilterRulerSlider,
 ]
 
 // 定义 install 方法， App 作为参数, options
@@ -58,7 +60,8 @@ export {
     // ChartItem,
     // CanvasItem,
     DwFilterRuler,
-    dwFilterAreaSlider,
+    DwFilterAreaSlider,
+    DwFilterRulerSlider,
     // 西筹“个股分析”小程序
     DwStocksAnalysisLine,
     AnalyzeType,

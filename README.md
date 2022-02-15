@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-13 10:12:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-14 16:39:58
+ * @LastEditTime: 2022-02-15 10:54:07
  * @FilePath: /dw-vue-components/README.md
  * @Description: datumwealth-vue-components
 -->
@@ -107,6 +107,8 @@ const redirect_uri = computed(() => {
 * 滑块组件：`DwFilterSlider`
 * 刻度尺组件：`DwFilterRuler`
 * 选择范围阴影图组件：`DwFilterArea`
+* 阴影图、滑块组合组件：`DwFilterAreaSlider`
+* 刻度尺、滑块组合组件：`DwFilterRulerSlider`
 
 ### 0.1.20
 

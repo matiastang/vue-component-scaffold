@@ -1,21 +1,14 @@
 <!--
  * @Author: matiastang
- * @Date: 2022-02-14 17:21:53
+ * @Date: 2022-02-15 09:54:17
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-15 09:50:11
- * @FilePath: /dw-vue-components/components/dwFilterAreaSlider/src/DwFilterAreaSlider.vue
- * @Description: DwFilterAreaSlider
+ * @LastEditTime: 2022-02-15 10:27:24
+ * @FilePath: /dw-vue-components/components/dwFilterRulerSlider/src/DwFilterRulerSlider.vue
+ * @Description: DwFilterRulerSlider
 -->
 <template>
-    <div class="dw-area-slider">
-        <DwFilterArea
-            class="dw-area"
-            :chartData="data"
-            :start="start"
-            :end="end"
-            :bgColor="bgColor"
-            :rangeColor="rangeColor"
-        ></DwFilterArea>
+    <div class="dw-ruler-slider">
+        <DwFilterRuler class="dw-ruler"></DwFilterRuler>
         <DwFilterSlider
             class="dw-slider"
             :startValue="start"
@@ -36,37 +29,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import DwFilterArea from '../../dwFilterArea/src/DwFilterArea.vue'
-import { ChartItem } from '../../dwFilterArea/src/interface'
+import DwFilterRuler from '../../dwFilterRuler/src/DwFilterRuler.vue'
 import DwFilterSlider from '../../dwFilterSlider/src/DwFilterSlider.vue'
 
 export default defineComponent({
-    name: 'DwFilterAreaSlider',
+    name: 'DwFilterRulerSlider',
     props: {
-        /**
-         * 图谱数据
-         */
-        data: {
-            type: Array as () => ChartItem[],
-            default: () => [
-                { data: 0, number: 3727 },
-                { data: 1, number: 2746 },
-                { data: 2, number: 1674 },
-                { data: 3, number: 1160 },
-                { data: 4, number: 1169 },
-                { data: 5, number: 1394 },
-                { data: 6, number: 1022 },
-                { data: 7, number: 483 },
-                { data: 8, number: 362 },
-                { data: 9, number: -261 },
-                { data: 10, number: 168 },
-                { data: 11, number: 156 },
-                { data: 12, number: 142 },
-                { data: 13, number: 112 },
-                { data: 14, number: 59 },
-                { data: 15, number: 97 },
-            ],
-        },
         /**
          * 开始位置, 当小于0时表示固定最小值为0
          */
@@ -80,20 +48,6 @@ export default defineComponent({
         end: {
             type: Number,
             default: Number.MAX_SAFE_INTEGER,
-        },
-        /**
-         * 背景颜色
-         */
-        bgColor: {
-            type: String,
-            default: '#f7f7f7',
-        },
-        /**
-         * 选择范围颜色
-         */
-        rangeColor: {
-            type: String,
-            default: '#FFECE0',
         },
         /**
          * 选择范围颜色
@@ -130,23 +84,22 @@ export default defineComponent({
         }
     },
     components: {
-        DwFilterArea,
+        DwFilterRuler,
         DwFilterSlider,
     },
 })
 </script>
 
 <style lang="scss" scoped>
-.dw-area-slider {
+.dw-ruler-slider {
     width: 100%;
-    .dw-area {
+    .dw-ruler {
         width: 100%;
-        padding: 0rem 1.4rem;
         box-sizing: border-box;
     }
     .dw-slider {
         width: 100%;
-        padding: 1.4rem;
+        padding: 1.4rem 4.55%;
         box-sizing: border-box;
     }
 }

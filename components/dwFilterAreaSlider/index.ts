@@ -2,18 +2,16 @@
  * @Author: matiastang
  * @Date: 2022-02-14 17:21:58
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-14 17:39:30
+ * @LastEditTime: 2022-02-15 09:55:48
  * @FilePath: /dw-vue-components/components/dwFilterAreaSlider/index.ts
- * @Description:
+ * @Description: DwFilterAreaSlider
  */
 import { App } from 'vue'
-import dwFilterAreaSlider from './src/dwFilterAreaSlider.vue'
+import DwFilterAreaSlider from './src/DwFilterAreaSlider.vue'
 
 // 定义 install 方法， App 作为参数
-dwFilterAreaSlider.install = (app: App): void => {
-    app.component(dwFilterAreaSlider.name, dwFilterAreaSlider)
+DwFilterAreaSlider.install = (app: App): void => {
+    app.component(DwFilterAreaSlider.name, DwFilterAreaSlider)
 }
 
-// export { ChartItem, CanvasItem }
-
-export default dwFilterAreaSlider
+export default DwFilterAreaSlider

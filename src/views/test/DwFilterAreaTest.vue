@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-02-11 17:54:53
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-14 18:04:57
+ * @LastEditTime: 2022-02-15 10:03:06
  * @FilePath: /dw-vue-components/src/views/test/DwFilterAreaTest.vue
  * @Description: dwFilterArea组件测试
 -->
@@ -31,7 +31,7 @@
             </DwFilterAreaSlider>
 
             <!-- <DwFilterArea class="dw-filter-area" :start="oneStart" :end="oneEnd"></DwFilterArea> -->
-            <DwFilterSlider
+            <!-- <DwFilterSlider
                 class="dw-filter-slider"
                 v-model:startValue="oneStart"
                 v-model:endValue="oneEnd"
@@ -49,7 +49,7 @@
                         style="width: 2.8rem; height: 2.8rem"
                     />
                 </template>
-            </DwFilterSlider>
+            </DwFilterSlider> -->
             <div class="text">{{ twoTitle }}</div>
             <DwFilterAreaSlider v-model:start="twoStart" v-model:end="twoEnd">
                 <template v-slot:greaterImg>
@@ -66,7 +66,7 @@
                 </template>
             </DwFilterAreaSlider>
             <!-- <DwFilterArea class="dw-filter-area" :start="twoStart" :end="twoEnd"></DwFilterArea> -->
-            <DwFilterSlider
+            <!-- <DwFilterSlider
                 class="dw-filter-slider"
                 v-model:startValue="twoStart"
                 v-model:endValue="twoEnd"
@@ -84,7 +84,7 @@
                         style="width: 2.8rem; height: 2.8rem"
                     />
                 </template>
-            </DwFilterSlider>
+            </DwFilterSlider> -->
             <div class="text">{{ threeTitle }}</div>
             <DwFilterAreaSlider v-model:start="threeStart" v-model:end="threeEnd">
                 <template v-slot:greaterImg>
@@ -101,7 +101,7 @@
                 </template>
             </DwFilterAreaSlider>
             <!-- <DwFilterArea class="dw-filter-area" :start="threeStart" :end="threeEnd"></DwFilterArea> -->
-            <DwFilterSlider
+            <!-- <DwFilterSlider
                 class="dw-filter-slider"
                 v-model:startValue="threeStart"
                 v-model:endValue="threeEnd"
@@ -119,7 +119,7 @@
                         style="width: 2.8rem; height: 2.8rem"
                     />
                 </template>
-            </DwFilterSlider>
+            </DwFilterSlider> -->
         </DwPortfolioBg>
     </div>
 </template>

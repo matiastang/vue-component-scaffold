@@ -2,25 +2,30 @@
  * @Author: matiastang
  * @Date: 2022-02-14 16:02:04
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-14 16:36:23
+ * @LastEditTime: 2022-02-15 10:25:46
  * @FilePath: /dw-vue-components/components/dwFilterRuler/src/DwFilterRuler.vue
  * @Description: 
 -->
 <template>
     <div class="dw-ruler">
         <div class="scale-lines">
-            <div class="scale-line-container" v-for="(item, index) in range" :key="item">
+            <div
+                class="scale-line-container"
+                v-for="(item, index) in range"
+                :key="item"
+                :style="{ width: `${100 / range.length}%` }"
+            >
                 <div class="ruler-texts">
                     <div class="ruler-text" :style="{ color: `${rulerColor}` }">{{ item }}</div>
                     <div
                         class="scale-line"
-                        :style="{ height: '6px', background: `${rulerColor}` }"
+                        :style="{ height: '0.6rem', background: `${rulerColor}` }"
                     ></div>
                 </div>
                 <div
                     v-if="index !== range.length - 1"
                     class="scale-line"
-                    :style="{ height: '3px', background: `${rulerColor}` }"
+                    :style="{ height: '0.3rem', background: `${rulerColor}` }"
                 ></div>
             </div>
         </div>
@@ -81,18 +86,17 @@ export default defineComponent({
                 justify-content: space-around;
                 align-items: center;
                 .ruler-text {
-                    width: 32px;
                     color: #7c7c7c;
-                    font-size: 8px;
+                    font-size: 0.8rem;
                     text-align: center;
                 }
                 .scale-line {
-                    width: 1px;
+                    width: 0.1rem;
                     background: #7c7c7c;
                 }
             }
             .scale-line {
-                width: 1px;
+                width: 0.1rem;
                 background: #7c7c7c;
             }
         }
