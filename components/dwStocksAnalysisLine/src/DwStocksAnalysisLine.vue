@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-01-13 14:21:48
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-09 09:43:41
+ * @LastEditTime: 2022-02-17 14:46:54
  * @FilePath: /dw-vue-components/components/dwStocksAnalysisLine/src/DwStocksAnalysisLine.vue
  * @Description: 西筹“个股分析”小程序，折线图
 -->
@@ -333,10 +333,10 @@ export default defineComponent({
         const dateList = computed(() => {
             return props.reportType === ReportType.DAY
                 ? [
-                      {
-                          selected: false,
-                          value: '近一天',
-                      },
+                      //   {
+                      //       selected: false,
+                      //       value: '近一天',
+                      //   },
                       {
                           selected: false,
                           value: '近一周',
@@ -348,6 +348,10 @@ export default defineComponent({
                       {
                           selected: true,
                           value: '近三月',
+                      },
+                      {
+                          selected: false,
+                          value: '近半年',
                       },
                   ]
                 : [
@@ -417,7 +421,8 @@ export default defineComponent({
                     if (props.reportType == ReportType.DAY) {
                         let date = dateformat(item)
                         let timestamp = new Date(date).getTime()
-                        return Math.ceil((nowStimestamp - timestamp) / 86400000) <= 1 + 1
+                        // return Math.ceil((nowStimestamp - timestamp) / 86400000) <= 1 + 1
+                        return Math.ceil((nowStimestamp - timestamp) / 86400000) <= 7 + 1
                     } else {
                         let date = item.replace(/-/g, '/')
                         let timestamp = new Date(date).getTime()
@@ -438,7 +443,8 @@ export default defineComponent({
                     if (props.reportType == ReportType.DAY) {
                         let date = dateformat(item)
                         let timestamp = new Date(date).getTime()
-                        return Math.ceil((nowStimestamp - timestamp) / 86400000) <= 7 + 1
+                        // return Math.ceil((nowStimestamp - timestamp) / 86400000) <= 7 + 1
+                        return Math.ceil((nowStimestamp - timestamp) / 86400000) <= 30 + 1
                     } else {
                         let date = item.replace(/-/g, '/')
                         let timestamp = new Date(date).getTime()
@@ -456,7 +462,8 @@ export default defineComponent({
                     if (props.reportType == ReportType.DAY) {
                         let date = dateformat(item)
                         let timestamp = new Date(date).getTime()
-                        return Math.ceil((nowStimestamp - timestamp) / 86400000) <= 30 + 1
+                        // return Math.ceil((nowStimestamp - timestamp) / 86400000) <= 30 + 1
+                        return Math.ceil((nowStimestamp - timestamp) / 86400000) <= 91 + 1
                     } else {
                         let date = item.replace(/-/g, '/')
                         let timestamp = new Date(date).getTime()

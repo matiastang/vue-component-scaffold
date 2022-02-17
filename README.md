@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-13 10:12:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-15 10:54:07
+ * @LastEditTime: 2022-02-17 14:48:39
  * @FilePath: /dw-vue-components/README.md
  * @Description: datumwealth-vue-components
 -->
@@ -99,6 +99,9 @@ const redirect_uri = computed(() => {
 ```
 
 ## 版本
+### 0.2.1
+
+* `DwStocksAnalysisLine`组件，日频时间切换选项去掉`近一天`添加`近半年`
 
 ### 0.2.0
 
