@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-13 10:12:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-17 14:48:39
+ * @LastEditTime: 2022-02-17 15:31:48
  * @FilePath: /dw-vue-components/README.md
  * @Description: datumwealth-vue-components
 -->
@@ -99,10 +99,13 @@ const redirect_uri = computed(() => {
 ```
 
 ## 版本
+
+### 0.2.2
+
+* `DwStocksAnalysisLine`组件，日频`近一天`去掉特殊处理
 ### 0.2.1
 
 * `DwStocksAnalysisLine`组件，日频时间切换选项去掉`近一天`添加`近半年`
-
 ### 0.2.0
 
 1. 添加**基金筛选**小程序相关组件

@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-01-13 14:21:48
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-17 14:46:54
+ * @LastEditTime: 2022-02-17 15:30:47
  * @FilePath: /dw-vue-components/components/dwStocksAnalysisLine/src/DwStocksAnalysisLine.vue
  * @Description: 西筹“个股分析”小程序，折线图
 -->
@@ -429,9 +429,9 @@ export default defineComponent({
                         return Math.ceil((nowStimestamp - timestamp) / 86400000) <= 366
                     }
                 })
-                if (props.reportType == ReportType.DAY && xData.length > 2) {
-                    index = xData.length - 2
-                }
+                // if (props.reportType == ReportType.DAY && xData.length > 2) {
+                //     index = xData.length - 2
+                // }
                 return {
                     xData: xData.slice(index),
                     yData: yData.slice(index),
