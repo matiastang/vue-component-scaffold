@@ -85,7 +85,7 @@
         "@vue/eslint-config-typescript": "^8.0.0",
         "axios": "^0.24.0",
         "child_process": "^1.0.2",
-        "datumwealth-vue-components": "0.2.0",
+        "datumwealth-vue-components": "0.2.1",
         "del": "^6.0.0",
         "element-plus": "^1.2.0-beta.1",
         "eslint": "^8.0.1",

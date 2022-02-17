@@ -24,7 +24,7 @@ specifiers:
   '@vue/eslint-config-typescript': ^8.0.0
   axios: ^0.24.0
   child_process: ^1.0.2
-  datumwealth-vue-components: 0.2.0
+  datumwealth-vue-components: 0.2.1
   del: ^6.0.0
   echarts: ^5.2.2
   element-plus: ^1.2.0-beta.1
@@ -108,7 +108,7 @@ devDependencies:
   '@vue/eslint-config-typescript': registry.npmmirror.com/@vue/eslint-config-typescript/8.0.0_567c2d4be752485c4cea80a96a29945e
   axios: registry.npmmirror.com/axios/0.24.0
   child_process: 1.0.2
-  datumwealth-vue-components: registry.npmmirror.com/datumwealth-vue-components/0.2.0
+  datumwealth-vue-components: registry.npmmirror.com/datumwealth-vue-components/0.2.1
   del: registry.nlark.com/del/6.0.0
   element-plus: registry.npmmirror.com/element-plus/1.2.0-beta.1_vue@3.2.20
   eslint: registry.npmmirror.com/eslint/8.0.1
@@ -15887,10 +15887,10 @@ packages:
     version: 2.2.0
     dev: true
 
-  registry.npmmirror.com/datumwealth-vue-components/0.2.0:
-    resolution: {integrity: sha512-5b+2eaBES/BUvx105tkO0tnqpFdHDbSRXce77KzjyUgjGkr8qIwXpazzuh6Z0KIvXGl8dES3vimTw0zLnPSbLQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/datumwealth-vue-components/-/datumwealth-vue-components-0.2.0.tgz}
+  registry.npmmirror.com/datumwealth-vue-components/0.2.1:
+    resolution: {integrity: sha512-Z91SdWUiUVlyIhEFjl2auX5SqzOkfZDcr9IkCj6rgzpNdVzf795rCRn7XjHquiyeJ1DdopBEYONhyuPQeUNndg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/datumwealth-vue-components/-/datumwealth-vue-components-0.2.1.tgz}
     name: datumwealth-vue-components
-    version: 0.2.0
+    version: 0.2.1
     dependencies:
       echarts: registry.npmmirror.com/echarts/5.2.2
       vue: registry.npmmirror.com/vue/3.2.20

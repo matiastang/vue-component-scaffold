@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-01-13 19:00:54
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-19 17:46:03
+ * @LastEditTime: 2022-02-17 15:17:03
  * @FilePath: /dw-vue-components/src/views/test/DwStocksAnalysisLineTest.vue
  * @Description: DwStocksAnalysisLine组件测试
 -->
@@ -18,7 +18,7 @@
                 ref="vueEchart"
                 :y-data="stocksAnalysisData.value"
                 :analyzeType="analyzeType"
-                :reportType="ReportType.QUAETER"
+                :reportType="ReportType.DAY"
                 :chartStyle="chartStyle"
                 :fullScreenStyle="fullScreenStyle"
                 :autoResize="false"
@@ -40,11 +40,11 @@
 import { Ref, ref, reactive, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import {
     DwPortfolioBg,
-    // DwStocksAnalysisLine,
-    // AnalyzeType,
-    // ReportType,
+    DwStocksAnalysisLine,
+    AnalyzeType,
+    ReportType,
 } from 'datumwealth-vue-components'
-import DwStocksAnalysisLine, { AnalyzeType, ReportType } from 'root/components/dwStocksAnalysisLine'
+// import DwStocksAnalysisLine, { AnalyzeType, ReportType } from 'root/components/dwStocksAnalysisLine'
 
 const argeScreenAction = () => {
     console.log('点击了大屏查看')
