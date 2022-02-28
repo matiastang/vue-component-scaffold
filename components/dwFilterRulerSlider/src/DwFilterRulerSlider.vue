@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-02-15 09:54:17
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-15 10:27:24
+ * @LastEditTime: 2022-02-28 17:27:41
  * @FilePath: /dw-vue-components/components/dwFilterRulerSlider/src/DwFilterRulerSlider.vue
  * @Description: DwFilterRulerSlider
 -->
@@ -99,7 +99,7 @@ export default defineComponent({
     }
     .dw-slider {
         width: 100%;
-        padding: 1.4rem 4.55%;
+        padding: 0rem 4.55%;
         box-sizing: border-box;
     }
 }
