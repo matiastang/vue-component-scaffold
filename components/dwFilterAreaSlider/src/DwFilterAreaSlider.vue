@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-02-14 17:21:53
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-28 17:27:02
+ * @LastEditTime: 2022-02-28 17:31:57
  * @FilePath: /dw-vue-components/components/dwFilterAreaSlider/src/DwFilterAreaSlider.vue
  * @Description: DwFilterAreaSlider
 -->
@@ -146,7 +146,7 @@ export default defineComponent({
     }
     .dw-slider {
         width: 100%;
-        padding: 0rem 1.4rem;
+        padding: 0rem 1.4rem 1.4rem 1.4rem;
         box-sizing: border-box;
     }
 }
