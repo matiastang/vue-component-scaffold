@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-29 10:52:57
  * @LastEditors: matiastang
- * @LastEditTime: 2022-03-07 13:46:50
+ * @LastEditTime: 2022-03-07 13:58:34
  * @FilePath: /dw-vue-components/src/views/home/Home.vue
  * @Description: 
 -->
@@ -30,7 +30,13 @@
             />
             <DwPortfolioIcon />
             <DwPortfolioLine />
-            <DwPortfolioPie :data="pieData" />
+            <DwPortfolioPie
+                :data="pieData"
+                :chartStyle="{
+                    width: '60%',
+                    height: '10rem',
+                }"
+            />
             <DwPortfolioIndustry :data="industryData.value" @tooltipAction="tooltipAction" />
             <div @click="pieDataChangeAction">切换数据</div>
 
