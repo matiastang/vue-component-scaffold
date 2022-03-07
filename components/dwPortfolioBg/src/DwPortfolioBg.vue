@@ -2,15 +2,22 @@
  * @Author: matiastang
  * @Date: 2022-01-11 11:26:01
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-13 19:16:43
+ * @LastEditTime: 2022-03-07 11:33:56
  * @FilePath: /dw-vue-components/components/dwPortfolioBg/src/DwPortfolioBg.vue
  * @Description: 西筹“基金组合”背景页面
 -->
 <template>
     <div class="dw-portfolio-bg">
-        <img class="dw-portfolio-left-top" :src="leftTopUrl" :style="leftTopStyle" />
+        <div class="dw-portfolio-left-top">
+            <slot name="leftTopImg"></slot>
+        </div>
+
+        <!-- <img class="dw-portfolio-left-top" :src="leftTopUrl" :style="leftTopStyle" /> -->
         <slot />
-        <img class="dw-portfolio-right-bottom" :src="rightBottomUrl" :style="rightBottomStyle" />
+        <div class="dw-portfolio-right-bottom">
+            <slot name="rightBottomImg"></slot>
+        </div>
+        <!-- <img class="dw-portfolio-right-bottom" :src="rightBottomUrl" :style="rightBottomStyle" /> -->
     </div>
 </template>
 
