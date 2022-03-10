@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-02-11 16:24:17
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-15 10:02:51
+ * @LastEditTime: 2022-03-10 11:17:26
  * @FilePath: /dw-vue-components/src/views/test/DwFilterSliderTest.vue
  * @Description: DwFilterSlider组件测试
 -->
@@ -141,8 +141,10 @@ const twoTitle = computed(() => {
     return `start=${twoStart.value}~end=${twoEnd.value}`
 })
 
-const threeStart = ref(10)
-const threeEnd = ref(90)
+// const threeStart = ref(10)
+// const threeEnd = ref(90)
+const threeStart = ref(Number.MIN_SAFE_INTEGER)
+const threeEnd = ref(-1)
 const threeTitle = computed(() => {
     return `start=${threeStart.value}~end=${threeEnd.value}`
 })

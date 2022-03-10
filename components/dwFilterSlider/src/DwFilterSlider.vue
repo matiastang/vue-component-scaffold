@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-02-11 11:31:36
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-15 10:45:20
+ * @LastEditTime: 2022-03-09 15:52:57
  * @FilePath: /dw-vue-components/components/dwFilterSlider/src/DwFilterSlider.vue
  * @Description: DwFilterSlider
 -->
@@ -109,7 +109,7 @@ export default defineComponent({
             if (startValue.value < 0) {
                 return 0
             }
-            return startValue.value
+            return startValue.value > 100 ? 100 : startValue.value
         })
         // 大于
         // 是否隐藏大于，当单边小于时隐藏
@@ -204,7 +204,7 @@ export default defineComponent({
             if (endValue.value > 100) {
                 return 100
             }
-            return endValue.value
+            return endValue.value < 0 ? 0 : endValue.value
         })
         return {
             sliderTrackElement,
@@ -232,7 +232,7 @@ export default defineComponent({
     padding: 1.5rem 0;
     .dw-slider-track {
         width: 100%;
-        height: 0.2rem;
+        height: 0.4rem;
         background-color: rgba(0, 0, 0, 0.1);
         position: relative;
         .dw-slider-greater {
@@ -246,7 +246,7 @@ export default defineComponent({
         .dw-slider-center-track {
             position: absolute;
             top: 0rem;
-            height: 0.2rem;
+            height: 0.4rem;
             background: #ff6d1b;
         }
         .dw-slider-less {

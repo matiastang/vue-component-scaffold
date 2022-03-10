@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-02-11 17:54:53
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-15 10:03:06
+ * @LastEditTime: 2022-03-10 11:16:41
  * @FilePath: /dw-vue-components/src/views/test/DwFilterAreaTest.vue
  * @Description: dwFilterArea组件测试
 -->
@@ -120,6 +120,21 @@
                     />
                 </template>
             </DwFilterSlider> -->
+            <div class="text">{{ fourTitle }}</div>
+            <DwFilterAreaSlider v-model:start="fourStart" v-model:end="fourEnd">
+                <template v-slot:greaterImg>
+                    <img
+                        src="static/filter/slider-greater.svg"
+                        style="width: 2.8rem; height: 2.8rem"
+                    />
+                </template>
+                <template v-slot:lessImg>
+                    <img
+                        src="static/filter/slider-less.svg"
+                        style="width: 2.8rem; height: 2.8rem"
+                    />
+                </template>
+            </DwFilterAreaSlider>
         </DwPortfolioBg>
     </div>
 </template>
@@ -150,6 +165,15 @@ const threeStart = ref(10)
 const threeEnd = ref(90)
 const threeTitle = computed(() => {
     return `start=${threeStart.value}~end=${threeEnd.value}`
+})
+// const fourStart = ref(Number.MIN_SAFE_INTEGER)
+// const fourEnd = ref(0)
+// const fourStart = ref(100)
+// const fourEnd = ref(Number.MAX_SAFE_INTEGER)
+const fourStart = ref(Number.MIN_SAFE_INTEGER)
+const fourEnd = ref(-1)
+const fourTitle = computed(() => {
+    return `start=${fourStart.value}~end=${fourEnd.value}`
 })
 </script>
 
