@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-02-11 11:31:36
  * @LastEditors: matiastang
- * @LastEditTime: 2022-03-09 15:52:57
+ * @LastEditTime: 2022-03-10 18:47:45
  * @FilePath: /dw-vue-components/components/dwFilterSlider/src/DwFilterSlider.vue
  * @Description: DwFilterSlider
 -->
@@ -114,7 +114,7 @@ export default defineComponent({
         // 大于
         // 是否隐藏大于，当单边小于时隐藏
         const greaterHidden = computed(() => {
-            return startValue.value < 0
+            return startValue.value < -1
         })
         const greaterLeft = computed(() => {
             if (sliderTrackElement.value === null) {
@@ -122,6 +122,9 @@ export default defineComponent({
             }
             // 总长
             const max = sliderTrackElement.value.clientWidth
+            if (startValue.value < 0) {
+                return -(14 / max) * 100
+            }
             return startValue.value - (14 / max) * 100
         })
         const greaterMoving = ref(false)
@@ -158,7 +161,7 @@ export default defineComponent({
         // 小于
         // 是否隐藏小于，当单边大于时隐藏
         const lessHidden = computed(() => {
-            return endValue.value > 100
+            return endValue.value > 101
         })
         const lessLeft = computed(() => {
             if (sliderTrackElement.value === null) {
@@ -166,6 +169,9 @@ export default defineComponent({
             }
             // 总长
             const max = sliderTrackElement.value.clientWidth
+            if (endValue.value > 100) {
+                return -(14 / max) * 100
+            }
             return endValue.value - (14 / max) * 100
         })
         const lessMoving = ref(false)
@@ -202,7 +208,7 @@ export default defineComponent({
         // left百分比
         const rightWidth = computed(() => {
             if (endValue.value > 100) {
-                return 100
+                return endValue.value === 101 ? 0 : 100
             }
             return endValue.value < 0 ? 0 : endValue.value
         })

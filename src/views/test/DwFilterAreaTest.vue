@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-02-11 17:54:53
  * @LastEditors: matiastang
- * @LastEditTime: 2022-03-10 11:16:41
+ * @LastEditTime: 2022-03-10 18:49:32
  * @FilePath: /dw-vue-components/src/views/test/DwFilterAreaTest.vue
  * @Description: dwFilterArea组件测试
 -->
@@ -152,7 +152,9 @@ const oneTitle = computed(() => {
     return `start=${oneStart.value}~end=${oneEnd.value}`
 })
 const yxAction = () => {
-    oneEnd.value = 40
+    // oneEnd.value = 40
+    threeStart.value = -1
+    threeEnd.value = 101
 }
 
 const twoStart = ref(10)

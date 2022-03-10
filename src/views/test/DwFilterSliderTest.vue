@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-02-11 16:24:17
  * @LastEditors: matiastang
- * @LastEditTime: 2022-03-10 11:17:26
+ * @LastEditTime: 2022-03-10 18:44:25
  * @FilePath: /dw-vue-components/src/views/test/DwFilterSliderTest.vue
  * @Description: DwFilterSlider组件测试
 -->
@@ -83,7 +83,7 @@
                     />
                 </template>
             </DwFilterSlider> -->
-            <div class="text">{{ threeTitle }}</div>
+            <div class="text" @click="threeAction">{{ threeTitle }}</div>
             <DwFilterRulerSlider v-model:start="threeStart" v-model:end="threeEnd" :trunc="true">
                 <template v-slot:greaterImg>
                     <img
@@ -141,13 +141,15 @@ const twoTitle = computed(() => {
     return `start=${twoStart.value}~end=${twoEnd.value}`
 })
 
-// const threeStart = ref(10)
-// const threeEnd = ref(90)
-const threeStart = ref(Number.MIN_SAFE_INTEGER)
-const threeEnd = ref(-1)
+const threeStart = ref(10)
+const threeEnd = ref(90)
 const threeTitle = computed(() => {
     return `start=${threeStart.value}~end=${threeEnd.value}`
 })
+const threeAction = () => {
+    threeStart.value = -1
+    threeEnd.value = 101
+}
 </script>
 
 <style lang="scss" scoped>

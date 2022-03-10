@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-02-11 17:52:50
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-14 17:27:52
+ * @LastEditTime: 2022-03-10 18:53:06
  * @FilePath: /dw-vue-components/components/dwFilterArea/src/DwFilterArea.vue
  * @Description: DwFilterArea
 -->
@@ -82,7 +82,7 @@ export default defineComponent({
         // 小于
         // 是否隐藏小于，当单边大于时隐藏
         const lessHidden = computed(() => {
-            return end.value > 100
+            return end.value > 101
         })
         /**
          * 获取渲染点集
@@ -148,7 +148,7 @@ export default defineComponent({
                 _start = (start.value / 100) * width
             }
             if (!lessHidden.value) {
-                _end = (end.value / 100) * width
+                _end = (end.value >= 101 ? 0 : end.value / 100) * width
             }
             // const ract_pts = pts.filter((it) => it.x >= _start && it.x <= _end)
             const ract_pts = rangePoints(pts, _start, _end)
