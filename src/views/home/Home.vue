@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-29 10:52:57
  * @LastEditors: matiastang
- * @LastEditTime: 2022-03-07 14:07:08
+ * @LastEditTime: 2022-03-21 11:01:55
  * @FilePath: /dw-vue-components/src/views/home/Home.vue
  * @Description: 
 -->
@@ -30,6 +30,7 @@
             />
             <DwPortfolioIcon />
             <DwPortfolioLine />
+            <DwPortfolioNetWorth />
             <DwPortfolioPie
                 :data="pieData"
                 :chartStyle="{
@@ -63,16 +64,17 @@ import { DwStocksAnalysisLine, AnalyzeType, ReportType } from 'datumwealth-vue-c
 //     IndustryBondStockData,
 //     IndustryMainData,
 // } from 'datumwealth-vue-components/components/dwPortfolioTypes/index'
-// import {
-//     DwPortfolioBg,
-//     DwPortfolioIcon,
-//     DwPortfolioLine,
-//     DwPortfolioPie,
-//     DwPortfolioIndustry,
-//     DwStocksAnalysisLine,
-//     AnalyzeType,
-//     ReportType,
-// } from 'root/components/index'
+import {
+    DwPortfolioNetWorth,
+    // DwPortfolioBg,
+    // DwPortfolioIcon,
+    // DwPortfolioLine,
+    // DwPortfolioPie,
+    // DwPortfolioIndustry,
+    // DwStocksAnalysisLine,
+    // AnalyzeType,
+    // ReportType,
+} from 'root/components/index'
 // import DwStocksAnalysisLine, { AnalyzeType, ReportType } from 'root/components/dwStocksAnalysisLine'
 import { IndustryBondStockData, IndustryMainData } from 'root/components/dwPortfolioTypes'
 

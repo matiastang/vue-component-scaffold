@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-30 15:31:25
  * @LastEditors: matiastang
- * @LastEditTime: 2022-03-10 18:55:25
+ * @LastEditTime: 2022-03-21 10:23:14
  * @FilePath: /dw-vue-components/components/index.ts
  * @Description: 导出所有组件
  */
@@ -15,6 +15,7 @@ import DwPortfolioIcon from './dwPortfolioIcon/src/DwPortfolioIcon.vue'
 import DwPortfolioLine from './dwPortfolioLine/src/DwPortfolioLine.vue'
 import DwPortfolioPie from './dwPortfolioPie/src/DwPortfolioPie.vue'
 import DwPortfolioIndustry from './dwPortfolioIndustry/src/DwPortfolioIndustry.vue'
+import DwPortfolioNetWorth from './dwPortfolioNetWorth/src/DwPortfolioNetWorth.vue'
 // 西筹个股分析小程序图谱组件
 import DwStocksAnalysisLine, {
     AnalyzeType,
@@ -37,6 +38,7 @@ const components = [
     DwPortfolioLine,
     DwPortfolioPie,
     DwPortfolioIndustry,
+    DwPortfolioNetWorth,
     DwStocksAnalysisLine,
     DwFilterSlider,
     DwFilterArea,
@@ -72,12 +74,13 @@ export {
     DwPortfolioLine,
     DwPortfolioPie,
     DwPortfolioIndustry,
+    DwPortfolioNetWorth,
     // 西筹通用组件
     DwWechatLogin,
     DwDragVerify,
 }
 
 export default {
-    version: '0.2.5',
+    version: '0.2.6',
     install,
 }

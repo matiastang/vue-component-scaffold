@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-28 19:31:46
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-14 10:39:04
+ * @LastEditTime: 2022-03-21 10:58:10
  * @FilePath: /dw-vue-components/src/router/index.ts
  * @Description: 路由
  */
@@ -15,6 +15,7 @@ import Home from '@/views/home/Home.vue'
 import DwStocksAnalysisLineTest from '@/views/test/DwStocksAnalysisLineTest.vue'
 import DwFilterSliderTest from '@/views/test/DwFilterSliderTest.vue'
 import DwFilterAreaTest from '@/views/test/DwFilterAreaTest.vue'
+import DwPortfolioTest from '@/views/test/DwPortfolioTest.vue'
 // NotFound
 import NotFound from '@/views/NotFound.vue'
 
@@ -65,6 +66,15 @@ const routes: Array<RouteRecordRaw> = [
             return true
         },
     },
+    // {
+    //     path: '/dwPortfolioTest',
+    //     name: 'dwPortfolioTest',
+    //     component: DwPortfolioTest,
+    //     beforeEnter: (to, from) => {
+    //         console.log(`web路由卫士：即将从${from.path}跳转到${to.path}`)
+    //         return true
+    //     },
+    // },
     {
         path: '/:pathMatch(.*)*', // 将匹配所有内容并将其放在 `$route.params.pathMatch` 下
         name: 'NotFound',
@@ -76,7 +86,8 @@ const routes: Array<RouteRecordRaw> = [
  * 创建Router
  */
 const router = createRouter({
-    history: import.meta.env.DEV ? createWebHashHistory() : createWebHistory(),
+    // history: import.meta.env.DEV ? createWebHashHistory() : createWebHistory(),
+    history: createWebHashHistory(),
     routes,
     scrollBehavior(to, from, savedPosition) {
         // 平滑滚动
@@ -96,20 +107,21 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
     // TODO: - 登录校验
     // import { localStorageKey, localStorageRead } from 'utils/storage/localStorage'
-    if (to.matched.some((record) => record.meta.requiresAuth)) {
-        //     // 用户token
-        //     const userToken = localStorageRead<string>(localStorageKey.userTokenKey)
-        //     if (!userToken || userToken.trim() === '') {
-        //         // 未登录
-        //         next({
-        //             path: '/login',
-        //             replace: true,
-        //         })
-        //         return
-        //     }
-        // }
-        next()
-    }
+    // import { DwPortfolioTest } from '@/views/test/DwPortfolioTest.vue';
+    // if (to.matched.some((record) => record.meta.requiresAuth)) {
+    //     //     // 用户token
+    //     //     const userToken = localStorageRead<string>(localStorageKey.userTokenKey)
+    //     //     if (!userToken || userToken.trim() === '') {
+    //     //         // 未登录
+    //     //         next({
+    //     //             path: '/login',
+    //     //             replace: true,
+    //     //         })
+    //     //         return
+    //     //     }
+    //     // }
+    //     next()
+    // }
     next()
 })
 
