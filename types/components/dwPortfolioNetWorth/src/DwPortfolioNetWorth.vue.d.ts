@@ -2,15 +2,15 @@ interface lineYData {
     /**
      * 单位净值
      */
-    lineNetWorthData: number[];
+    lineNetWorthData: Array<number | null>;
     /**
      * 均线
      */
-    lineAverageData: number[];
+    lineAverageData: Array<number | null>;
     /**
      * 历史最优均线
      */
-    lineOptimalData: number[];
+    lineOptimalData: Array<number | null>;
 }
 declare const _default: import("vue").DefineComponent<{
     /**
@@ -33,7 +33,7 @@ declare const _default: import("vue").DefineComponent<{
     yData: {
         type: () => lineYData;
         default: () => {
-            lineOptimalData: number[];
+            lineOptimalData: (number | null)[];
             lineAverageData: number[];
             lineNetWorthData: number[];
         };
@@ -88,6 +88,8 @@ declare const _default: import("vue").DefineComponent<{
                 color: string;
                 formatter: (value: string, index: number) => string;
             };
+            min: number;
+            max: number;
         };
         series: ({
             type: string;
@@ -117,7 +119,7 @@ declare const _default: import("vue").DefineComponent<{
             showAllSymbol: boolean;
             triggerLineEvent: boolean;
             data: {
-                value: number;
+                value: number | null;
                 itemStyle: {
                     color: string;
                 };
@@ -136,7 +138,7 @@ declare const _default: import("vue").DefineComponent<{
                 };
             };
             data: {
-                value: number;
+                value: number | null;
                 itemStyle: {
                     color: string;
                 };

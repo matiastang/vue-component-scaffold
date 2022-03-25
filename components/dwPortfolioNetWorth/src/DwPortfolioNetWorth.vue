@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-03-21 10:15:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-03-21 13:47:36
+ * @LastEditTime: 2022-03-25 17:02:27
  * @FilePath: /dw-vue-components/components/dwPortfolioNetWorth/src/DwPortfolioNetWorth.vue
  * @Description: 单位净值曲线
 -->
@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, provide } from 'vue'
+import { computed, defineComponent, provide, toRefs } from 'vue'
 import { use } from 'echarts/core'
 import { CanvasRenderer } from 'echarts/renderers'
 import { LineChart } from 'echarts/charts'
@@ -38,15 +38,15 @@ interface lineYData {
     /**
      * 单位净值
      */
-    lineNetWorthData: number[]
+    lineNetWorthData: Array<number | null>
     /**
      * 均线
      */
-    lineAverageData: number[]
+    lineAverageData: Array<number | null>
     /**
      * 历史最优均线
      */
-    lineOptimalData: number[]
+    lineOptimalData: Array<number | null>
 }
 
 export default defineComponent({
@@ -66,26 +66,16 @@ export default defineComponent({
             type: Array as () => string[],
             default: () => {
                 return [
-                    '20210709',
-                    '20210712',
-                    '20210713',
-                    '20210714',
-                    '20210715',
-                    '20210716',
-                    '20210719',
-                    '20210720',
-                    '20210721',
-                    '20210722',
-                    '20210723',
-                    '20210726',
-                    '20210727',
-                    '20210728',
-                    '20210729',
-                    '20210730',
-                    '20210802',
-                    '20210803',
-                    '20210804',
-                    '20210805',
+                    '20210924',
+                    '20210927',
+                    '20210928',
+                    '20210929',
+                    '20210930',
+                    '20211008',
+                    '20211011',
+                    '20211012',
+                    '20211013',
+                    '20211014',
                 ]
             },
         },
@@ -98,38 +88,17 @@ export default defineComponent({
             default: () => {
                 return {
                     lineOptimalData: [
-                        0, 0.012981047736870208, 0.016336910241158437, 0.005235829117313867,
-                        0.016776002918583516, 0.00789947976969732, 0.009550990293944628,
-                        0.00926097933167977, 0.017393477580535218, 0.019975173490971155,
-                        0.009087084944248217, -0.019814816688109544, -0.05130078891769939,
-                        -0.05316428230972212, -0.03490303433926121, -0.04057556274888274,
-                        -0.018402981245378158, -0.0201691872720452, -0.009545025529472355,
-                        -0.014794261343107462, -0.014794261343107462,
-                    ].map((item) => {
-                        return item * 100
-                    }),
+                        2.6254, 2.6326, 2.6401, 2.6473, 2.6546, 2.6622, 2.6699, 2.6773, 2.6848,
+                        2.6923,
+                    ] as (number | null)[],
                     lineAverageData: [
-                        0, 0.006940342742139949, 0.009044524440513735, 0.007289151397722682,
-                        0.01026313116464661, 0.008241938551579508, 0.008589130719757643,
-                        0.009176855352334812, 0.014019660681433121, 0.015650350759267573,
-                        0.01322303426823912, 0.009159464674437512, 0.00006756598485946341,
-                        -0.0012379921072692701, -0.0012379921072692701, 0.007105610011855612,
-                        0.006458096496205323, 0.011216278854175865, 0.008655196556772715,
-                        0.013865887171321312, 0.01599228378722617,
-                    ].map((item) => {
-                        return item * 100
-                    }),
+                        3.6532, 3.6558, 3.6556, 3.6298, 3.6081, 3.5936, 3.5911, 3.5702, 3.565,
+                        3.5497,
+                    ],
                     lineNetWorthData: [
-                        0, 0.12981047736870208, 0.16336910241158437, 0.05235829117313867,
-                        0.16776002918583516, 0.0789947976969732, 0.09550990293944628,
-                        0.0926097933167977, 0.1739347758053521, 0.1997517349097115,
-                        0.09087084944248217, -0.1981481668810954, -0.5130078891769939,
-                        -0.5316428230972212, -0.3490303433926121, -0.4057556274888274,
-                        -0.18402981245378158, -0.201691872720452, -0.09545025529472355,
-                        -0.14794261343107462, -0.14794261343107462,
-                    ].map((item) => {
-                        return item * 100
-                    }),
+                        3.6693, 3.605, 3.6429, 3.5387, 3.5848, 3.5969, 3.5924, 3.5385, 3.5128,
+                        3.5079,
+                    ],
                 }
             },
         },
@@ -145,31 +114,11 @@ export default defineComponent({
                 }
             },
         },
-        /**
-         * 是否显示创建时点
-         */
-        // createPoint: {
-        //     type: Boolean,
-        //     default: false,
-        // },
-        /**
-         * 当前选择项索引
-         */
-        // currCheckedIndex: {
-        //     type: Number,
-        //     default: 1,
-        // },
-        /**
-         * 创建时点
-         */
-        // createDate: {
-        //     type: String,
-        //     default: '20210721',
-        // },
     },
     setup(props) {
         // 主题
         provide(THEME_KEY, props.themeKey)
+        const { lineOptimalData, lineAverageData, lineNetWorthData } = toRefs(props.yData)
         // 格式化创建时间点时间数据
         const formatterDate = (date: string) => {
             const year = date.slice(0, 4)
@@ -183,11 +132,32 @@ export default defineComponent({
             }
             return `${year}.${month}.${day}`
         }
-        // 创建时间点位置
-        // const createIndex = computed(() => {
-        //     const index = props.xData.indexOf(props.createDate)
-        //     return index
-        // })
+        const dataRange = computed(() => {
+            const optimalData = lineOptimalData.value.filter((item) => {
+                return item !== null
+            }) as number[]
+            const optimalMin = Math.min(...optimalData)
+            const optimalMax = Math.max(...optimalData)
+            const averageData = lineAverageData.value.filter((item) => {
+                return item !== null
+            }) as number[]
+            const averageMin = Math.min(...averageData)
+            const averageMax = Math.max(...averageData)
+            const netWorthData = lineNetWorthData.value.filter((item) => {
+                return item !== null
+            }) as number[]
+            const netWorthMin = Math.min(...netWorthData)
+            const netWorthMax = Math.max(...netWorthData)
+            let min = Math.min(optimalMin, averageMin, netWorthMin)
+            let max = Math.max(optimalMax, averageMax, netWorthMax)
+            const diff = max - min
+            min = min - diff / 10
+            max = max + diff / 10
+            return {
+                min: Math.round(min * 10) / 10,
+                max: Math.round(max * 10) / 10,
+            }
+        })
         // echarts option
         const echartsOption = computed(() => {
             return {
@@ -214,32 +184,19 @@ export default defineComponent({
                                     itemDate = formatterDate(item.axisValue)
                                 }
                                 return `<br/>${item.marker} ${
-                                    item && item.value ? item.value.toFixed(2) + '%' : '0%'
+                                    item && typeof item.value === 'number'
+                                        ? item.value.toFixed(2) + '%'
+                                        : '无'
                                 }`
                             })
                             .join('')
                         return itemDate + listText
-                        // let item = value[0]
-                        // let number = item && item.value ? item.value.toFixed(2) + '%' : '0%'
-                        // let item1 = value[1]
-                        // let number1 = item1 && item1.value ? item1.value.toFixed(2) + '%' : '0%'
-                        // const itemDate = formatterDate(item.axisValue)
-                        // // 无法解析回调return的html字符串
-                        // if (item && item1) {
-                        //     return `${itemDate}<br/>${item.marker} ${number}<br/>${item1.marker} ${number1}`
-                        // } else if (item && !item1) {
-                        //     return `${itemDate}<br/>${item.marker} ${number}`
-                        // } else if (item1 && !item) {
-                        //     return `${itemDate}<br/>${item1.marker} ${number1}`
-                        // } else {
-                        //     return ''
-                        // }
                     },
                 },
                 xAxis: {
                     show: true,
                     type: 'category',
-                    boundaryGap: true,
+                    boundaryGap: false,
                     data: props.xData,
                     axisLine: {
                         // 不显示坐标轴轴线
@@ -269,6 +226,8 @@ export default defineComponent({
                             return `${Number(value)}%`
                         },
                     },
+                    min: dataRange.value.min,
+                    max: dataRange.value.max,
                 },
                 series: [
                     {
@@ -304,82 +263,7 @@ export default defineComponent({
                         },
                         showAllSymbol: true,
                         triggerLineEvent: false,
-                        // markPoint: {
-                        //     symbol: 'pin',
-                        //     itemStyle: {
-                        //         color: '#000',
-                        //     },
-                        //     symbolSize: 0, // 容器大小
-                        //     symbolOffset: 0, //位置偏移
-                        //     data: [
-                        //         {
-                        //             name: '创建时点',
-                        //             value: -2,
-                        //             xAxis:
-                        //                 props.createPoint && props.currCheckedIndex == 1
-                        //                     ? createIndex.value
-                        //                     : '',
-                        //             yAxis:
-                        //                 props.createPoint && props.currCheckedIndex == 1
-                        //                     ? props.yData.lineNetWorthData[createIndex.value]
-                        //                     : '',
-                        //         },
-                        //     ],
-                        //     label: {
-                        //         fontSize: 11,
-                        //         position: 'left',
-                        //         offset: [-5, -5],
-                        //         color: '#F87125',
-                        //         fontWeight: 600,
-                        //         formatter: ['创建时点'].join('\n'),
-                        //     },
-                        // },
-                        // markLine: {
-                        //     symbol: 'none',
-                        //     silent: true,
-                        //     data: [
-                        //         {
-                        //             xAxis:
-                        //                 props.createPoint && props.currCheckedIndex == 1
-                        //                     ? createIndex.value
-                        //                     : '',
-                        //             label: {
-                        //                 show: false,
-                        //                 position: 'start',
-                        //                 formatter: '创建时点',
-                        //                 color: '#F87125',
-                        //                 rotate: '90deg',
-                        //                 fontSize: 10,
-                        //                 fontWeight: 600,
-                        //                 padding: [0, 10, 0, 0],
-                        //             },
-                        //         },
-                        //     ],
-                        //     lineStyle: {
-                        //         normal: {
-                        //             type: 'dotted',
-                        //             color: '#F87125',
-                        //             symbol: 'none',
-                        //         },
-                        //     },
-                        // },
-                        data: props.yData.lineNetWorthData.map((value, index) => {
-                            // if (
-                            //     index === createIndex.value &&
-                            //     props.createPoint &&
-                            //     props.currCheckedIndex == 1
-                            // ) {
-                            //     return {
-                            //         value,
-                            //         itemStyle: {
-                            //             color: '#BC2424',
-                            //             borderColor: '#FFFFFF',
-                            //         },
-                            //         symbol: 'circle',
-                            //         // symbol: 'path://M7 0L8.5716 4.83688H13.6574L9.5429 7.82624L11.1145 12.6631L7 9.67376L2.8855 12.6631L4.4571 7.82624L0.342604 4.83688H5.4284L7 0Z',
-                            //         symbolSize: 6,
-                            //     }
-                            // }
+                        data: lineNetWorthData.value.map((value, index) => {
                             return {
                                 value,
                                 itemStyle: {
@@ -401,7 +285,7 @@ export default defineComponent({
                                 width: 1.8, // hover时的折线宽度
                             },
                         },
-                        data: props.yData.lineAverageData.map((value, index) => {
+                        data: lineAverageData.value.map((value, index) => {
                             return {
                                 value,
                                 itemStyle: {
@@ -423,7 +307,7 @@ export default defineComponent({
                                 width: 1.8, // hover时的折线宽度
                             },
                         },
-                        data: props.yData.lineOptimalData.map((value, index) => {
+                        data: lineOptimalData.value.map((value, index) => {
                             return {
                                 value,
                                 itemStyle: {
