@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-30 15:31:25
  * @LastEditors: matiastang
- * @LastEditTime: 2022-03-25 17:03:46
+ * @LastEditTime: 2022-03-28 14:54:28
  * @FilePath: /dw-vue-components/components/index.ts
  * @Description: 导出所有组件
  */
@@ -81,6 +81,6 @@ export {
 }
 
 export default {
-    version: '0.2.7',
+    version: '0.2.8',
     install,
 }

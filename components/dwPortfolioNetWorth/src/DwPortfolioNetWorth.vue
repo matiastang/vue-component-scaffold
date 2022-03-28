@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-03-21 10:15:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-03-25 17:02:27
+ * @LastEditTime: 2022-03-28 14:54:11
  * @FilePath: /dw-vue-components/components/dwPortfolioNetWorth/src/DwPortfolioNetWorth.vue
  * @Description: 单位净值曲线
 -->
@@ -118,7 +118,15 @@ export default defineComponent({
     setup(props) {
         // 主题
         provide(THEME_KEY, props.themeKey)
-        const { lineOptimalData, lineAverageData, lineNetWorthData } = toRefs(props.yData)
+        const lineOptimalData = computed(() => {
+            return props.yData.lineOptimalData
+        })
+        const lineAverageData = computed(() => {
+            return props.yData.lineAverageData
+        })
+        const lineNetWorthData = computed(() => {
+            return props.yData.lineNetWorthData
+        })
         // 格式化创建时间点时间数据
         const formatterDate = (date: string) => {
             const year = date.slice(0, 4)

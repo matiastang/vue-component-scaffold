@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-13 10:12:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-03-25 17:06:49
+ * @LastEditTime: 2022-03-28 14:54:56
  * @FilePath: /dw-vue-components/README.md
  * @Description: datumwealth-vue-components
 -->
@@ -99,6 +99,10 @@ const redirect_uri = computed(() => {
 ```
 
 ## 版本
+
+### 0.2.8
+
+* `DwPortfolioNetWorth`组件初始化显示问题优化。
 
 ### 0.2.7
 
