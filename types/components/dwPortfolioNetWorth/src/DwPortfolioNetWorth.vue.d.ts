@@ -48,6 +48,13 @@ declare const _default: import("vue").DefineComponent<{
             height: string;
         };
     };
+    /**
+     * 单位
+     */
+    unit: {
+        type: StringConstructor;
+        default: string;
+    };
 }, {
     echartsOption: import("vue").ComputedRef<{
         grid: {
@@ -155,15 +162,18 @@ declare const _default: import("vue").DefineComponent<{
     xData?: unknown;
     yData?: unknown;
     chartStyle?: unknown;
+    unit?: unknown;
 } & {
     themeKey: string;
     xData: string[];
     yData: lineYData;
     chartStyle: Record<string, any>;
+    unit: string;
 } & {}>, {
     themeKey: string;
     xData: string[];
     yData: lineYData;
     chartStyle: Record<string, any>;
+    unit: string;
 }>;
 export default _default;
