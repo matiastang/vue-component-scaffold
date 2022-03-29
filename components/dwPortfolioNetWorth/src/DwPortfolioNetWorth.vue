@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-03-21 10:15:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-03-29 11:12:45
+ * @LastEditTime: 2022-03-29 11:25:47
  * @FilePath: /dw-vue-components/components/dwPortfolioNetWorth/src/DwPortfolioNetWorth.vue
  * @Description: 单位净值曲线
 -->
@@ -319,7 +319,7 @@ export default defineComponent({
                     {
                         type: 'line',
                         lineStyle: {
-                            color: '#FF6E1C',
+                            color: lineNetWorthData.value.length > 0 ? '#FF6E1C' : '#BC2424',
                             width: 1.8,
                         },
                         emphasis: {
@@ -331,7 +331,8 @@ export default defineComponent({
                             return {
                                 value,
                                 itemStyle: {
-                                    color: '#FF6E1C',
+                                    color:
+                                        lineNetWorthData.value.length > 0 ? '#FF6E1C' : '#BC2424',
                                 },
                                 symbol: 'none',
                                 symbolSize: 6,
