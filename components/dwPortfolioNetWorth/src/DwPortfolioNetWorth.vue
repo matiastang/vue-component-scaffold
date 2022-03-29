@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-03-21 10:15:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-03-29 11:25:47
+ * @LastEditTime: 2022-03-29 13:54:05
  * @FilePath: /dw-vue-components/components/dwPortfolioNetWorth/src/DwPortfolioNetWorth.vue
  * @Description: 单位净值曲线
 -->
@@ -96,7 +96,7 @@ export default defineComponent({
                         3.5497,
                     ],
                     lineNetWorthData: [
-                        3.6693, 3.605, 3.6429, 3.5387, 3.5848, 3.5969, 3.5924, 3.5385, 3.5128,
+                        3.6693, 3.605, 3.6429, -3.5387, -3.5848, -3.5969, 3.5924, 3.5385, 3.5128,
                         3.5079,
                     ],
                 }
@@ -120,6 +120,13 @@ export default defineComponent({
         unit: {
             type: String,
             default: '',
+        },
+        /**
+         * 数据长度
+         */
+        dataLen: {
+            type: Number,
+            default: 4,
         },
     },
     setup(props) {
@@ -199,9 +206,9 @@ export default defineComponent({
                                     itemDate = formatterDate(item.axisValue)
                                 }
                                 if (item && typeof item.value === 'number') {
-                                    return `<br/>${item.marker} ${item.value.toFixed(4)}${
-                                        props.unit
-                                    }`
+                                    return `<br/>${item.marker} ${item.value.toFixed(
+                                        props.dataLen
+                                    )}${props.unit}`
                                 }
                                 return ''
                             })
@@ -242,8 +249,7 @@ export default defineComponent({
                         fontSize: 14,
                         color: '#8F8F8F',
                         formatter: (value: string, index: number) => {
-                            // return `${Number(value)}%`
-                            return `${Number(value).toFixed(4)}${props.unit}`
+                            return `${Number(value).toFixed(props.dataLen)}${props.unit}`
                         },
                     },
                     min: dataRange.value.min,
@@ -265,12 +271,12 @@ export default defineComponent({
                                 y2: 1,
                                 colorStops: [
                                     {
-                                        offset: 0,
-                                        color: '#FFAAAA', // 0% 处的颜色
-                                    },
-                                    {
                                         offset: 1,
                                         color: '#FFFDFD', // 100% 处的颜色
+                                    },
+                                    {
+                                        offset: 0,
+                                        color: '#FFAAAA', // 0% 处的颜色
                                     },
                                 ],
                                 global: false, // 缺省为 false
@@ -297,7 +303,7 @@ export default defineComponent({
                     {
                         type: 'line',
                         lineStyle: {
-                            color: '#467FEA',
+                            color: lineNetWorthData.value.length > 0 ? '#467FEA' : '#BC2424',
                             width: 1.8,
                         },
                         emphasis: {
@@ -309,7 +315,8 @@ export default defineComponent({
                             return {
                                 value,
                                 itemStyle: {
-                                    color: '#467FEA',
+                                    color:
+                                        lineNetWorthData.value.length > 0 ? '#467FEA' : '#BC2424',
                                 },
                                 symbol: 'none',
                                 symbolSize: 6,
@@ -319,7 +326,7 @@ export default defineComponent({
                     {
                         type: 'line',
                         lineStyle: {
-                            color: lineNetWorthData.value.length > 0 ? '#FF6E1C' : '#BC2424',
+                            color: '#FF6E1C',
                             width: 1.8,
                         },
                         emphasis: {
@@ -331,8 +338,7 @@ export default defineComponent({
                             return {
                                 value,
                                 itemStyle: {
-                                    color:
-                                        lineNetWorthData.value.length > 0 ? '#FF6E1C' : '#BC2424',
+                                    color: '#FF6E1C',
                                 },
                                 symbol: 'none',
                                 symbolSize: 6,
