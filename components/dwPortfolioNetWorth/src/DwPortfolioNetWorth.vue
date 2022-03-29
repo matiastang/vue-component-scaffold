@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-03-21 10:15:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-03-28 14:54:11
+ * @LastEditTime: 2022-03-29 11:12:45
  * @FilePath: /dw-vue-components/components/dwPortfolioNetWorth/src/DwPortfolioNetWorth.vue
  * @Description: 单位净值曲线
 -->
@@ -114,6 +114,13 @@ export default defineComponent({
                 }
             },
         },
+        /**
+         * 单位
+         */
+        unit: {
+            type: String,
+            default: '',
+        },
     },
     setup(props) {
         // 主题
@@ -191,11 +198,15 @@ export default defineComponent({
                                 if (index === 0) {
                                     itemDate = formatterDate(item.axisValue)
                                 }
-                                return `<br/>${item.marker} ${
-                                    item && typeof item.value === 'number'
-                                        ? item.value.toFixed(2) + '%'
-                                        : '无'
-                                }`
+                                if (item && typeof item.value === 'number') {
+                                    return `<br/>${item.marker} ${item.value.toFixed(4)}${
+                                        props.unit
+                                    }`
+                                }
+                                return ''
+                            })
+                            .filter((item) => {
+                                return item !== ''
                             })
                             .join('')
                         return itemDate + listText
@@ -231,7 +242,8 @@ export default defineComponent({
                         fontSize: 14,
                         color: '#8F8F8F',
                         formatter: (value: string, index: number) => {
-                            return `${Number(value)}%`
+                            // return `${Number(value)}%`
+                            return `${Number(value).toFixed(4)}${props.unit}`
                         },
                     },
                     min: dataRange.value.min,
