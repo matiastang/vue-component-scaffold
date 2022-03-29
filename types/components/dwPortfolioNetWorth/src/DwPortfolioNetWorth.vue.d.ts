@@ -55,6 +55,13 @@ declare const _default: import("vue").DefineComponent<{
         type: StringConstructor;
         default: string;
     };
+    /**
+     * 数据长度
+     */
+    dataLen: {
+        type: NumberConstructor;
+        default: number;
+    };
 }, {
     echartsOption: import("vue").ComputedRef<{
         grid: {
@@ -163,17 +170,20 @@ declare const _default: import("vue").DefineComponent<{
     yData?: unknown;
     chartStyle?: unknown;
     unit?: unknown;
+    dataLen?: unknown;
 } & {
     themeKey: string;
     xData: string[];
     yData: lineYData;
     chartStyle: Record<string, any>;
     unit: string;
+    dataLen: number;
 } & {}>, {
     themeKey: string;
     xData: string[];
     yData: lineYData;
     chartStyle: Record<string, any>;
     unit: string;
+    dataLen: number;
 }>;
 export default _default;
