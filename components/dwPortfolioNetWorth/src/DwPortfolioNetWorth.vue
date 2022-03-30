@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-03-21 10:15:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-03-29 13:54:05
+ * @LastEditTime: 2022-03-30 15:27:02
  * @FilePath: /dw-vue-components/components/dwPortfolioNetWorth/src/DwPortfolioNetWorth.vue
  * @Description: 单位净值曲线
 -->
@@ -176,8 +176,8 @@ export default defineComponent({
             min = min - diff / 10
             max = max + diff / 10
             return {
-                min: Math.round(min * 10) / 10,
-                max: Math.round(max * 10) / 10,
+                min: Math.floor(min * 10) / 10,
+                max: Math.ceil(max * 10) / 10,
             }
         })
         // echarts option
