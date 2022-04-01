@@ -2,18 +2,23 @@
  * @Author: matiastang
  * @Date: 2022-03-21 10:15:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-03-30 15:27:02
+ * @LastEditTime: 2022-04-01 10:18:44
  * @FilePath: /dw-vue-components/components/dwPortfolioNetWorth/src/DwPortfolioNetWorth.vue
  * @Description: 单位净值曲线
 -->
 <template>
     <div class="dw-portfolio-net-worth">
-        <VChart class="dw-portfolio-chart" :option="echartsOption" :style="chartStyle" />
+        <VChart
+            ref="chart"
+            class="dw-portfolio-chart"
+            :option="echartsOption"
+            :style="chartStyle"
+        />
     </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, provide, toRefs } from 'vue'
+import { computed, defineComponent, provide, ref, Ref, watchEffect } from 'vue'
 import { use } from 'echarts/core'
 import { CanvasRenderer } from 'echarts/renderers'
 import { LineChart } from 'echarts/charts'
@@ -129,9 +134,10 @@ export default defineComponent({
             default: 4,
         },
     },
-    setup(props) {
+    setup(props, context) {
         // 主题
         provide(THEME_KEY, props.themeKey)
+        const chart: Ref<any> = ref(null)
         const lineOptimalData = computed(() => {
             return props.yData.lineOptimalData
         })
@@ -192,6 +198,19 @@ export default defineComponent({
                 },
                 tooltip: {
                     trigger: 'axis',
+                    position: function (point: any, params: any, dom: any, rect: any, size: any) {
+                        // 鼠标在左侧时 tooltip 显示到右侧，鼠标在右侧时 tooltip 显示到左侧。
+                        const pointX = point[0] as number
+                        const viewSize = size.viewSize as number[]
+                        const viewHalfW = viewSize[0] / 2
+                        const viewHalfH = viewSize[1] / 2
+                        const contentSize = size.contentSize as number[]
+                        const contentHalfH = contentSize[1] / 2
+                        if (pointX < viewHalfW) {
+                            return [pointX, viewHalfH - contentHalfH]
+                        }
+                        return [pointX - contentSize[0], viewHalfH - contentHalfH]
+                    },
                     formatter: (value: any, index: number) => {
                         if (!Array.isArray(value) || value.length <= 0) {
                             return '数据格式错误'
@@ -240,6 +259,25 @@ export default defineComponent({
                             return formatterDate(value)
                         },
                     },
+                    // axisPointer: {
+                    //     value: '2016-10-7',
+                    //     snap: true,
+                    //     lineStyle: {
+                    //         color: '#7581BD',
+                    //         width: 2,
+                    //     },
+                    //     // label: {
+                    //     //     show: true,
+                    //     //     formatter: function (params: any) {
+                    //     //         return echarts.format.formatTime('yyyy-MM-dd', params.value)
+                    //     //     },
+                    //     //     backgroundColor: '#7581BD',
+                    //     // },
+                    //     handle: {
+                    //         show: true,
+                    //         color: 'red',
+                    //     },
+                    // },
                 },
                 yAxis: {
                     show: true,
@@ -348,7 +386,25 @@ export default defineComponent({
                 ],
             }
         })
+
+        watchEffect(() => {
+            const chartValue = chart.value
+            if (chartValue) {
+                chartValue.chart.getZr().on('mouseup', function (event: any) {
+                    chartValue.chart.dispatchAction({
+                        type: 'hideTip',
+                    })
+                    if (!event.target) {
+                        // MARK: - 点击在了空白处，做些什么
+                    }
+                })
+            }
+        })
+        context.expose({
+            chart: chart.value?.chart,
+        })
         return {
+            chart,
             echartsOption,
         }
     },
