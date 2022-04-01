@@ -1,3 +1,4 @@
+import { Ref } from 'vue';
 interface lineYData {
     /**
      * 单位净值
@@ -63,6 +64,7 @@ declare const _default: import("vue").DefineComponent<{
         default: number;
     };
 }, {
+    chart: Ref<any>;
     echartsOption: import("vue").ComputedRef<{
         grid: {
             left: string;
@@ -73,6 +75,7 @@ declare const _default: import("vue").DefineComponent<{
         };
         tooltip: {
             trigger: string;
+            position: (point: any, params: any, dom: any, rect: any, size: any) => number[];
             formatter: (value: any, index: number) => string;
         };
         xAxis: {
