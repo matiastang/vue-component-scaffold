@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-03-21 10:15:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-04-01 10:18:44
+ * @LastEditTime: 2022-04-01 13:44:32
  * @FilePath: /dw-vue-components/components/dwPortfolioNetWorth/src/DwPortfolioNetWorth.vue
  * @Description: 单位净值曲线
 -->
@@ -401,7 +401,7 @@ export default defineComponent({
             }
         })
         context.expose({
-            chart: chart.value?.chart,
+            chart,
         })
         return {
             chart,

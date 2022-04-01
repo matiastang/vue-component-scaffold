@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-13 10:12:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-04-01 10:22:18
+ * @LastEditTime: 2022-04-01 13:45:25
  * @FilePath: /dw-vue-components/README.md
  * @Description: datumwealth-vue-components
 -->
@@ -100,6 +100,10 @@ const redirect_uri = computed(() => {
 
 ## 版本
 
+### 0.2.13
+
+* `DwPortfolioNetWorth`组件导出`chart`参数
+  
 ### 0.2.12
 
 * `DwPortfolioNetWorth`组件`tooltip`显示位置调整及添加移动端隐藏逻辑。
