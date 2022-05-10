@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-30 15:37:18
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-10 15:53:21
+ * @LastEditTime: 2022-05-10 16:16:15
  * @FilePath: /dw-vue-components/vite.build.config.ts
  * @Description: npm 打包上传配置
  */
@@ -27,6 +27,7 @@ export default defineConfig({
     // 共享配置
     plugins: [
         vue(),
+        terser(),
         dts({
             include: ['./components'],
             outputDir: './types',
@@ -36,7 +37,7 @@ export default defineConfig({
         //     algorithm: 'gzip', //brotliCompress gzip
         //     deleteOriginFile: false,
         // }),
-        terser(),
+        // terser(),
     ],
     resolve: {
         // 别名
