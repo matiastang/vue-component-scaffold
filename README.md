@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-13 10:12:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-04-01 13:45:25
+ * @LastEditTime: 2022-05-10 15:58:20
  * @FilePath: /dw-vue-components/README.md
  * @Description: datumwealth-vue-components
 -->
@@ -99,6 +99,59 @@ const redirect_uri = computed(() => {
 ```
 
 ## 版本
+
+### 0.3.0
+
+1. 添加基础组件
+
+* `DwEcharts`组件
+* `DwLineChart`组件
+
+2. 添加“寻暇记”相关组件
+
+*  `DwDefectDashboard`组件
+*  `DwDefectPositionLine`组件
+*  `DwDefectFactorLine`组件
+*  `DwDefectFactorPositionTraceLine`组件
+
+3. 更新打包输出调整
+```json
+{
+    "main": "./components/index.ts",
+    "files": [
+        "types",
+        "components",
+        "dist",
+        "global.d.ts",
+        "shims-vue.d.ts"
+    ],
+    "module": "./components/index.ts",
+    "types": "./types/components/index.d.ts",
+    "exports": {
+        ".": {
+            "import": "./components/index.ts",
+            "require": "./dist/dw-vue-components.umd.js"
+        }
+    },
+}
+```
+```json
+{
+   "main": "./dist/index.umd.js",
+   "files": [
+     "types",
+     "dist"
+   ],
+   "module": "./dist/index.es.js",
+   "types": "./types/components/index.d.ts",
+   "exports": {
+      ".": {
+         "import": "./dist/index.es.js",
+         "require": "./dist/index.umd.js"
+      }
+   },
+}
+```
 
 ### 0.2.13
 

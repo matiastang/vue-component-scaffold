@@ -1,26 +1,22 @@
 {
     "name": "datumwealth-vue-components",
-    "version": "0.2.13",
+    "version": "0.3.0",
     "description": "西筹金融科技Vue组件库",
-    "main": "./components/index.ts",
-    "source": "./dist/components/index.d.ts",
     "private": false,
     "directories": {
         "test": "tests"
     },
+    "main": "./dist/index.umd.js",
     "files": [
         "types",
-        "components",
-        "dist",
-        "global.d.ts",
-        "shims-vue.d.ts"
+        "dist"
     ],
-    "module": "./components/index.ts",
+    "module": "./dist/index.es.js",
     "types": "./types/components/index.d.ts",
     "exports": {
         ".": {
-            "import": "./components/index.ts",
-            "require": "./dist/dw-vue-components.umd.js"
+            "import": "./dist/index.es.js",
+            "require": "./dist/index.umd.js"
         }
     },
     "keywords": [
@@ -129,6 +125,7 @@
         "vite-plugin-compression": "^0.3.6",
         "vite-plugin-dts": "^0.9.7",
         "vite-plugin-imagemin": "^0.4.6",
+        "vite-plugin-inspect": "0.4.3",
         "vue-axios": "^3.4.0",
         "vue-clipboard3": "^1.0.1",
         "vue-router": "^4.0.12",

@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-28 19:31:46
  * @LastEditors: matiastang
- * @LastEditTime: 2022-03-21 10:58:10
+ * @LastEditTime: 2022-05-10 10:31:41
  * @FilePath: /dw-vue-components/src/router/index.ts
  * @Description: 路由
  */
@@ -16,21 +16,13 @@ import DwStocksAnalysisLineTest from '@/views/test/DwStocksAnalysisLineTest.vue'
 import DwFilterSliderTest from '@/views/test/DwFilterSliderTest.vue'
 import DwFilterAreaTest from '@/views/test/DwFilterAreaTest.vue'
 import DwPortfolioTest from '@/views/test/DwPortfolioTest.vue'
+import DwEchartsTest from '@/views/test/DwEchartsTest.vue'
+import DwDefectChartsTest from '@/views/test/DwDefectChartsTest.vue'
 // NotFound
 import NotFound from '@/views/NotFound.vue'
 
 const routes: Array<RouteRecordRaw> = [
     {
-        // path: '/',
-        // name: 'layout',
-        // component: Layout,
-        // children: [
-        //     {
-        //         path: '',
-        //         name: 'home',
-        //         component: Home,
-        //     },
-        // ],
         path: '/',
         name: 'home',
         component: Home,
@@ -76,6 +68,24 @@ const routes: Array<RouteRecordRaw> = [
     //     },
     // },
     {
+        path: '/dwEchartsTest',
+        name: 'dwEchartsTest',
+        component: DwEchartsTest,
+        beforeEnter: (to, from) => {
+            console.log(`web路由卫士：即将从${from.path}跳转到${to.path}`)
+            return true
+        },
+    },
+    {
+        path: '/dwDefectChartsTest',
+        name: 'dwDefectChartsTest',
+        component: DwDefectChartsTest,
+        beforeEnter: (to, from) => {
+            console.log(`web路由卫士：即将从${from.path}跳转到${to.path}`)
+            return true
+        },
+    },
+    {
         path: '/:pathMatch(.*)*', // 将匹配所有内容并将其放在 `$route.params.pathMatch` 下
         name: 'NotFound',
         redirect: '/',
@@ -87,7 +97,8 @@ const routes: Array<RouteRecordRaw> = [
  */
 const router = createRouter({
     // history: import.meta.env.DEV ? createWebHashHistory() : createWebHistory(),
-    history: createWebHashHistory(),
+    // history: createWebHashHistory(),
+    history: createWebHistory(),
     routes,
     scrollBehavior(to, from, savedPosition) {
         // 平滑滚动
@@ -108,20 +119,22 @@ router.beforeEach((to, from, next) => {
     // TODO: - 登录校验
     // import { localStorageKey, localStorageRead } from 'utils/storage/localStorage'
     // import { DwPortfolioTest } from '@/views/test/DwPortfolioTest.vue';
-    // if (to.matched.some((record) => record.meta.requiresAuth)) {
-    //     //     // 用户token
-    //     //     const userToken = localStorageRead<string>(localStorageKey.userTokenKey)
-    //     //     if (!userToken || userToken.trim() === '') {
-    //     //         // 未登录
-    //     //         next({
-    //     //             path: '/login',
-    //     //             replace: true,
-    //     //         })
-    //     //         return
-    //     //     }
-    //     // }
-    //     next()
-    // }
+    // import DwEcharts from '../../components/dwEcharts/index';
+    if (to.matched.some((record) => record.meta.requiresAuth)) {
+        //     //     // 用户token
+        //     //     const userToken = localStorageRead<string>(localStorageKey.userTokenKey)
+        //     //     if (!userToken || userToken.trim() === '') {
+        //     //         // 未登录
+        //     //         next({
+        //     //             path: '/login',
+        //     //             replace: true,
+        //     //         })
+        //     //         return
+        //     //     }
+        //     // }
+        //     next()
+        // }
+    }
     next()
 })
 
