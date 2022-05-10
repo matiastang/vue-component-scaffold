@@ -2,14 +2,23 @@
  * @Author: matiastang
  * @Date: 2021-11-11 18:55:21
  * @LastEditors: matiastang
- * @LastEditTime: 2021-12-29 13:48:39
- * @FilePath: /datumwealth-front-scaffold/src/api/request/request.ts
+ * @LastEditTime: 2022-05-10 17:01:57
+ * @FilePath: /dw-vue-components/src/api/request/request.ts
  * @Description: axios简单封装
  */
-import axios, { AxiosRequestConfig } from 'axios'
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 import initInstance from '@/api/request/axiosInterceptors'
-// import { requestDebounce } from './requestDebounce.js'
-import requestThrottle from './requestThrottle'
+import { requestThrottle } from 'matias-axios-throttle'
+
+/**
+ * 成功返回类型
+ */
+interface ResolveType<T> {
+    code: number
+    data: T
+    msg: string
+}
+
 /**
  * 失败返回类型
  */
@@ -29,18 +38,11 @@ const http = {
         const requestConfig = {
             ...options,
         }
-        /**
-         * 成功返回类型
-         */
-        interface ResolveType {
-            code: number
-            data: T
-            msg: string
-        }
-        return new Promise<ResolveType>((resolve, reject: (reason: RejectType) => void) => {
+        type D = ResolveType<T>
+        return new Promise<D>((resolve, reject: (reason: RejectType) => void) => {
             // httpAxios
             //     .request(requestConfig)
-            requestThrottle(httpAxios, requestConfig)
+            requestThrottle<D, AxiosResponse<D>>(httpAxios, requestConfig)
                 .then((response) => {
                     const status = response.status
                     if (status !== 200) {

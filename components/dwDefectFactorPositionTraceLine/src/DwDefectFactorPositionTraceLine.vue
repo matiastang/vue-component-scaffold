@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-10 10:41:21
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-10 15:26:28
+ * @LastEditTime: 2022-05-10 16:34:11
  * @FilePath: /dw-vue-components/components/dwDefectFactorPositionTraceLine/src/DwDefectFactorPositionTraceLine.vue
  * @Description: 西筹-大v-寻暇记-权益仓位-权益&仓位-折线图
 -->
@@ -43,6 +43,14 @@ type TypeOptional<T> = {
  */
 type LineThemeColors = TypeOptional<ThemeColor>
 
+interface BasePieces {
+    color: string
+}
+
+interface Pieces extends BasePieces {
+    [key: string]: string
+}
+
 export default defineComponent({
     name: 'DwDefectFactorPositionTraceLine',
     props: {
@@ -80,6 +88,31 @@ export default defineComponent({
             default: '权益性价比',
         },
         /**
+         * factor - visualMap
+         */
+        factorVisualMapPieces: {
+            type: Array as PropType<Array<Pieces>>,
+            default: () => {
+                return [
+                    {
+                        gt: Number.MIN_SAFE_INTEGER,
+                        lte: -2,
+                        color: '#1BCE17',
+                    },
+                    {
+                        gt: -2,
+                        lte: 2,
+                        color: '#FFAB48',
+                    },
+                    {
+                        gt: 2,
+                        lte: Number.MAX_SAFE_INTEGER,
+                        color: '#FF2E2E',
+                    },
+                ]
+            },
+        },
+        /**
          * Factor-y轴数据
          */
         factorYData: {
@@ -94,6 +127,32 @@ export default defineComponent({
         positionTitle: {
             type: String,
             default: '公募持仓',
+        },
+        /**
+         * position - visualMap
+         */
+        positionVisualMapPieces: {
+            type: Array as PropType<Array<Pieces>>,
+            default: () => {
+                return [
+                    {
+                        gt: 0,
+                        lte: 88,
+                        color: '#0E6EB8',
+                    },
+                    {
+                        gt: 88,
+                        color: '#FF54CF',
+                    },
+                ]
+            },
+        },
+        /**
+         * position markLine yData
+         */
+        positionMarkLineYData: {
+            type: Number,
+            default: 88,
         },
         /**
          * Position-y轴数据
@@ -132,8 +191,8 @@ export default defineComponent({
         /**
          * MarkLine位置
          */
-        const seriesMarkLineData = reactive({
-            value: [{ yAxis: 88 }],
+        const seriesMarkLineData = computed(() => {
+            return [{ yAxis: props.positionMarkLineYData }]
         })
         // 末尾位置
         const lastIndex = computed(() => {
@@ -175,7 +234,6 @@ export default defineComponent({
                         if (!Array.isArray(value) || value.length <= 0) {
                             return `${index}数据格式错误`
                         }
-                        console.log(value)
                         // 无法解析回调return的html字符串
                         let itemDate = ''
                         let listText = value
@@ -292,39 +350,13 @@ export default defineComponent({
                         seriesIndex: 0,
                         showLabel: false,
                         show: false,
-                        pieces: [
-                            {
-                                gt: Number.MIN_SAFE_INTEGER,
-                                lte: -2,
-                                color: '#1BCE17',
-                            },
-                            {
-                                gt: -2,
-                                lte: 2,
-                                color: '#FFAB48',
-                            },
-                            {
-                                gt: 2,
-                                lte: Number.MAX_SAFE_INTEGER,
-                                color: '#FF2E2E',
-                            },
-                        ],
+                        pieces: props.factorVisualMapPieces,
                     },
                     {
                         seriesIndex: 1,
                         showLabel: false,
                         show: false,
-                        pieces: [
-                            {
-                                gt: 0,
-                                lte: 88,
-                                color: '#0E6EB8',
-                            },
-                            {
-                                gt: 88,
-                                color: '#FF54CF',
-                            },
-                        ],
+                        pieces: props.positionVisualMapPieces,
                     },
                 ],
                 series: [

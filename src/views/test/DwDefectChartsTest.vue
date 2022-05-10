@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-10 10:27:25
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-10 15:36:12
+ * @LastEditTime: 2022-05-10 16:38:14
  * @FilePath: /dw-vue-components/src/views/test/DwDefectChartsTest.vue
  * @Description: 西筹-大V-寻暇记-图谱测试
 -->
@@ -25,7 +25,7 @@
                 :x-data="xData"
                 :y-data="yData"
                 :chart-theme="{ color: '#f00' }"
-                :point-trace="true"
+                :point-trace="false"
                 :style="{ height: '300px', background: '#FFFFFF' }"
             ></DwDefectPositionLine>
             <DwDefectFactorPositionTraceLine

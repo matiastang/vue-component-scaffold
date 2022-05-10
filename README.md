@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-13 10:12:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-10 15:58:20
+ * @LastEditTime: 2022-05-10 17:07:57
  * @FilePath: /dw-vue-components/README.md
  * @Description: datumwealth-vue-components
 -->
@@ -99,6 +99,21 @@ const redirect_uri = computed(() => {
 ```
 
 ## 版本
+
+### 0.3.1
+
+1. `DwDefectFactorPositionTraceLine`组件:
+
+**factorVisualMapPieces**：开放设置`权益性价比`线条的`VisualMap`的`Pieces`。
+**positionVisualMapPieces**：开放设置`公募持仓`线条的`VisualMap`的`Pieces`。
+**positionMarkLineYData**：开放设置`持仓`的`MarkLine`位置。
+
+2. 去掉`0.3.0`新增组件的调试输出。
+3. 测试项目更新：
+   
+* 接口请求添加`matias-axios-throttle`三方库，进行组件请求去重。
+* 状态管理更新为使用`pinia`并使用`matias-pinia-persisted-state`实现状态本地持久化。
+* 删除废弃文件
 
 ### 0.3.0
 

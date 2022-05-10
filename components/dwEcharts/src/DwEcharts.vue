@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-09 09:48:16
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-10 11:25:55
+ * @LastEditTime: 2022-05-10 16:34:32
  * @FilePath: /dw-vue-components/components/dwEcharts/src/DwEcharts.vue
  * @Description: 
 -->
@@ -61,7 +61,7 @@ export default defineComponent({
                 return
             }
             chartValue.chart.getZr().on('mouseup', function (event: any) {
-                console.log('hideTip')
+                // console.log('mouseup')
                 chartValue.chart.dispatchAction({
                     type: 'hideTip',
                 })

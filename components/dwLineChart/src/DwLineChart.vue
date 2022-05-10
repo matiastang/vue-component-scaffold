@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-09 10:46:25
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-10 10:07:22
+ * @LastEditTime: 2022-05-10 16:35:44
  * @FilePath: /dw-vue-components/components/dwLineChart/src/DwLineChart.vue
  * @Description: 折线图
 -->
@@ -111,7 +111,7 @@ export default defineComponent({
             const yAxis = chartOtpion.yAxis
             if (yAxis) {
                 if (Array.isArray(yAxis)) {
-                    console.warn('TODO: - set yAxis min and max in yAxis is array')
+                    console.info('TODO: - set yAxis min and max in yAxis is array')
                 } else {
                     const yAxisShow = yAxis.show
                     if (yAxisShow || yAxisShow === undefined) {
@@ -170,7 +170,7 @@ export default defineComponent({
                     }
                 }
             }
-            console.info('option', option)
+            // console.info('option', option)
             return option
         })
         const chart = computed(() => {
