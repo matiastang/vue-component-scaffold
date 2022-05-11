@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-13 10:12:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-10 18:44:52
+ * @LastEditTime: 2022-05-11 11:29:14
  * @FilePath: /dw-vue-components/README.md
  * @Description: datumwealth-vue-components
 -->
@@ -102,6 +102,12 @@ const redirect_uri = computed(() => {
 
 ## 版本
 
+### 0.3.2
+
+1. fix
+
+* 修复组件不能使用app.use()单独导入的问题
+
 ### 0.3.1
 
 1. `DwDefectFactorPositionTraceLine`组件:
@@ -122,7 +128,7 @@ const redirect_uri = computed(() => {
 * 样式不能全局导入问题
 * 不能全局引入组件问题
 
-### 0.3.1
+### 0.3.0
 
 1. 添加基础组件
 
