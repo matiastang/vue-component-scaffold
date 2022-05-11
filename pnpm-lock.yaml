@@ -26,7 +26,7 @@ specifiers:
   child_process: ^1.0.2
   datumwealth-vue-components: 0.3.1
   del: ^6.0.0
-  echarts: ^5.2.2
+  echarts: ^5.3.2
   element-plus: ^1.2.0-beta.1
   eslint: ^8.0.1
   eslint-plugin-prettier: ^4.0.0
@@ -77,7 +77,7 @@ specifiers:
   vue: ^3.2.20
   vue-axios: ^3.4.0
   vue-clipboard3: ^1.0.1
-  vue-echarts: ^6.0.0
+  vue-echarts: ^6.0.3
   vue-router: ^4.0.12
   vue-tsc: ^0.30.2
   vue3-json-view: ^1.3.2
@@ -85,9 +85,9 @@ specifiers:
   vuex-persistedstate: ^4.1.0
 
 dependencies:
-  echarts: registry.npmmirror.com/echarts/5.2.2
+  echarts: registry.npmmirror.com/echarts/5.3.2
   vue: registry.npmmirror.com/vue/3.2.20
-  vue-echarts: registry.npmmirror.com/vue-echarts/6.0.0_echarts@5.2.2+vue@3.2.20
+  vue-echarts: registry.npmmirror.com/vue-echarts/6.0.3_echarts@5.3.2+vue@3.2.20
 
 devDependencies:
   '@element-plus/icons': registry.nlark.com/@element-plus/icons/0.0.11
@@ -11809,13 +11809,6 @@ packages:
       strip-indent: registry.nlark.com/strip-indent/2.0.0
     dev: true
 
-  registry.nlark.com/zrender/5.2.1:
-    resolution: {integrity: sha1-X0u9qRW6bUErCxncJDG+qtBUF7s=, registry: https://registry.npm.taobao.org/, tarball: https://registry.nlark.com/zrender/download/zrender-5.2.1.tgz}
-    name: zrender
-    version: 5.2.1
-    dependencies:
-      tslib: registry.npmmirror.com/tslib/2.3.0
-
   registry.npmmirror.com/@babel/code-frame/7.15.8:
     resolution: {integrity: sha1-RZkMR62tsAwDZ3uqiSIffMI9JQM=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@babel/code-frame/download/@babel/code-frame-7.15.8.tgz}
     name: '@babel/code-frame'
@@ -14665,7 +14658,7 @@ packages:
     dependencies:
       '@vueuse/shared': registry.npmmirror.com/@vueuse/shared/6.7.4_vue@3.2.20
       vue: registry.npmmirror.com/vue/3.2.20
-      vue-demi: registry.npmmirror.com/vue-demi/0.12.0_vue@3.2.20
+      vue-demi: registry.npmmirror.com/vue-demi/0.12.5_vue@3.2.20
     dev: true
 
   registry.npmmirror.com/@vueuse/shared/6.7.4_vue@3.2.20:
@@ -14683,7 +14676,7 @@ packages:
         optional: true
     dependencies:
       vue: registry.npmmirror.com/vue/3.2.20
-      vue-demi: registry.npmmirror.com/vue-demi/0.12.0_vue@3.2.20
+      vue-demi: registry.npmmirror.com/vue-demi/0.12.5_vue@3.2.20
     dev: true
 
   registry.npmmirror.com/@yarn-tool/resolve-package/1.0.41_@types+node@16.11.1:
@@ -15171,7 +15164,7 @@ packages:
     version: 4.1.2
     dependencies:
       pascal-case: registry.npmmirror.com/pascal-case/3.1.2
-      tslib: registry.npmmirror.com/tslib/2.3.1
+      tslib: registry.npmmirror.com/tslib/2.4.0
     dev: true
 
   registry.npmmirror.com/camelcase-keys/2.1.0:
@@ -15241,7 +15234,7 @@ packages:
     version: 1.0.4
     dependencies:
       no-case: registry.npmmirror.com/no-case/3.0.4
-      tslib: registry.npmmirror.com/tslib/2.3.1
+      tslib: registry.npmmirror.com/tslib/2.4.0
       upper-case-first: registry.npmmirror.com/upper-case-first/2.0.2
     dev: true
 
@@ -15308,7 +15301,7 @@ packages:
       path-case: registry.npmmirror.com/path-case/3.0.4
       sentence-case: registry.npmmirror.com/sentence-case/3.0.4
       snake-case: registry.npmmirror.com/snake-case/3.0.4
-      tslib: registry.npmmirror.com/tslib/2.3.1
+      tslib: registry.npmmirror.com/tslib/2.4.0
     dev: true
 
   registry.npmmirror.com/character-parser/2.2.0:
@@ -15590,7 +15583,7 @@ packages:
     version: 3.0.4
     dependencies:
       no-case: registry.npmmirror.com/no-case/3.0.4
-      tslib: registry.npmmirror.com/tslib/2.3.1
+      tslib: registry.npmmirror.com/tslib/2.4.0
       upper-case: registry.npmmirror.com/upper-case/2.0.2
     dev: true
 
@@ -15846,9 +15839,9 @@ packages:
     name: datumwealth-vue-components
     version: 0.3.1
     dependencies:
-      echarts: registry.npmmirror.com/echarts/5.2.2
+      echarts: registry.npmmirror.com/echarts/5.3.2
       vue: registry.npmmirror.com/vue/3.2.20
-      vue-echarts: registry.npmmirror.com/vue-echarts/6.0.0_echarts@5.2.2+vue@3.2.20
+      vue-echarts: registry.npmmirror.com/vue-echarts/6.0.3_echarts@5.3.2+vue@3.2.20
     transitivePeerDependencies:
       - '@vue/composition-api'
     dev: true
@@ -15998,7 +15991,7 @@ packages:
     version: 3.0.4
     dependencies:
       no-case: registry.npmmirror.com/no-case/3.0.4
-      tslib: registry.npmmirror.com/tslib/2.3.1
+      tslib: registry.npmmirror.com/tslib/2.4.0
     dev: true
 
   registry.npmmirror.com/each-props/1.3.2:
@@ -16010,13 +16003,13 @@ packages:
       object.defaults: registry.npmmirror.com/object.defaults/1.1.0
     dev: true
 
-  registry.npmmirror.com/echarts/5.2.2:
-    resolution: {integrity: sha512-yxuBfeIH5c+0FsoRP60w4De6omXhA06c7eUYBsC1ykB6Ys2yK5fSteIYWvkJ4xJVLQgCvAdO8C4mN6MLeJpBaw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/echarts/download/echarts-5.2.2.tgz}
+  registry.npmmirror.com/echarts/5.3.2:
+    resolution: {integrity: sha512-LWCt7ohOKdJqyiBJ0OGBmE9szLdfA9sGcsMEi+GGoc6+Xo75C+BkcT/6NNGRHAWtnQl2fNow05AQjznpap28TQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/echarts/-/echarts-5.3.2.tgz}
     name: echarts
-    version: 5.2.2
+    version: 5.3.2
     dependencies:
       tslib: registry.npmmirror.com/tslib/2.3.0
-      zrender: registry.nlark.com/zrender/5.2.1
+      zrender: registry.npmmirror.com/zrender/5.3.1
 
   registry.npmmirror.com/ejs/2.7.4:
     resolution: {integrity: sha1-SGYSh1c9zFPjZsehrlLDoSDuybo=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ejs/download/ejs-2.7.4.tgz}
@@ -17150,7 +17143,7 @@ packages:
     version: 2.0.4
     dependencies:
       capital-case: registry.npmmirror.com/capital-case/1.0.4
-      tslib: registry.npmmirror.com/tslib/2.3.1
+      tslib: registry.npmmirror.com/tslib/2.4.0
     dev: true
 
   registry.npmmirror.com/highlight.js/10.7.3:
@@ -17708,7 +17701,7 @@ packages:
     name: lower-case
     version: 2.0.2
     dependencies:
-      tslib: registry.npmmirror.com/tslib/2.3.1
+      tslib: registry.npmmirror.com/tslib/2.4.0
     dev: true
 
   registry.npmmirror.com/magic-string/0.25.7:
@@ -18035,7 +18028,7 @@ packages:
     version: 3.0.4
     dependencies:
       lower-case: registry.npmmirror.com/lower-case/2.0.2
-      tslib: registry.npmmirror.com/tslib/2.3.1
+      tslib: registry.npmmirror.com/tslib/2.4.0
     dev: true
 
   registry.npmmirror.com/node-kissdi/1.0.3:
@@ -18239,7 +18232,7 @@ packages:
     version: 3.0.4
     dependencies:
       dot-case: registry.npmmirror.com/dot-case/3.0.4
-      tslib: registry.npmmirror.com/tslib/2.3.1
+      tslib: registry.npmmirror.com/tslib/2.4.0
     dev: true
 
   registry.npmmirror.com/parent-module/1.0.1:
@@ -18306,7 +18299,7 @@ packages:
     version: 3.1.2
     dependencies:
       no-case: registry.npmmirror.com/no-case/3.0.4
-      tslib: registry.npmmirror.com/tslib/2.3.1
+      tslib: registry.npmmirror.com/tslib/2.4.0
     dev: true
 
   registry.npmmirror.com/path-browserify/0.0.1:
@@ -18327,7 +18320,7 @@ packages:
     version: 3.0.4
     dependencies:
       dot-case: registry.npmmirror.com/dot-case/3.0.4
-      tslib: registry.npmmirror.com/tslib/2.3.1
+      tslib: registry.npmmirror.com/tslib/2.4.0
     dev: true
 
   registry.npmmirror.com/path-is-network-drive/1.0.13:
@@ -18335,7 +18328,7 @@ packages:
     name: path-is-network-drive
     version: 1.0.13
     dependencies:
-      tslib: registry.npmmirror.com/tslib/2.3.1
+      tslib: registry.npmmirror.com/tslib/2.4.0
     dev: true
 
   registry.npmmirror.com/path-root-regex/0.1.2:
@@ -18359,7 +18352,7 @@ packages:
     name: path-strip-sep
     version: 1.0.10
     dependencies:
-      tslib: registry.npmmirror.com/tslib/2.3.1
+      tslib: registry.npmmirror.com/tslib/2.4.0
     dev: true
 
   registry.npmmirror.com/path/0.12.7:
@@ -19254,7 +19247,7 @@ packages:
     version: 3.0.4
     dependencies:
       no-case: registry.npmmirror.com/no-case/3.0.4
-      tslib: registry.npmmirror.com/tslib/2.3.1
+      tslib: registry.npmmirror.com/tslib/2.4.0
       upper-case-first: registry.npmmirror.com/upper-case-first/2.0.2
     dev: true
 
@@ -19289,7 +19282,7 @@ packages:
     version: 3.0.4
     dependencies:
       dot-case: registry.npmmirror.com/dot-case/3.0.4
-      tslib: registry.npmmirror.com/tslib/2.3.1
+      tslib: registry.npmmirror.com/tslib/2.4.0
     dev: true
 
   registry.npmmirror.com/source-map-js/0.6.2:
@@ -19732,12 +19725,12 @@ packages:
       ts-toolbelt: ^9.6.0
     dependencies:
       '@types/node': registry.npmmirror.com/@types/node/16.11.1
-      tslib: registry.npmmirror.com/tslib/2.3.1
+      tslib: registry.npmmirror.com/tslib/2.4.0
       typedarray-dts: registry.npmmirror.com/typedarray-dts/1.0.0
     dev: true
 
   registry.npmmirror.com/tslib/1.14.1:
-    resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tslib/download/tslib-1.14.1.tgz}
+    resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tslib/-/tslib-1.14.1.tgz}
     name: tslib
     version: 1.14.1
     dev: true
@@ -19769,6 +19762,12 @@ packages:
     resolution: {integrity: sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tslib/-/tslib-2.3.1.tgz}
     name: tslib
     version: 2.3.1
+    dev: true
+
+  registry.npmmirror.com/tslib/2.4.0:
+    resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/tslib/-/tslib-2.4.0.tgz}
+    name: tslib
+    version: 2.4.0
     dev: true
 
   registry.npmmirror.com/tty-browserify/0.0.0:
@@ -19962,7 +19961,7 @@ packages:
     name: upper-case-first
     version: 2.0.2
     dependencies:
-      tslib: registry.npmmirror.com/tslib/2.3.1
+      tslib: registry.npmmirror.com/tslib/2.4.0
     dev: true
 
   registry.npmmirror.com/upper-case/1.1.3:
@@ -19976,7 +19975,7 @@ packages:
     name: upper-case
     version: 2.0.2
     dependencies:
-      tslib: registry.npmmirror.com/tslib/2.3.1
+      tslib: registry.npmmirror.com/tslib/2.4.0
     dev: true
 
   registry.npmmirror.com/url-loader/2.3.0_file-loader@4.3.0+webpack@4.46.0:
@@ -20294,23 +20293,6 @@ packages:
       clipboard: registry.nlark.com/clipboard/2.0.8
     dev: true
 
-  registry.npmmirror.com/vue-demi/0.11.4_vue@3.2.20:
-    resolution: {integrity: sha1-YQGZL+RyTPVjQBihbpU/MFLpTio=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vue-demi/download/vue-demi-0.11.4.tgz}
-    id: registry.npmmirror.com/vue-demi/0.11.4
-    name: vue-demi
-    version: 0.11.4
-    engines: {node: '>=12'}
-    hasBin: true
-    requiresBuild: true
-    peerDependencies:
-      '@vue/composition-api': ^1.0.0-rc.1
-      vue: ^3.0.0-0 || ^2.6.0
-    peerDependenciesMeta:
-      '@vue/composition-api':
-        optional: true
-    dependencies:
-      vue: registry.npmmirror.com/vue/3.2.20
-
   registry.npmmirror.com/vue-demi/0.12.0_vue@3.2.20:
     resolution: {integrity: sha512-eggsbQSQEJKlvQrtrJLx4J44MIVq5+Z7QetIEh1Na+ZWLgt5Fq0qskQ1QmckTTEoFcUdn36c4K23EjtXZhws7w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vue-demi/-/vue-demi-0.12.0.tgz}
     id: registry.npmmirror.com/vue-demi/0.12.0
@@ -20329,11 +20311,28 @@ packages:
       vue: registry.npmmirror.com/vue/3.2.20
     dev: true
 
-  registry.npmmirror.com/vue-echarts/6.0.0_echarts@5.2.2+vue@3.2.20:
-    resolution: {integrity: sha512-eB3fnnu8Oc+kwVTlBz95o/rliTbWIiUdxTG7vRQIIgRpINWW07WLSPm+UhlD6FZ/P8IqCoVG87pJeLRKsaHeMw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vue-echarts/download/vue-echarts-6.0.0.tgz}
-    id: registry.npmmirror.com/vue-echarts/6.0.0
+  registry.npmmirror.com/vue-demi/0.12.5_vue@3.2.20:
+    resolution: {integrity: sha512-BREuTgTYlUr0zw0EZn3hnhC3I6gPWv+Kwh4MCih6QcAeaTlaIX0DwOVN0wHej7hSvDPecz4jygy/idsgKfW58Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vue-demi/-/vue-demi-0.12.5.tgz}
+    id: registry.npmmirror.com/vue-demi/0.12.5
+    name: vue-demi
+    version: 0.12.5
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: registry.npmmirror.com/vue/3.2.20
+
+  registry.npmmirror.com/vue-echarts/6.0.3_echarts@5.3.2+vue@3.2.20:
+    resolution: {integrity: sha512-Nu+qb+szmBFCiVmNSZclquRx2lONGxfJXeppXODBYCl+KAdsP2TIaDwO2wfEFqU5jyxaL4b/qV7IYxswESTSFw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vue-echarts/-/vue-echarts-6.0.3.tgz}
+    id: registry.npmmirror.com/vue-echarts/6.0.3
     name: vue-echarts
-    version: 6.0.0
+    version: 6.0.3
     requiresBuild: true
     peerDependencies:
       '@vue/composition-api': ^1.0.5
@@ -20343,10 +20342,10 @@ packages:
       '@vue/composition-api':
         optional: true
     dependencies:
-      echarts: registry.npmmirror.com/echarts/5.2.2
+      echarts: registry.npmmirror.com/echarts/5.3.2
       resize-detector: registry.nlark.com/resize-detector/0.3.0
       vue: registry.npmmirror.com/vue/3.2.20
-      vue-demi: registry.npmmirror.com/vue-demi/0.11.4_vue@3.2.20
+      vue-demi: registry.npmmirror.com/vue-demi/0.12.5_vue@3.2.20
 
   registry.npmmirror.com/vue-eslint-parser/7.11.0_eslint@8.0.1:
     resolution: {integrity: sha1-IUtd6pYQB/z/su5luJEjB2KNDa8=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vue-eslint-parser/download/vue-eslint-parser-7.11.0.tgz}
@@ -20708,3 +20707,10 @@ packages:
       y18n: registry.nlark.com/y18n/3.2.2
       yargs-parser: registry.npmmirror.com/yargs-parser/5.0.1
     dev: true
+
+  registry.npmmirror.com/zrender/5.3.1:
+    resolution: {integrity: sha512-7olqIjy0gWfznKr6vgfnGBk7y4UtdMvdwFmK92vVQsQeDPyzkHW1OlrLEKg6GHz1W5ePf0FeN1q2vkl/HFqhXw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/zrender/-/zrender-5.3.1.tgz}
+    name: zrender
+    version: 5.3.1
+    dependencies:
+      tslib: registry.npmmirror.com/tslib/2.3.0

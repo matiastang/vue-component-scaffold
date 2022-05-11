@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-28 19:31:46
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-10 10:31:41
+ * @LastEditTime: 2022-05-11 15:53:20
  * @FilePath: /dw-vue-components/src/router/index.ts
  * @Description: 路由
  */
@@ -22,60 +22,60 @@ import DwDefectChartsTest from '@/views/test/DwDefectChartsTest.vue'
 import NotFound from '@/views/NotFound.vue'
 
 const routes: Array<RouteRecordRaw> = [
-    {
-        path: '/',
-        name: 'home',
-        component: Home,
-        beforeEnter: (to, from) => {
-            console.log(`web路由卫士：即将从${from.path}跳转到${to.path}`)
-            return true
-        },
-    },
-    {
-        path: '/dwStocksAnalysisLine',
-        name: 'dwStocksAnalysisLine',
-        component: DwStocksAnalysisLineTest,
-        beforeEnter: (to, from) => {
-            console.log(`web路由卫士：即将从${from.path}跳转到${to.path}`)
-            return true
-        },
-    },
-    {
-        path: '/dwFilterSlider',
-        name: 'dwFilterSlider',
-        component: DwFilterSliderTest,
-        beforeEnter: (to, from) => {
-            console.log(`web路由卫士：即将从${from.path}跳转到${to.path}`)
-            return true
-        },
-    },
-    {
-        path: '/dwFilterArea',
-        name: 'dwFilterArea',
-        component: DwFilterAreaTest,
-        beforeEnter: (to, from) => {
-            console.log(`web路由卫士：即将从${from.path}跳转到${to.path}`)
-            return true
-        },
-    },
     // {
-    //     path: '/dwPortfolioTest',
-    //     name: 'dwPortfolioTest',
-    //     component: DwPortfolioTest,
+    //     path: '/',
+    //     name: 'home',
+    //     component: Home,
     //     beforeEnter: (to, from) => {
     //         console.log(`web路由卫士：即将从${from.path}跳转到${to.path}`)
     //         return true
     //     },
     // },
-    {
-        path: '/dwEchartsTest',
-        name: 'dwEchartsTest',
-        component: DwEchartsTest,
-        beforeEnter: (to, from) => {
-            console.log(`web路由卫士：即将从${from.path}跳转到${to.path}`)
-            return true
-        },
-    },
+    // {
+    //     path: '/dwStocksAnalysisLine',
+    //     name: 'dwStocksAnalysisLine',
+    //     component: DwStocksAnalysisLineTest,
+    //     beforeEnter: (to, from) => {
+    //         console.log(`web路由卫士：即将从${from.path}跳转到${to.path}`)
+    //         return true
+    //     },
+    // },
+    // {
+    //     path: '/dwFilterSlider',
+    //     name: 'dwFilterSlider',
+    //     component: DwFilterSliderTest,
+    //     beforeEnter: (to, from) => {
+    //         console.log(`web路由卫士：即将从${from.path}跳转到${to.path}`)
+    //         return true
+    //     },
+    // },
+    // {
+    //     path: '/dwFilterArea',
+    //     name: 'dwFilterArea',
+    //     component: DwFilterAreaTest,
+    //     beforeEnter: (to, from) => {
+    //         console.log(`web路由卫士：即将从${from.path}跳转到${to.path}`)
+    //         return true
+    //     },
+    // },
+    // // {
+    // //     path: '/dwPortfolioTest',
+    // //     name: 'dwPortfolioTest',
+    // //     component: DwPortfolioTest,
+    // //     beforeEnter: (to, from) => {
+    // //         console.log(`web路由卫士：即将从${from.path}跳转到${to.path}`)
+    // //         return true
+    // //     },
+    // // },
+    // {
+    //     path: '/dwEchartsTest',
+    //     name: 'dwEchartsTest',
+    //     component: DwEchartsTest,
+    //     beforeEnter: (to, from) => {
+    //         console.log(`web路由卫士：即将从${from.path}跳转到${to.path}`)
+    //         return true
+    //     },
+    // },
     {
         path: '/dwDefectChartsTest',
         name: 'dwDefectChartsTest',

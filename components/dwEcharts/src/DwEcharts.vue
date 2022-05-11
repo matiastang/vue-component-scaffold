@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-09 09:48:16
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-10 16:34:32
+ * @LastEditTime: 2022-05-11 16:04:39
  * @FilePath: /dw-vue-components/components/dwEcharts/src/DwEcharts.vue
  * @Description: 
 -->
@@ -25,16 +25,6 @@ import {
 import { ECBasicOption } from 'echarts/types/dist/shared'
 import VChart, { THEME_KEY } from 'vue-echarts'
 
-use([
-    CanvasRenderer,
-    LineChart,
-    GridComponent,
-    TooltipComponent,
-    MarkLineComponent,
-    MarkPointComponent,
-    VisualMapComponent,
-])
-
 export default defineComponent({
     name: 'DwEcharts',
     props: {
@@ -51,6 +41,20 @@ export default defineComponent({
         },
     },
     setup(props, context) {
+        /**
+         * Error: Renderer 'undefined' is not imported. Please import it first
+         * zRander的registerPainter未初始化
+         */
+        use([
+            CanvasRenderer,
+            LineChart,
+            GridComponent,
+            TooltipComponent,
+            MarkLineComponent,
+            MarkPointComponent,
+            VisualMapComponent,
+        ])
+
         const chart: Ref<any> = ref(null)
         // 主题
         provide(THEME_KEY, props.themeKey)

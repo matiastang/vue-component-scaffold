@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-10 09:50:21
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-10 10:32:38
+ * @LastEditTime: 2022-05-11 15:32:56
  * @FilePath: /dw-vue-components/components/dwDefectFactorLine/src/DwDefectFactorLine.vue
  * @Description: 西筹-大v-寻暇记-因子收益率-折线图
 -->
@@ -249,6 +249,7 @@ export default defineComponent({
                             },
                         },
                         emphasis: {
+                            disabled: true, // 从 v5.3.0 开始支持
                             lineStyle: {
                                 width: 0, // hover时的折线宽度
                             },

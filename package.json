@@ -1,6 +1,6 @@
 {
     "name": "datumwealth-vue-components",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "description": "西筹金融科技Vue组件库",
     "private": false,
     "directories": {
@@ -54,9 +54,9 @@
     },
     "homepage": "https://github.com/matiastang/vue-scaffold#readme",
     "dependencies": {
-        "echarts": "^5.2.2",
+        "echarts": "^5.3.2",
         "vue": "^3.2.20",
-        "vue-echarts": "^6.0.0"
+        "vue-echarts": "^6.0.3"
     },
     "devDependencies": {
         "@element-plus/icons": "^0.0.11",

@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-13 10:12:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-11 11:29:14
+ * @LastEditTime: 2022-05-11 16:15:07
  * @FilePath: /dw-vue-components/README.md
  * @Description: datumwealth-vue-components
 -->
@@ -104,9 +104,18 @@ const redirect_uri = computed(() => {
 
 ### 0.3.2
 
-1. fix
+1. feat
+
+* 更新三方库
+```
+"echarts": "^5.3.2",
+"vue-echarts": "^6.0.3"
+```
+
+2. fix
 
 * 修复组件不能使用app.use()单独导入的问题
+* `zRander`的`registerPainter`未初始化，报错`Error: Renderer 'undefined' is not imported. Please import it first`
 
 ### 0.3.1
 
