@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-13 10:12:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-11 16:15:07
+ * @LastEditTime: 2022-05-11 18:58:46
  * @FilePath: /dw-vue-components/README.md
  * @Description: datumwealth-vue-components
 -->
@@ -31,8 +31,29 @@
   
 > 首先`main.ts`引入全局样式：
 ```ts
+// 导入组件依赖
+import { use } from 'echarts/core'
+import { CanvasRenderer } from 'echarts/renderers'
+import { LineChart } from 'echarts/charts'
+import {
+    GridComponent,
+    TooltipComponent,
+    MarkLineComponent,
+    MarkPointComponent,
+    VisualMapComponent,
+} from 'echarts/components'
 // 导入样式
 import 'datumwealth-vue-components/dist/style.css'
+use([
+    CanvasRenderer,
+    LineChart,
+    GridComponent,
+    TooltipComponent,
+    MarkLineComponent,
+    MarkPointComponent,
+    VisualMapComponent,
+])
+
 ```
 页面中引入组件并使用
 ```vue
@@ -65,10 +86,30 @@ const redirect_uri = computed(() => {
 
 > `main.ts`中引入
 ```ts
+// 导入组件依赖
+import { use } from 'echarts/core'
+import { CanvasRenderer } from 'echarts/renderers'
+import { LineChart } from 'echarts/charts'
+import {
+    GridComponent,
+    TooltipComponent,
+    MarkLineComponent,
+    MarkPointComponent,
+    VisualMapComponent,
+} from 'echarts/components'
 // 导入组件
 import DwVueComponents from 'datumwealth-vue-components'
 // 导入样式
 import 'datumwealth-vue-components/dist/style.css'
+use([
+    CanvasRenderer,
+    LineChart,
+    GridComponent,
+    TooltipComponent,
+    MarkLineComponent,
+    MarkPointComponent,
+    VisualMapComponent,
+])
 
 const app = createApp(App)
 
@@ -101,6 +142,14 @@ const redirect_uri = computed(() => {
 ```
 
 ## 版本
+
+### 0.3.3
+
+1. feat
+
+2. fix
+
+* 更新说明文档
 
 ### 0.3.2
 

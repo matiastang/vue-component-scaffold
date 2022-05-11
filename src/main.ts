@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-15 17:10:16
- * @LastEditTime: 2022-05-11 16:02:15
+ * @LastEditTime: 2022-05-11 18:46:43
  * @LastEditors: matiastang
  * @Description: In User Settings Edit
  * @FilePath: /dw-vue-components/src/main.ts
@@ -21,7 +21,6 @@ import { createPinia } from 'pinia'
 import { createPersistedState } from 'matias-pinia-persisted-state'
 // 自定义组件
 
-// import DwVueComponents from '../components/index'
 // import {
 //     DwPortfolioBg,
 //     DwDefectDashboard,
@@ -29,7 +28,7 @@ import { createPersistedState } from 'matias-pinia-persisted-state'
 //     DwDefectFactorLine,
 //     DwDefectFactorPositionTraceLine,
 // } from '../components/index'
-// import DwVueComponents from 'datumwealth-vue-components'
+import DwVueComponents from 'datumwealth-vue-components'
 // import {
 //     DwPortfolioBg,
 //     DwDefectDashboard,
@@ -39,7 +38,8 @@ import { createPersistedState } from 'matias-pinia-persisted-state'
 // } from 'datumwealth-vue-components'
 // import '../node_modules/datumwealth-vue-components/dist/style.css'
 import 'datumwealth-vue-components/dist/style.css'
-
+// import DwVueComponents from '../components/index'
+// import DwVueComponents from '../dist/index.es.js'
 // import DwVueComponents from 'root/dist/dw-vue-components.es.js'
 // import 'root/dist/style.css'
 
@@ -56,7 +56,27 @@ pinia.use(
 app.use(pinia)
 
 // 导入西筹组件
-// app.use(DwVueComponents)
+import { use } from 'echarts/core'
+import { CanvasRenderer } from 'echarts/renderers'
+import { LineChart } from 'echarts/charts'
+import {
+    GridComponent,
+    TooltipComponent,
+    MarkLineComponent,
+    MarkPointComponent,
+    VisualMapComponent,
+} from 'echarts/components'
+
+use([
+    CanvasRenderer,
+    LineChart,
+    GridComponent,
+    TooltipComponent,
+    MarkLineComponent,
+    MarkPointComponent,
+    VisualMapComponent,
+])
+app.use(DwVueComponents)
 // app.use(DwPortfolioBg)
 //     .use(DwDefectDashboard)
 //     .use(DwDefectPositionLine)
@@ -86,4 +106,4 @@ const print = (key: string, value: string) =>
     )
 print(_package.name, _package.version)
 print('当前Vue版本：', app.version)
-// print('当前datumwealth-vue-components版本：', DwVueComponents.version)
+print('当前datumwealth-vue-components版本：', DwVueComponents.version)

@@ -4,12 +4,12 @@
             <template v-slot:leftTopImg>
                 <img src="static/bg/bg-left-top.png" style="width: 28rem; height: 28rem" />
             </template>
-            <!-- <DwEcharts :echarts-option="echartsOption" :style="{ height: '300px' }"></DwEcharts> -->
-            <DwLineChart
+            <DwEcharts :echarts-option="echartsOption" :style="{ height: '300px' }"></DwEcharts>
+            <!-- <DwLineChart
                 ref="chart"
                 :echarts-option="echartsOption"
                 :style="{ height: '300px', background: '#FFFFFF' }"
-            ></DwLineChart>
+            ></DwLineChart> -->
             <DwDefectFactorLine
                 :x-data="xData"
                 :y-data="yData"
@@ -39,11 +39,11 @@ import {
     computed,
     watchEffect,
 } from 'vue'
-import { DwPortfolioBg } from 'datumwealth-vue-components'
-import DwEcharts from 'root/components/dwEcharts'
-import DwLineChart from 'root/components/dwLineChart'
-import DwDefectPositionLine from 'root/components/dwDefectPositionLine'
-import DwDefectFactorLine from 'root/components/dwDefectFactorLine'
+// import { DwPortfolioBg } from 'datumwealth-vue-components'
+// import DwEcharts from 'root/components/dwEcharts'
+// import DwLineChart from 'root/components/dwLineChart'
+// import DwDefectPositionLine from 'root/components/dwDefectPositionLine'
+// import DwDefectFactorLine from 'root/components/dwDefectFactorLine'
 
 const xData = [
     '2021.7.9',
