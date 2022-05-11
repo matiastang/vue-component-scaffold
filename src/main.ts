@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-15 17:10:16
- * @LastEditTime: 2022-05-10 17:04:45
+ * @LastEditTime: 2022-05-11 11:26:21
  * @LastEditors: matiastang
  * @Description: In User Settings Edit
  * @FilePath: /dw-vue-components/src/main.ts
@@ -20,7 +20,26 @@ import _package from '../package.json'
 import { createPinia } from 'pinia'
 import { createPersistedState } from 'matias-pinia-persisted-state'
 // 自定义组件
-// import DwVueComponents from 'datumwealth-vue-components'
+
+// import DwVueComponents from '../components/index'
+// import {
+//     DwPortfolioBg,
+//     DwDefectDashboard,
+//     DwDefectPositionLine,
+//     DwDefectFactorLine,
+//     DwDefectFactorPositionTraceLine,
+// } from '../components/index'
+import DwVueComponents from 'datumwealth-vue-components'
+// import {
+//     DwPortfolioBg,
+//     DwDefectDashboard,
+//     DwDefectPositionLine,
+//     DwDefectFactorLine,
+//     DwDefectFactorPositionTraceLine,
+// } from 'datumwealth-vue-components'
+// import '../node_modules/datumwealth-vue-components/dist/style.css'
+import 'datumwealth-vue-components/dist/style.css'
+
 // import DwVueComponents from 'root/dist/dw-vue-components.es.js'
 // import 'root/dist/style.css'
 
@@ -37,7 +56,12 @@ pinia.use(
 app.use(pinia)
 
 // 导入西筹组件
-// app.use(DwVueComponents)
+app.use(DwVueComponents)
+// app.use(DwPortfolioBg)
+//     .use(DwDefectDashboard)
+//     .use(DwDefectPositionLine)
+//     .use(DwDefectFactorLine)
+//     .use(DwDefectFactorPositionTraceLine)
 
 // Element-plus组件
 app.use(ElementPlus, {
@@ -62,3 +86,4 @@ const print = (key: string, value: string) =>
     )
 print(_package.name, _package.version)
 print('当前Vue版本：', app.version)
+print('当前datumwealth-vue-components版本：', DwVueComponents.version)

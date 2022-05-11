@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-06 14:01:32
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-10 15:33:08
+ * @LastEditTime: 2022-05-10 17:40:05
  * @FilePath: /dw-vue-components/components/dwDefectDashboard/src/DwDefectDashboard.vue
  * @Description: 仪表盘比例显示
 -->
@@ -13,6 +13,8 @@
         :style="{
             width: '124px',
             height: '90px',
+            background: 'white',
+            zoom: 0.5,
         }"
     >
     </canvas>
@@ -377,10 +379,3 @@ export default defineComponent({
     },
 })
 </script>
-
-<style lang="scss" scoped>
-.dw-canvas {
-    background: white;
-    zoom: 0.5;
-}
-</style>

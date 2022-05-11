@@ -1,6 +1,6 @@
 {
     "name": "datumwealth-vue-components",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "description": "西筹金融科技Vue组件库",
     "private": false,
     "directories": {
@@ -17,7 +17,8 @@
         ".": {
             "import": "./dist/index.es.js",
             "require": "./dist/index.umd.js"
-        }
+        },
+        "./*": "./*"
     },
     "keywords": [
         "dw",
@@ -81,7 +82,7 @@
         "@vue/eslint-config-typescript": "^8.0.0",
         "axios": "0.26.1",
         "child_process": "^1.0.2",
-        "datumwealth-vue-components": "0.2.3",
+        "datumwealth-vue-components": "0.3.1",
         "del": "^6.0.0",
         "element-plus": "^1.2.0-beta.1",
         "eslint": "^8.0.1",
@@ -129,6 +130,7 @@
         "vite-plugin-dts": "^0.9.7",
         "vite-plugin-imagemin": "^0.4.6",
         "vite-plugin-inspect": "0.4.3",
+        "vite-plugin-style-import": "^2.0.0",
         "vue-axios": "^3.4.0",
         "vue-clipboard3": "^1.0.1",
         "vue-router": "^4.0.12",

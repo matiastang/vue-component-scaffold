@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-13 10:12:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-10 17:07:57
+ * @LastEditTime: 2022-05-10 18:44:52
  * @FilePath: /dw-vue-components/README.md
  * @Description: datumwealth-vue-components
 -->
@@ -26,7 +26,15 @@
 2. 声明使用
 
 两种引入方式如下（以`DwWechatLogin`组件举例）：
+
 * 单个组件引入
+  
+> 首先`main.ts`引入全局样式：
+```ts
+// 导入样式
+import 'datumwealth-vue-components/dist/style.css'
+```
+页面中引入组件并使用
 ```vue
 <template>
     <DwWechatLogin
@@ -54,24 +62,18 @@ const redirect_uri = computed(() => {
 ```
 
 * 全局引入
+
 > `main.ts`中引入
 ```ts
-// 自定义组件
+// 导入组件
 import DwVueComponents from 'datumwealth-vue-components'
+// 导入样式
+import 'datumwealth-vue-components/dist/style.css'
 
 const app = createApp(App)
 
 // 导入西筹组件
 app.use(DwVueComponents)
-```
-> `tsconfig.json`引入组件全局声明
-```json
-{
-    ...
-    "files": ["node_modules/datumwealth-vue-components/global.d.ts"],
-    ...
-}
-```
 > `*.vue`文件中使用
 ```vue
 <template>
@@ -115,7 +117,12 @@ const redirect_uri = computed(() => {
 * 状态管理更新为使用`pinia`并使用`matias-pinia-persisted-state`实现状态本地持久化。
 * 删除废弃文件
 
-### 0.3.0
+4. 更新说明文件
+5. 修复bug
+* 样式不能全局导入问题
+* 不能全局引入组件问题
+
+### 0.3.1
 
 1. 添加基础组件
 

@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-10 10:27:25
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-10 16:38:14
+ * @LastEditTime: 2022-05-11 11:18:56
  * @FilePath: /dw-vue-components/src/views/test/DwDefectChartsTest.vue
  * @Description: 西筹-大V-寻暇记-图谱测试
 -->
@@ -12,7 +12,12 @@
             <template v-slot:leftTopImg>
                 <img src="static/bg/bg-left-top.png" style="width: 28rem; height: 28rem" />
             </template>
-            <DwDefectDashboard></DwDefectDashboard>
+            <DwDefectDashboard
+                :style="{
+                    background: 'white',
+                    zoom: 0.5,
+                }"
+            ></DwDefectDashboard>
             <DwDefectFactorLine
                 ref="factorChart"
                 :x-data="xData"
@@ -44,11 +49,19 @@
 </template>
 <script setup lang="ts">
 import { Ref, ref, watchEffect } from 'vue'
-import { DwPortfolioBg } from 'datumwealth-vue-components'
-import DwDefectDashboard from 'root/components/dwDefectDashboard'
-import DwDefectPositionLine from 'root/components/dwDefectPositionLine'
-import DwDefectFactorLine from 'root/components/dwDefectFactorLine'
-import DwDefectFactorPositionTraceLine from 'root/components/dwDefectFactorPositionTraceLine'
+// import { DwPortfolioBg } from 'datumwealth-vue-components'
+// import {
+//     DwPortfolioBg,
+//     DwDefectDashboard,
+//     DwDefectPositionLine,
+//     DwDefectFactorLine,
+//     DwDefectFactorPositionTraceLine,
+// } from 'datumwealth-vue-components'
+// import { DwPortfolioBg } from 'datumwealth-vue-components'
+// import DwDefectDashboard from 'root/components/dwDefectDashboard'
+// import DwDefectPositionLine from 'root/components/dwDefectPositionLine'
+// import DwDefectFactorLine from 'root/components/dwDefectFactorLine'
+// import DwDefectFactorPositionTraceLine from 'root/components/dwDefectFactorPositionTraceLine'
 
 const xData = [
     '2021.7.9',
@@ -116,6 +129,7 @@ watchEffect(() => {
 
 <style lang="scss" scoped>
 .home {
+    width: 100%;
     background: #f87125;
     border-radius: 6px;
     display: flex;
@@ -124,6 +138,7 @@ watchEffect(() => {
     align-items: center;
     overflow: hidden;
     .home-bg {
+        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;

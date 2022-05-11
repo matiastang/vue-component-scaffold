@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-15 16:57:39
- * @LastEditTime: 2022-05-09 14:33:37
+ * @LastEditTime: 2022-05-10 19:09:18
  * @LastEditors: matiastang
  * @Description: In User Settings Edit
  * @FilePath: /dw-vue-components/vite.config.ts
@@ -21,6 +21,8 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 // 自动导入使用 unplugin-vue-components
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+// 导入样式
+import styleImport from 'vite-plugin-style-import'
 // 开启GZIP压缩
 import compressPlugin from 'vite-plugin-compression'
 // 图片压缩
@@ -47,7 +49,20 @@ export default defineConfig(({ mode, command }) => {
             // ElementPlus({
             //     useSource: true,
             // }),
-
+            // styleImport({
+            //     libs: [
+            //         {
+            //             libraryName: 'element-plus',
+            //             esModule: true,
+            //             resolveStyle: (name) => {
+            //                 return `element-plus/lib/theme-chalk/${name}.css`
+            //             },
+            //             resolveComponent: (name) => {
+            //                 return `element-plus/lib/${name}`
+            //             },
+            //         },
+            //     ],
+            // }),
             compressPlugin({
                 ext: '.gz', //gz br
                 algorithm: 'gzip', //brotliCompress gzip

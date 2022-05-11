@@ -2,40 +2,39 @@
  * @Author: matiastang
  * @Date: 2021-12-30 15:31:25
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-10 15:38:42
+ * @LastEditTime: 2022-05-11 11:25:41
  * @FilePath: /dw-vue-components/components/index.ts
  * @Description: 导出所有组件
  */
 import { App } from 'vue'
-import DwWechatLogin from './dwWechatLogin/src/DwWechatLogin.vue'
-import DwDragVerify from './dwDragVerify/src/DwDragVerify.vue'
+import DwWechatLogin from './dwWechatLogin/index'
+import DwDragVerify from './dwDragVerify/index'
 // 基础
-import DwEcharts from './dwEcharts/src/DwEcharts.vue'
-import DwLineChart from './dwLineChart/src/DwLineChart.vue'
+import DwEcharts from './dwEcharts/index'
+import DwLineChart from './dwLineChart/index'
 // 西筹基金组合小程序图谱组件
-import DwPortfolioBg from './dwPortfolioBg/src/DwPortfolioBg.vue'
-import DwPortfolioIcon from './dwPortfolioIcon/src/DwPortfolioIcon.vue'
-import DwPortfolioLine from './dwPortfolioLine/src/DwPortfolioLine.vue'
-import DwPortfolioPie from './dwPortfolioPie/src/DwPortfolioPie.vue'
-import DwPortfolioIndustry from './dwPortfolioIndustry/src/DwPortfolioIndustry.vue'
-import DwPortfolioNetWorth from './dwPortfolioNetWorth/src/DwPortfolioNetWorth.vue'
+import DwPortfolioBg from './dwPortfolioBg/index'
+import DwPortfolioIcon from './dwPortfolioIcon/index'
+import DwPortfolioLine from './dwPortfolioLine/index'
+import DwPortfolioPie from './dwPortfolioPie/index'
+import DwPortfolioIndustry from './dwPortfolioIndustry/index'
+import DwPortfolioNetWorth from './dwPortfolioNetWorth/index'
 // 西筹个股分析小程序图谱组件
-import DwStocksAnalysisLine, {
-    AnalyzeType,
-    ReportType,
-} from './dwStocksAnalysisLine/src/DwStocksAnalysisLine.vue'
+import DwStocksAnalysisLine, { AnalyzeType, ReportType } from './dwStocksAnalysisLine/index'
 // 基金筛选
-import DwFilterSlider from './dwFilterSlider/src/DwFilterSlider.vue'
-import DwFilterArea from './dwFilterArea/src/DwFilterArea.vue'
+import DwFilterSlider from './dwFilterSlider/index'
+import DwFilterArea from './dwFilterArea/index'
 // import { ChartItem, CanvasItem } from './dwFilterArea/src/interface'
-import DwFilterRuler from './dwFilterRuler/src/DwFilterRuler.vue'
-import DwFilterAreaSlider from './dwFilterAreaSlider/src/DwFilterAreaSlider.vue'
-import DwFilterRulerSlider from './dwFilterRulerSlider/src/DwFilterRulerSlider.vue'
+import DwFilterRuler from './dwFilterRuler/index'
+import DwFilterAreaSlider from './dwFilterAreaSlider/index'
+import DwFilterRulerSlider from './dwFilterRulerSlider/index'
 // 寻暇记
-import DwDefectDashboard from './dwDefectDashboard/src/DwDefectDashboard.vue'
-import DwDefectPositionLine from './dwDefectPositionLine/src/DwDefectPositionLine.vue'
-import DwDefectFactorLine from './dwDefectFactorLine/src/DwDefectFactorLine.vue'
-import DwDefectFactorPositionTraceLine from './dwDefectFactorPositionTraceLine/src/DwDefectFactorPositionTraceLine.vue'
+import DwDefectDashboard from './dwDefectDashboard/index'
+import DwDefectPositionLine from './dwDefectPositionLine/index'
+import DwDefectFactorLine from './dwDefectFactorLine/index'
+import DwDefectFactorPositionTraceLine from './dwDefectFactorPositionTraceLine/index'
+
+import _package from '../package.json'
 
 // 所有组件列表
 const components = [
@@ -66,8 +65,8 @@ const components = [
 // 定义 install 方法， App 作为参数, options
 const install = (app: App): void => {
     // 遍历注册所有组件
-    components.map((item) => {
-        app.component(item.name, item.component)
+    components.map((component) => {
+        app.component(component.name, component)
     })
 }
 
@@ -105,6 +104,6 @@ export {
 }
 
 export default {
-    version: '0.3.0',
+    version: _package.version,
     install,
 }
