@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-10 09:50:21
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-11 15:32:56
+ * @LastEditTime: 2022-05-12 17:33:52
  * @FilePath: /dw-vue-components/components/dwDefectFactorLine/src/DwDefectFactorLine.vue
  * @Description: 西筹-大v-寻暇记-因子收益率-折线图
 -->
@@ -43,6 +43,16 @@ type TypeOptional<T> = {
  * 主题颜色
  */
 type LineThemeColors = TypeOptional<ThemeColor>
+
+/**
+ * 图grid
+ */
+interface ChartsGrid {
+    left: number
+    right: number
+    top: number
+    bottom: number
+}
 
 export default defineComponent({
     name: 'DwDefectFactorLine',
@@ -89,6 +99,20 @@ export default defineComponent({
             type: Boolean,
             default: false,
         },
+        /**
+         * grid
+         */
+        grid: {
+            type: Object as PropType<ChartsGrid>,
+            default: () => {
+                return {
+                    left: 0,
+                    right: 30,
+                    top: 10,
+                    bottom: 5,
+                } as ChartsGrid
+            },
+        },
     },
     setup(props, context) {
         // 导出
@@ -132,10 +156,10 @@ export default defineComponent({
             return {
                 grid: {
                     show: true,
-                    left: '0',
-                    right: '30',
-                    top: '10',
-                    bottom: '5',
+                    left: props.grid.left,
+                    right: props.grid.right,
+                    top: props.grid.top,
+                    bottom: props.grid.bottom,
                     containLabel: true,
                     backgroundColor: colors.value.gridBackgroundColor,
                     borderColor: colors.value.gridBorderColor,
@@ -215,7 +239,7 @@ export default defineComponent({
                             return `${Number(value)}`
                         },
                     },
-                    min: 0,
+                    // min: 0,
                     // max: 100,
                 },
                 series: [

@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-09 09:48:16
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-11 18:49:48
+ * @LastEditTime: 2022-05-12 17:43:39
  * @FilePath: /dw-vue-components/components/dwEcharts/src/DwEcharts.vue
  * @Description: 
 -->

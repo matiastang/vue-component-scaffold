@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-09 17:08:43
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-10 10:32:46
+ * @LastEditTime: 2022-05-12 17:35:37
  * @FilePath: /dw-vue-components/components/dwDefectPositionLine/src/DwDefectPositionLine.vue
  * @Description: 西筹-大v-寻暇记-权益仓位-折线图
 -->
@@ -43,6 +43,16 @@ type TypeOptional<T> = {
  * 主题颜色
  */
 type LineThemeColors = TypeOptional<ThemeColor>
+
+/**
+ * 图grid
+ */
+interface ChartsGrid {
+    left: number
+    right: number
+    top: number
+    bottom: number
+}
 
 export default defineComponent({
     name: 'DwDefectPositionLine',
@@ -89,6 +99,20 @@ export default defineComponent({
             type: Boolean,
             default: false,
         },
+        /**
+         * grid
+         */
+        grid: {
+            type: Object as PropType<ChartsGrid>,
+            default: () => {
+                return {
+                    left: 7,
+                    right: 3,
+                    top: 10,
+                    bottom: 5,
+                } as ChartsGrid
+            },
+        },
     },
     setup(props, context) {
         // 导出
@@ -132,10 +156,10 @@ export default defineComponent({
             return {
                 grid: {
                     show: true,
-                    left: '0',
-                    right: '30',
-                    top: '10',
-                    bottom: '5',
+                    left: props.grid.left,
+                    right: props.grid.right,
+                    top: props.grid.top,
+                    bottom: props.grid.bottom,
                     containLabel: true,
                     backgroundColor: colors.value.gridBackgroundColor,
                     borderColor: colors.value.gridBorderColor,

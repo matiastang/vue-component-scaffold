@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-10 10:41:21
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-10 16:34:11
+ * @LastEditTime: 2022-05-12 17:35:39
  * @FilePath: /dw-vue-components/components/dwDefectFactorPositionTraceLine/src/DwDefectFactorPositionTraceLine.vue
  * @Description: 西筹-大v-寻暇记-权益仓位-权益&仓位-折线图
 -->
@@ -49,6 +49,16 @@ interface BasePieces {
 
 interface Pieces extends BasePieces {
     [key: string]: string
+}
+
+/**
+ * 图grid
+ */
+interface ChartsGrid {
+    left: number
+    right: number
+    top: number
+    bottom: number
 }
 
 export default defineComponent({
@@ -163,6 +173,20 @@ export default defineComponent({
                 return []
             },
         },
+        /**
+         * grid
+         */
+        grid: {
+            type: Object as PropType<ChartsGrid>,
+            default: () => {
+                return {
+                    left: 7,
+                    right: 3,
+                    top: 10,
+                    bottom: 5,
+                } as ChartsGrid
+            },
+        },
     },
     setup(props, context) {
         // 导出
@@ -205,10 +229,10 @@ export default defineComponent({
             return {
                 grid: {
                     show: true,
-                    left: 7,
-                    right: 3,
-                    top: 10,
-                    bottom: 5,
+                    left: props.grid.left,
+                    right: props.grid.right,
+                    top: props.grid.top,
+                    bottom: props.grid.bottom,
                     containLabel: true,
                     backgroundColor: colors.value.gridBackgroundColor,
                     borderColor: colors.value.gridBorderColor,

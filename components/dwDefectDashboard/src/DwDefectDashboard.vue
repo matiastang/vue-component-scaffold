@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-06 14:01:32
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-10 17:40:05
+ * @LastEditTime: 2022-05-12 13:55:34
  * @FilePath: /dw-vue-components/components/dwDefectDashboard/src/DwDefectDashboard.vue
  * @Description: 仪表盘比例显示
 -->
@@ -40,7 +40,7 @@ export default defineComponent({
         },
         percentage: {
             type: Number,
-            default: Math.PI / 2,
+            default: 100,
         },
         startColor: {
             type: String,
@@ -77,7 +77,7 @@ export default defineComponent({
             } as Point // 中间点
             const circleR = radius - 12 //圆半径
             const startAngle = -Math.PI //开始角度
-            const endAngle = startAngle + value //结束角度
+            const endAngle = startAngle + (value * Math.PI) / 100 //结束角度
             ctx.clearRect(0, 0, width, height) // 清理
             initBgArc(ctx, centerPoint, circleR, lineWidth, startAngle, startAngle + Math.PI)
             initScale(ctx, centerPoint, radius, Math.PI / 6, 3, 6, 23)
@@ -93,7 +93,8 @@ export default defineComponent({
                 radius,
                 circleR,
                 startColor,
-                endColor
+                endColor,
+                value
             )
         }
 
@@ -109,6 +110,7 @@ export default defineComponent({
          * @param circleR
          * @param startColor
          * @param endColor
+         * @param value
          */
         const rander = (
             ctx: CanvasRenderingContext2D,
@@ -120,7 +122,8 @@ export default defineComponent({
             radius: number,
             circleR: number,
             startColor: string,
-            endColor: string
+            endColor: string,
+            value: number
         ) => {
             if (tmpAngle >= endAngle) {
                 return
@@ -144,7 +147,7 @@ export default defineComponent({
             ctx.font = '36px Microsoft Yahei'
             ctx.textAlign = 'center'
             ctx.fillText(
-                `${Math.round(((tmpAngle - startAngle) / (endAngle - startAngle)) * 100)}`,
+                `${Math.round(((tmpAngle - startAngle) / (endAngle - startAngle)) * value)}`,
                 radius,
                 radius + 12
             )
@@ -171,7 +174,8 @@ export default defineComponent({
                     radius,
                     circleR,
                     startColor,
-                    endColor
+                    endColor,
+                    value
                 )
             })
         }
@@ -355,14 +359,18 @@ export default defineComponent({
                     console.warn('canvas获取context失败')
                     return
                 }
-                const value = props.percentage
+                let value = props.percentage
                 if (value === undefined) {
                     console.warn('请传入percentage')
                     return
                 }
-                if (value < 0 || value > Math.PI) {
-                    console.warn('percentage在0~Math.PI之间')
-                    return
+                if (value < 0) {
+                    console.warn('percentage在>=0')
+                    value = 0
+                }
+                if (value > 100) {
+                    console.warn('percentage在<=100')
+                    value = 100
                 }
                 let canvasW = (canvas.width = 124)
                 let canvasH = (canvas.height = 90)

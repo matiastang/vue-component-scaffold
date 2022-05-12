@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-15 17:10:16
- * @LastEditTime: 2022-05-11 18:46:43
+ * @LastEditTime: 2022-05-12 17:46:56
  * @LastEditors: matiastang
  * @Description: In User Settings Edit
  * @FilePath: /dw-vue-components/src/main.ts
@@ -28,7 +28,7 @@ import { createPersistedState } from 'matias-pinia-persisted-state'
 //     DwDefectFactorLine,
 //     DwDefectFactorPositionTraceLine,
 // } from '../components/index'
-import DwVueComponents from 'datumwealth-vue-components'
+// import DwVueComponents from 'datumwealth-vue-components'
 // import {
 //     DwPortfolioBg,
 //     DwDefectDashboard,
@@ -38,8 +38,8 @@ import DwVueComponents from 'datumwealth-vue-components'
 // } from 'datumwealth-vue-components'
 // import '../node_modules/datumwealth-vue-components/dist/style.css'
 import 'datumwealth-vue-components/dist/style.css'
-// import DwVueComponents from '../components/index'
-// import DwVueComponents from '../dist/index.es.js'
+// import DwVueComponents, { initEcharts } from '../components/index'
+import DwVueComponents, { initEcharts } from '../dist/index.es.js'
 // import DwVueComponents from 'root/dist/dw-vue-components.es.js'
 // import 'root/dist/style.css'
 
@@ -76,6 +76,7 @@ use([
     MarkPointComponent,
     VisualMapComponent,
 ])
+// initEcharts()
 app.use(DwVueComponents)
 // app.use(DwPortfolioBg)
 //     .use(DwDefectDashboard)
