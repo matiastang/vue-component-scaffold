@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-13 10:12:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-12 17:48:48
+ * @LastEditTime: 2022-05-13 11:20:09
  * @FilePath: /dw-vue-components/README.md
  * @Description: datumwealth-vue-components
 -->
@@ -142,6 +142,14 @@ const redirect_uri = computed(() => {
 ```
 
 ## 版本
+
+### 0.3.4
+
+1. feat
+
+* `DwDefectPositionLine`、`DwDefectFactorLine`、`DwDefectFactorPositionTraceLine`开放参数部分配置参数
+* `DwDefectFactorLine``y`轴添加百分比符号
+* `DwDefectFactorPositionTraceLine`提示框仓位添加百分号
 
 ### 0.3.3
 

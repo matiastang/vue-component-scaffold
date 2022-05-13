@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-10 10:27:25
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-12 17:27:53
+ * @LastEditTime: 2022-05-13 10:53:28
  * @FilePath: /dw-vue-components/src/views/test/DwDefectChartsTest.vue
  * @Description: 西筹-大V-寻暇记-图谱测试
 -->
@@ -21,8 +21,8 @@
             ></DwDefectDashboard>
             <DwDefectFactorLine
                 ref="factorChart"
-                :x-data="xData"
-                :y-data="yData"
+                :x-data="factorCurveXData.value"
+                :y-data="factorCurveYData.value"
                 :chart-theme="{}"
                 :point-trace="true"
                 :style="{ height: '300px', background: '#FFFFFF' }"
@@ -35,11 +35,18 @@
                 :style="{ height: '300px', background: '#FFFFFF' }"
             ></DwDefectPositionLine>
             <DwDefectFactorPositionTraceLine
-                :x-data="xData"
+                :x-data="tradeoffPositionChartXData"
                 factor-title="沪深300权益性价比"
-                :factorYData="data.one"
+                :factorYData="tradeoffChartYData"
+                :tooltipFactorValueDecimalDigits="4"
                 position-title="灵活配置型公募持仓"
-                :positionYData="data.two"
+                :positionYData="positionChartYData"
+                :yRangeRound="{
+                    min: false,
+                    max: false,
+                    diffPercent: 10,
+                    decimal: 10,
+                }"
                 :style="{ height: '300px', background: '#FFFFFF' }"
             ></DwDefectFactorPositionTraceLine>
             <template v-slot:rightBottomImg>
@@ -49,7 +56,9 @@
     </div>
 </template>
 <script setup lang="ts">
-import { Ref, ref, watchEffect } from 'vue'
+import { Ref, ref, watchEffect, reactive, computed } from 'vue'
+import { tradeoffCurve, positionCurve, factorCurve } from '@/api/request'
+import { TradeoffCurveInfo, PositionCurveItem } from '@/@types/index'
 // import { DwPortfolioBg } from 'datumwealth-vue-components'
 // import {
 //     DwPortfolioBg,
@@ -108,6 +117,166 @@ const data = {
 }
 
 const factorChart: Ref<any> = ref(null)
+// 权益和公募性价比数据
+const tradeoffPositionData = reactive({
+    tradeoffData: null as TradeoffCurveInfo | null,
+    positionData: null as PositionCurveItem[] | null,
+})
+/**
+ * 获取权益性价比数据
+ * @param indexCode
+ * @param range
+ */
+const getTradeoffCurveChartsData = (indexCode: string, range: string) => {
+    tradeoffCurve(indexCode, range)
+        .then((res) => {
+            tradeoffPositionData.tradeoffData = res
+        })
+        .catch((err) => {
+            console.warn(err)
+        })
+}
+watchEffect(() => {
+    const indexCode = '000905.SH'
+    const range = 'M6'
+    getTradeoffCurveChartsData(indexCode, range)
+})
+/**
+ * 获取权益性价比数据
+ * @param classifyCode
+ * @param range
+ */
+const getPositionCurveChartsData = (classifyCode: string, range: string) => {
+    positionCurve(classifyCode, range)
+        .then((res) => {
+            tradeoffPositionData.positionData = res
+        })
+        .catch((err) => {
+            console.warn(err)
+        })
+}
+watchEffect(() => {
+    const classifyCode = 'XX2022H0'
+    const range = 'M6'
+    getPositionCurveChartsData(classifyCode, range)
+})
+
+const dateStringTransform = (str: string) => {
+    if (str.length !== 8) {
+        return str
+    }
+    const y = str.slice(0, 4)
+    let m = str.slice(4, 6)
+    if (m.startsWith('0')) {
+        m = m.slice(1)
+    }
+    let d = str.slice(6, 8)
+    if (d.startsWith('0')) {
+        d = d.slice(1)
+    }
+    return `${y}.${m}.${d}`
+}
+
+/**
+ * x data
+ */
+const tradeoffPositionChartXData = computed(() => {
+    const postion = tradeoffPositionData.positionData
+    if (postion) {
+        return postion.map((item) => dateStringTransform(item.tradeDate))
+    }
+    const tradeoff = tradeoffPositionData.tradeoffData
+    if (tradeoff) {
+        return tradeoff.list.map((item) => dateStringTransform(item.tradeDate))
+    }
+    return []
+})
+const tradeoffChartYData = computed(() => {
+    const tradeoff = tradeoffPositionData.tradeoffData
+    if (tradeoff) {
+        return tradeoff.list.map((item) => item.rltvValue)
+    }
+    return []
+})
+const tradeoffChartPieces = computed(() => {
+    const tradeoff = tradeoffPositionData.tradeoffData
+    if (tradeoff) {
+        const avg = tradeoff.avg
+        const deviation = tradeoff.deviation
+        return [
+            {
+                gt: Number.MIN_SAFE_INTEGER,
+                lte: avg - 2 * deviation,
+                color: '#1BCE17',
+            },
+            {
+                gt: avg - 2 * deviation,
+                lte: avg + 2 * deviation,
+                color: '#FFAB48',
+            },
+            {
+                gt: avg + 2 * deviation,
+                lte: Number.MAX_SAFE_INTEGER,
+                color: '#FF2E2E',
+            },
+        ]
+    }
+    return [
+        {
+            gt: Number.MIN_SAFE_INTEGER,
+            lte: -2,
+            color: '#1BCE17',
+        },
+        {
+            gt: -2,
+            lte: 2,
+            color: '#FFAB48',
+        },
+        {
+            gt: 2,
+            lte: Number.MAX_SAFE_INTEGER,
+            color: '#FF2E2E',
+        },
+    ]
+})
+const positionChartYData = computed(() => {
+    const postion = tradeoffPositionData.positionData
+    if (postion) {
+        return postion.map((item) => item.value * 100)
+    }
+    return []
+})
+/**
+ * 因子收益率x
+ */
+const factorCurveXData = reactive({
+    value: [] as string[],
+})
+/**
+ * 因子收益率y
+ */
+const factorCurveYData = reactive({
+    value: [] as number[],
+})
+/**
+ * 获取因子收益率数据
+ * @param classifyCode
+ * @param range
+ */
+const getFactorCurveChartsData = (range: string) => {
+    factorCurve(range)
+        .then((res) => {
+            factorCurveXData.value = res.map((item) => dateStringTransform(item.tradeDate))
+            factorCurveYData.value = res.map((item) => item.ftrRtn)
+        })
+        .catch((err) => {
+            console.warn(err)
+        })
+}
+watchEffect(() => {
+    const range = 'M6'
+    getFactorCurveChartsData(range)
+})
 
 // 监听
 watchEffect(() => {

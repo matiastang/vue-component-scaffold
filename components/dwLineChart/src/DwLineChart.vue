@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-09 10:46:25
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-10 16:35:44
+ * @LastEditTime: 2022-05-13 10:50:37
  * @FilePath: /dw-vue-components/components/dwLineChart/src/DwLineChart.vue
  * @Description: 折线图
 -->
@@ -17,8 +17,9 @@
 
 <script lang="ts">
 import { defineComponent, ref, Ref, PropType, computed } from 'vue'
-import DwEcharts from '../../dwEcharts'
 import { ECBasicOption, EChartsOption } from 'echarts/types/dist/shared'
+import DwEcharts from '../../dwEcharts'
+import { RangeRound } from '../../@types/index'
 
 export default defineComponent({
     name: 'DwLineChart',
@@ -36,6 +37,20 @@ export default defineComponent({
          */
         echartsOption: {
             type: Object as PropType<ECBasicOption>,
+        },
+        /**
+         * y轴显示范围取整
+         */
+        yRangeRound: {
+            type: Object as PropType<RangeRound>,
+            default: () => {
+                return {
+                    min: true,
+                    max: true,
+                    diffPercent: 10,
+                    decimal: 10,
+                }
+            },
         },
     },
     setup(props, context) {
@@ -76,11 +91,22 @@ export default defineComponent({
             let min = Math.min(...allData)
             let max = Math.max(...allData)
             const diff = max - min
-            min = min - diff / 10
-            max = max + diff / 10
+            const diffPercent = props.yRangeRound.diffPercent
+            const decimal = props.yRangeRound.decimal
+            const roundMin = props.yRangeRound.min
+            const roundMax = props.yRangeRound.max
+            min = min - diff / diffPercent
+            max = max + diff / diffPercent
+            if (roundMin) {
+                min = Math.floor(min * decimal) / decimal
+            }
+            if (roundMax) {
+                max = Math.ceil(max * decimal) / decimal
+            }
+            console.log(roundMin, roundMax, `min=${min},max=${max}`)
             return {
-                min: Math.floor(min * 10) / 10,
-                max: Math.ceil(max * 10) / 10,
+                min,
+                max,
             }
         }
         /**

@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-10 10:41:21
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-12 17:35:39
+ * @LastEditTime: 2022-05-13 11:04:39
  * @FilePath: /dw-vue-components/components/dwDefectFactorPositionTraceLine/src/DwDefectFactorPositionTraceLine.vue
  * @Description: 西筹-大v-寻暇记-权益仓位-权益&仓位-折线图
 -->
@@ -10,13 +10,15 @@
     <DwLineChart
         ref="lineChart"
         :theme-key="themeKey"
+        :yRangeRound="yRangeRound"
         :echarts-option="echartsOption"
         :style="{ height: '300px', background: '#FFFFFF' }"
     ></DwLineChart>
 </template>
 <script lang="ts">
-import { defineComponent, ref, Ref, computed, PropType, reactive } from 'vue'
+import { defineComponent, ref, Ref, computed, PropType } from 'vue'
 import DwLineChart from '../../dwLineChart'
+import { RangeRound } from '../../@types/index'
 
 interface ThemeColor {
     color?: string
@@ -73,6 +75,20 @@ export default defineComponent({
             default: 'bright',
         },
         /**
+         * y轴显示范围取整
+         */
+        yRangeRound: {
+            type: Object as PropType<RangeRound>,
+            default: () => {
+                return {
+                    min: true,
+                    max: true,
+                    diffPercent: 10,
+                    decimal: 10,
+                }
+            },
+        },
+        /**
          * 主题色
          */
         chartTheme: {
@@ -89,6 +105,13 @@ export default defineComponent({
             default: () => {
                 return []
             },
+        },
+        /**
+         * 是否显示x首尾坐标
+         */
+        xAxisLabel: {
+            type: Boolean,
+            default: false,
         },
         /**
          * factor title
@@ -130,6 +153,13 @@ export default defineComponent({
             default: () => {
                 return []
             },
+        },
+        /**
+         * Factor数据保留位数
+         */
+        tooltipFactorValueDecimalDigits: {
+            type: Number,
+            default: 2,
         },
         /**
          * position title
@@ -174,14 +204,21 @@ export default defineComponent({
             },
         },
         /**
+         * Factor数据保留位数
+         */
+        tooltipPositionValueDecimalDigits: {
+            type: Number,
+            default: 2,
+        },
+        /**
          * grid
          */
         grid: {
             type: Object as PropType<ChartsGrid>,
             default: () => {
                 return {
-                    left: 7,
-                    right: 3,
+                    left: 0,
+                    right: 0,
                     top: 10,
                     bottom: 5,
                 } as ChartsGrid
@@ -266,9 +303,12 @@ export default defineComponent({
                                     itemDate = item.axisValue
                                 }
                                 if (item && typeof item.value === 'number') {
-                                    return `<br/>${item.marker} ${
-                                        item.seriesName
-                                    } ${item.value.toFixed(2)}`
+                                    // ${item.marker}
+                                    return `<br/> ${item.seriesName} ${item.value.toFixed(
+                                        index === 0
+                                            ? props.tooltipFactorValueDecimalDigits
+                                            : props.tooltipPositionValueDecimalDigits
+                                    )}${index === 0 ? '' : '%'}`
                                 }
                                 return ''
                             })
@@ -294,7 +334,7 @@ export default defineComponent({
                     },
                     splitNumber: 20,
                     axisLabel: {
-                        show: true,
+                        show: props.xAxisLabel,
                         fontSize: 14,
                         color: colors.value.xAxisAxisLabelColor,
                         interval: 0, //使x轴文字显示全

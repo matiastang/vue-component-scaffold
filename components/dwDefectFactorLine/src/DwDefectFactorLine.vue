@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-10 09:50:21
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-12 17:33:52
+ * @LastEditTime: 2022-05-13 11:17:38
  * @FilePath: /dw-vue-components/components/dwDefectFactorLine/src/DwDefectFactorLine.vue
  * @Description: 西筹-大v-寻暇记-因子收益率-折线图
 -->
@@ -10,6 +10,7 @@
     <DwLineChart
         ref="lineChart"
         :theme-key="themeKey"
+        :yRangeRound="yRangeRound"
         :echarts-option="echartsOption"
         :style="{ height: '300px', background: '#FFFFFF' }"
     ></DwLineChart>
@@ -17,6 +18,7 @@
 <script lang="ts">
 import { defineComponent, ref, Ref, computed, PropType, reactive, watchEffect } from 'vue'
 import DwLineChart from '../../dwLineChart'
+import { RangeRound } from '../../@types/index'
 
 interface ThemeColor {
     color?: string
@@ -66,6 +68,20 @@ export default defineComponent({
             default: 'bright',
         },
         /**
+         * y轴显示范围取整
+         */
+        yRangeRound: {
+            type: Object as PropType<RangeRound>,
+            default: () => {
+                return {
+                    min: true,
+                    max: true,
+                    diffPercent: 10,
+                    decimal: 10,
+                }
+            },
+        },
+        /**
          * 主题色
          */
         chartTheme: {
@@ -82,6 +98,13 @@ export default defineComponent({
             default: () => {
                 return []
             },
+        },
+        /**
+         * 是否显示x首尾坐标
+         */
+        xAxisLabel: {
+            type: Boolean,
+            default: false,
         },
         /**
          * y轴数据
@@ -107,7 +130,7 @@ export default defineComponent({
             default: () => {
                 return {
                     left: 0,
-                    right: 30,
+                    right: 0,
                     top: 10,
                     bottom: 5,
                 } as ChartsGrid
@@ -181,12 +204,12 @@ export default defineComponent({
                     }; border-radius: 6px;font-size: 12px; font-family: PingFang SC-Regular, PingFang SC; font-weight: 400; color: ${
                         colors.value.tooltipExtraCssTextColor
                     }; line-height: 14px;`,
-                    formatter: (value: { value: number }[], index: number) => {
+                    formatter: (value: any[], index: number) => {
                         if (!Array.isArray(value) || value.length <= 0) {
                             return `${index}数据格式错误`
                         }
                         let item = value[0]
-                        return `因子收益率：${item.value.toFixed(2)}%`
+                        return `${item.axisValue}<br/>因子收益率：${item.value.toFixed(2)}%`
                     },
                 },
                 xAxis: {
@@ -204,7 +227,7 @@ export default defineComponent({
                     },
                     splitNumber: 20,
                     axisLabel: {
-                        show: true,
+                        show: props.xAxisLabel,
                         fontSize: 14,
                         color: colors.value.xAxisAxisLabelColor,
                         interval: 0, //使x轴文字显示全
@@ -236,11 +259,9 @@ export default defineComponent({
                         fontSize: 10,
                         color: colors.value.yAxisAxisLabelColor,
                         formatter: (value: string, index: number) => {
-                            return `${Number(value)}`
+                            return `${Number(value)}%`
                         },
                     },
-                    // min: 0,
-                    // max: 100,
                 },
                 series: [
                     {

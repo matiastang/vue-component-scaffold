@@ -2,8 +2,8 @@
  * @Author: matiastang
  * @Date: 2021-11-19 10:02:46
  * @LastEditors: matiastang
- * @LastEditTime: 2021-12-21 14:12:34
- * @FilePath: /datumwealth-openalpha-front/src/common/request/prefix.ts
+ * @LastEditTime: 2022-05-13 10:08:37
+ * @FilePath: /dw-vue-components/src/api/request/prefix.ts
  * @Description: 前缀
  */
 const systemPrefix = '/sys'
@@ -19,4 +19,16 @@ const tradePrefix = '/trade'
 const contentPrefix = '/content'
 // 三方登录
 const loginPrefix = '/login'
-export { systemPrefix, apiPrefix, memberPrefix, tradePrefix, contentPrefix, loginPrefix }
+/**
+ * 大V-情绪分析-测试接口前缀
+ */
+const testDefectPrefix = '/emotion'
+export {
+    systemPrefix,
+    apiPrefix,
+    memberPrefix,
+    tradePrefix,
+    contentPrefix,
+    loginPrefix,
+    testDefectPrefix,
+}
