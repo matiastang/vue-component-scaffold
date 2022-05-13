@@ -2,13 +2,15 @@
  * @Author: matiastang
  * @Date: 2021-12-30 15:31:25
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-12 13:57:13
+ * @LastEditTime: 2022-05-13 15:54:46
  * @FilePath: /dw-vue-components/components/index.ts
  * @Description: 导出所有组件
  */
 import { App } from 'vue'
 import DwWechatLogin from './dwWechatLogin/index'
 import DwDragVerify from './dwDragVerify/index'
+// 类型
+// export * from './@types/index'
 // 基础
 import DwEcharts from './dwEcharts/index'
 import DwLineChart from './dwLineChart/index'

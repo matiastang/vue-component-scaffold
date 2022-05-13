@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-09 10:46:25
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-13 10:50:37
+ * @LastEditTime: 2022-05-13 15:26:21
  * @FilePath: /dw-vue-components/components/dwLineChart/src/DwLineChart.vue
  * @Description: 折线图
 -->
@@ -37,6 +37,13 @@ export default defineComponent({
          */
         echartsOption: {
             type: Object as PropType<ECBasicOption>,
+        },
+        /**
+         * 自动设置Y轴显示范围
+         */
+        autoSetYRangeRound: {
+            type: Boolean,
+            default: true,
         },
         /**
          * y轴显示范围取整
@@ -103,7 +110,7 @@ export default defineComponent({
             if (roundMax) {
                 max = Math.ceil(max * decimal) / decimal
             }
-            console.log(roundMin, roundMax, `min=${min},max=${max}`)
+            console.info(roundMin, roundMax, `min=${min},max=${max}`)
             return {
                 min,
                 max,
@@ -135,9 +142,54 @@ export default defineComponent({
             }
             // 数据范围设置
             const yAxis = chartOtpion.yAxis
-            if (yAxis) {
+            if (props.autoSetYRangeRound && yAxis) {
                 if (Array.isArray(yAxis)) {
                     console.info('TODO: - set yAxis min and max in yAxis is array')
+                    for (let i = 0; i < yAxis.length; i++) {
+                        const yAxisItem = yAxis[i]
+                        const yAxisShow = yAxisItem.show
+                        if (yAxisShow || yAxisShow === undefined) {
+                            const min = yAxisItem.min
+                            const max = yAxisItem.max
+                            const series = chartOtpion.series
+                            let values = [] as (number | null)[]
+                            if (series) {
+                                if (Array.isArray(series)) {
+                                    if (series.length > i) {
+                                        const lineData = series[i].data as
+                                            | (number | null)[]
+                                            | {
+                                                  value: number | null
+                                              }[]
+                                        // FIXME: - string | number | Date;
+                                        values = lineData
+                                            .map((values) => {
+                                                if (typeof values !== 'object') {
+                                                    return values
+                                                }
+                                                if (values === null) {
+                                                    return values
+                                                }
+                                                return values.value
+                                            })
+                                            .flat()
+                                        console.log(values)
+                                    } else {
+                                        console.warn(`fix: series lingth < ${i}`)
+                                    }
+                                } else {
+                                    console.warn('fix: yAxis is array, series is not array')
+                                }
+                            }
+                            const range = yAxisDataRange(values)
+                            if (min === undefined) {
+                                yAxisItem.min = range.min
+                            }
+                            if (max === undefined) {
+                                yAxisItem.max = range.max
+                            }
+                        }
+                    }
                 } else {
                     const yAxisShow = yAxis.show
                     if (yAxisShow || yAxisShow === undefined) {

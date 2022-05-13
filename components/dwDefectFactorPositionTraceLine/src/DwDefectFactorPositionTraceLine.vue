@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-10 10:41:21
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-13 11:04:39
+ * @LastEditTime: 2022-05-13 15:42:54
  * @FilePath: /dw-vue-components/components/dwDefectFactorPositionTraceLine/src/DwDefectFactorPositionTraceLine.vue
  * @Description: 西筹-大v-寻暇记-权益仓位-权益&仓位-折线图
 -->
@@ -11,6 +11,7 @@
         ref="lineChart"
         :theme-key="themeKey"
         :yRangeRound="yRangeRound"
+        :autoSetYRangeRound="autoSetYRangeRound"
         :echarts-option="echartsOption"
         :style="{ height: '300px', background: '#FFFFFF' }"
     ></DwLineChart>
@@ -18,50 +19,12 @@
 <script lang="ts">
 import { defineComponent, ref, Ref, computed, PropType } from 'vue'
 import DwLineChart from '../../dwLineChart'
-import { RangeRound } from '../../@types/index'
-
-interface ThemeColor {
-    color?: string
-    gridBackgroundColor: string
-    gridBorderColor: string
-    tooltipBorderColor: string
-    tooltipExtraCssTextBackground: string
-    tooltipExtraCssTextColor: string
-    xAxisAxisLabelColor: string
-    yAxisAxisLineLineStyleColor: string
-    yAxisAxisTickLineStyleColor: string
-    yAxisAxisLabelColor: string
-    seriesLineMarkLineLineStyle: string
-    seriesLineMarkLineEmphasisLineStyle: string
-}
-/**
- * 类型转换为可选
- */
-type TypeOptional<T> = {
-    [key in keyof T]?: T[key]
-}
-/**
- * 主题颜色
- */
-type LineThemeColors = TypeOptional<ThemeColor>
-
-interface BasePieces {
-    color: string
-}
-
-interface Pieces extends BasePieces {
-    [key: string]: string
-}
-
-/**
- * 图grid
- */
-interface ChartsGrid {
-    left: number
-    right: number
-    top: number
-    bottom: number
-}
+import {
+    RangeRound,
+    ChartsGrid,
+    DefectFactorPositionTraceOptionalThemeColors,
+    DefectFactorPositionTracePieces,
+} from '../../@types/index'
 
 export default defineComponent({
     name: 'DwDefectFactorPositionTraceLine',
@@ -92,7 +55,7 @@ export default defineComponent({
          * 主题色
          */
         chartTheme: {
-            type: Object as PropType<LineThemeColors>,
+            type: Object as PropType<DefectFactorPositionTraceOptionalThemeColors>,
             default: () => {
                 return {}
             },
@@ -124,7 +87,7 @@ export default defineComponent({
          * factor - visualMap
          */
         factorVisualMapPieces: {
-            type: Array as PropType<Array<Pieces>>,
+            type: Array as PropType<DefectFactorPositionTracePieces[]>,
             default: () => {
                 return [
                     {
@@ -162,6 +125,13 @@ export default defineComponent({
             default: 2,
         },
         /**
+         * Factor yAxis数据保留位数
+         */
+        factorYAxisDecimalDigits: {
+            type: Number,
+            default: 3,
+        },
+        /**
          * position title
          */
         positionTitle: {
@@ -172,7 +142,7 @@ export default defineComponent({
          * position - visualMap
          */
         positionVisualMapPieces: {
-            type: Array as PropType<Array<Pieces>>,
+            type: Array as PropType<DefectFactorPositionTracePieces[]>,
             default: () => {
                 return [
                     {
@@ -211,6 +181,13 @@ export default defineComponent({
             default: 2,
         },
         /**
+         * position yAxis数据保留位数
+         */
+        positionYAxisDecimalDigits: {
+            type: Number,
+            default: 0,
+        },
+        /**
          * grid
          */
         grid: {
@@ -223,6 +200,13 @@ export default defineComponent({
                     bottom: 5,
                 } as ChartsGrid
             },
+        },
+        /**
+         * 自动设置Y轴显示范围
+         */
+        autoSetYRangeRound: {
+            type: Boolean,
+            default: false,
         },
     },
     setup(props, context) {
@@ -243,7 +227,7 @@ export default defineComponent({
                 yAxisAxisLabelColor: '#404040',
                 seriesLineMarkLineLineStyle: '#FF54CF', //'#8F8F8F',
                 seriesLineMarkLineEmphasisLineStyle: '#FF54CF', //'#8F8F8F',
-            } as ThemeColor
+            } as DefectFactorPositionTraceOptionalThemeColors
             return {
                 ...normalColors,
                 ...props.chartTheme,
@@ -373,7 +357,11 @@ export default defineComponent({
                             fontSize: 10,
                             color: colors.value.yAxisAxisLabelColor,
                             formatter: (value: string, index: number) => {
-                                return value
+                                try {
+                                    return Number(value).toFixed(props.factorYAxisDecimalDigits)
+                                } catch (error) {
+                                    return value
+                                }
                             },
                         },
                     },
@@ -404,7 +392,14 @@ export default defineComponent({
                             fontSize: 10,
                             color: colors.value.yAxisAxisLabelColor,
                             formatter: (value: string, index: number) => {
-                                return `${value}%`
+                                try {
+                                    let data = Number(value).toFixed(
+                                        props.positionYAxisDecimalDigits
+                                    )
+                                    return `${data}%`
+                                } catch (error) {
+                                    return `${value}%`
+                                }
                             },
                         },
                     },

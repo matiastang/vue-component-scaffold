@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-10 09:50:21
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-13 11:17:38
+ * @LastEditTime: 2022-05-13 15:44:46
  * @FilePath: /dw-vue-components/components/dwDefectFactorLine/src/DwDefectFactorLine.vue
  * @Description: 西筹-大v-寻暇记-因子收益率-折线图
 -->
@@ -11,6 +11,7 @@
         ref="lineChart"
         :theme-key="themeKey"
         :yRangeRound="yRangeRound"
+        :autoSetYRangeRound="autoSetYRangeRound"
         :echarts-option="echartsOption"
         :style="{ height: '300px', background: '#FFFFFF' }"
     ></DwLineChart>
@@ -18,43 +19,7 @@
 <script lang="ts">
 import { defineComponent, ref, Ref, computed, PropType, reactive, watchEffect } from 'vue'
 import DwLineChart from '../../dwLineChart'
-import { RangeRound } from '../../@types/index'
-
-interface ThemeColor {
-    color?: string
-    gridBackgroundColor: string
-    gridBorderColor: string
-    tooltipBorderColor: string
-    tooltipExtraCssTextBackground: string
-    tooltipExtraCssTextColor: string
-    xAxisAxisLabelColor: string
-    yAxisAxisLineLineStyleColor: string
-    yAxisAxisLabelColor: string
-    seriesLineAreaStyleStartColor: string
-    seriesLineAreaStyleEndColor: string
-    seriesLineMarkLineLineStyle: string
-    seriesLineMarkLineEmphasisLineStyle: string
-}
-/**
- * 类型转换为可选
- */
-type TypeOptional<T> = {
-    [key in keyof T]?: T[key]
-}
-/**
- * 主题颜色
- */
-type LineThemeColors = TypeOptional<ThemeColor>
-
-/**
- * 图grid
- */
-interface ChartsGrid {
-    left: number
-    right: number
-    top: number
-    bottom: number
-}
+import { RangeRound, ChartsGrid, DefectFactorOptionalThemeColors } from '../../@types/index'
 
 export default defineComponent({
     name: 'DwDefectFactorLine',
@@ -82,10 +47,17 @@ export default defineComponent({
             },
         },
         /**
+         * 自动设置Y轴显示范围
+         */
+        autoSetYRangeRound: {
+            type: Boolean,
+            default: true,
+        },
+        /**
          * 主题色
          */
         chartTheme: {
-            type: Object as PropType<LineThemeColors>,
+            type: Object as PropType<DefectFactorOptionalThemeColors>,
             default: () => {
                 return {}
             },
@@ -156,7 +128,7 @@ export default defineComponent({
                 seriesLineAreaStyleEndColor: '#FFF0EB',
                 seriesLineMarkLineLineStyle: '#8F8F8F',
                 seriesLineMarkLineEmphasisLineStyle: '#8F8F8F',
-            } as ThemeColor
+            } as DefectFactorOptionalThemeColors
             return {
                 ...normalColors,
                 ...props.chartTheme,

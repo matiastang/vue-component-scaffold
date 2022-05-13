@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-10 10:27:25
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-13 10:53:28
+ * @LastEditTime: 2022-05-13 15:33:46
  * @FilePath: /dw-vue-components/src/views/test/DwDefectChartsTest.vue
  * @Description: 西筹-大V-寻暇记-图谱测试
 -->
@@ -34,21 +34,24 @@
                 :point-trace="false"
                 :style="{ height: '300px', background: '#FFFFFF' }"
             ></DwDefectPositionLine>
-            <DwDefectFactorPositionTraceLine
-                :x-data="tradeoffPositionChartXData"
-                factor-title="沪深300权益性价比"
-                :factorYData="tradeoffChartYData"
-                :tooltipFactorValueDecimalDigits="4"
-                position-title="灵活配置型公募持仓"
-                :positionYData="positionChartYData"
-                :yRangeRound="{
-                    min: false,
-                    max: false,
-                    diffPercent: 10,
-                    decimal: 10,
-                }"
-                :style="{ height: '300px', background: '#FFFFFF' }"
-            ></DwDefectFactorPositionTraceLine>
+            <div v-if="tradeoffChartYData && positionChartYData" :style="{ width: '100%' }">
+                <DwDefectFactorPositionTraceLine
+                    :x-data="tradeoffPositionChartXData"
+                    factor-title="沪深300权益性价比"
+                    :factorYData="tradeoffChartYData"
+                    :tooltipFactorValueDecimalDigits="4"
+                    position-title="灵活配置型公募持仓"
+                    :positionYData="positionChartYData"
+                    :yRangeRound="{
+                        min: false,
+                        max: false,
+                        diffPercent: 10,
+                        decimal: 10,
+                    }"
+                    :autoSetYRangeRound="false"
+                    :style="{ height: '300px', background: '#FFFFFF' }"
+                ></DwDefectFactorPositionTraceLine>
+            </div>
             <template v-slot:rightBottomImg>
                 <img src="static/bg/bg-right-bottom.png" style="width: 28rem; height: 28rem" />
             </template>
@@ -138,7 +141,7 @@ const getTradeoffCurveChartsData = (indexCode: string, range: string) => {
 }
 watchEffect(() => {
     const indexCode = '000905.SH'
-    const range = 'M6'
+    const range = 'Y1'
     getTradeoffCurveChartsData(indexCode, range)
 })
 /**
@@ -156,8 +159,8 @@ const getPositionCurveChartsData = (classifyCode: string, range: string) => {
         })
 }
 watchEffect(() => {
-    const classifyCode = 'XX2022H0'
-    const range = 'M6'
+    const classifyCode = 'XX2022FL' //'XX2022H0'
+    const range = 'Y1'
     getPositionCurveChartsData(classifyCode, range)
 })
 
@@ -196,7 +199,7 @@ const tradeoffChartYData = computed(() => {
     if (tradeoff) {
         return tradeoff.list.map((item) => item.rltvValue)
     }
-    return []
+    return null
 })
 const tradeoffChartPieces = computed(() => {
     const tradeoff = tradeoffPositionData.tradeoffData
@@ -244,7 +247,7 @@ const positionChartYData = computed(() => {
     if (postion) {
         return postion.map((item) => item.value * 100)
     }
-    return []
+    return null
 })
 /**
  * 因子收益率x
@@ -274,7 +277,7 @@ const getFactorCurveChartsData = (range: string) => {
         })
 }
 watchEffect(() => {
-    const range = 'M6'
+    const range = 'Y1'
     getFactorCurveChartsData(range)
 })
 

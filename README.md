@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-13 10:12:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-13 11:20:09
+ * @LastEditTime: 2022-05-13 15:46:49
  * @FilePath: /dw-vue-components/README.md
  * @Description: datumwealth-vue-components
 -->
@@ -142,6 +142,13 @@ const redirect_uri = computed(() => {
 ```
 
 ## 版本
+
+### 0.3.5
+
+1. feat
+* `DwLineChart`、`DwDefectPositionLine`、`DwDefectFactorLine`、`DwDefectFactorPositionTraceLine`开放自动设置`y`轴数据范围参数
+* `DwLineChart`处理多条显示的`y`轴数据范围设置
+* 添加`Defect`系列组件类型导出
 
 ### 0.3.4
 
