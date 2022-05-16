@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-01-13 19:00:54
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-17 15:17:03
+ * @LastEditTime: 2022-05-16 15:41:39
  * @FilePath: /dw-vue-components/src/views/test/DwStocksAnalysisLineTest.vue
  * @Description: DwStocksAnalysisLine组件测试
 -->
@@ -24,6 +24,8 @@
                 :autoResize="false"
                 @arge-screen="argeScreenAction"
                 :showFullScreen="true"
+                themeColor="#296fff"
+                :pointTrace="true"
             >
                 <template v-slot:fullScreenImg>
                     <img
@@ -40,10 +42,11 @@
 import { Ref, ref, reactive, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import {
     DwPortfolioBg,
-    DwStocksAnalysisLine,
+    // DwStocksAnalysisLine,
     AnalyzeType,
     ReportType,
 } from 'datumwealth-vue-components'
+// import DwPortfolioBg from 'root/components/dwPortfolioBg'
 // import DwStocksAnalysisLine, { AnalyzeType, ReportType } from 'root/components/dwStocksAnalysisLine'
 
 const argeScreenAction = () => {
@@ -139,6 +142,12 @@ onBeforeUnmount(() => {
 </script>
 
 <style lang="scss" scoped>
+// .dw-stocks-analysis-line {
+//     --charts-bottom-normal-bg-color: #ffffff;
+//     --charts-bottom-normal-text-color: #191919;
+//     --charts-bottom-select-bg-color: #ff0000;
+//     --charts-bottom-select-text-color: #ffffff;
+// }
 .home {
     display: flex;
     flex-direction: column;

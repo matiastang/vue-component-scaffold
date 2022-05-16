@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-28 19:31:46
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-11 18:39:37
+ * @LastEditTime: 2022-05-16 14:44:46
  * @FilePath: /dw-vue-components/src/router/index.ts
  * @Description: 路由
  */
@@ -31,15 +31,15 @@ const routes: Array<RouteRecordRaw> = [
     //         return true
     //     },
     // },
-    // {
-    //     path: '/dwStocksAnalysisLine',
-    //     name: 'dwStocksAnalysisLine',
-    //     component: DwStocksAnalysisLineTest,
-    //     beforeEnter: (to, from) => {
-    //         console.log(`web路由卫士：即将从${from.path}跳转到${to.path}`)
-    //         return true
-    //     },
-    // },
+    {
+        path: '/dwStocksAnalysisLineTest',
+        name: 'dwStocksAnalysisLine',
+        component: DwStocksAnalysisLineTest,
+        beforeEnter: (to, from) => {
+            console.log(`web路由卫士：即将从${from.path}跳转到${to.path}`)
+            return true
+        },
+    },
     // {
     //     path: '/dwFilterSlider',
     //     name: 'dwFilterSlider',

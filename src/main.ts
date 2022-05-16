@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-15 17:10:16
- * @LastEditTime: 2022-05-13 15:56:50
+ * @LastEditTime: 2022-05-16 15:44:49
  * @LastEditors: matiastang
  * @Description: In User Settings Edit
  * @FilePath: /dw-vue-components/src/main.ts
@@ -37,11 +37,13 @@ import { createPersistedState } from 'matias-pinia-persisted-state'
 //     DwDefectFactorPositionTraceLine,
 // } from 'datumwealth-vue-components'
 // import '../node_modules/datumwealth-vue-components/dist/style.css'
-import 'datumwealth-vue-components/dist/style.css'
+// import 'datumwealth-vue-components/dist/style.css'
 // import DwVueComponents, { initEcharts } from '../components/index'
 import DwVueComponents, { initEcharts } from '../dist/index.es.js'
 // import DwVueComponents from 'root/dist/dw-vue-components.es.js'
-// import 'root/dist/style.css'
+import 'root/dist/style.css'
+// 默认主题（如果是其他预编译样式可以配置vite默认导入）
+import '@/common/themes/default.css'
 
 const app = createApp(App)
 

@@ -2,16 +2,19 @@
  * @Author: matiastang
  * @Date: 2022-01-13 14:21:48
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-17 15:30:47
+ * @LastEditTime: 2022-05-16 15:48:32
  * @FilePath: /dw-vue-components/components/dwStocksAnalysisLine/src/DwStocksAnalysisLine.vue
  * @Description: 西筹“个股分析”小程序，折线图
 -->
 <template>
     <div class="dw-stocks-analysis-line">
         <div class="dw-stocks-analysis-content">
-            <VChart
+            <DwLineChart
                 class="dw-stocks-analysis-chart"
                 ref="vEchart"
+                :theme-key="themeKey"
+                :yRangeRound="yRangeRound"
+                :autoSetYRangeRound="autoSetYRangeRound"
                 :option="echartsOption"
                 :style="chartStyle"
                 :auto-resize="true"
@@ -51,27 +54,38 @@
 </template>
 
 <script lang="ts">
-import { Ref, ref, computed, defineComponent, provide, onMounted, onBeforeUnmount } from 'vue'
-import { use } from 'echarts/core'
-import { CanvasRenderer } from 'echarts/renderers'
-import { LineChart } from 'echarts/charts'
 import {
-    GridComponent,
-    TooltipComponent,
-    MarkLineComponent,
-    MarkPointComponent,
-} from 'echarts/components'
-import VChart, { THEME_KEY } from 'vue-echarts'
+    PropType,
+    Ref,
+    ref,
+    computed,
+    watchEffect,
+    defineComponent,
+    // provide,
+    onMounted,
+    onBeforeUnmount,
+    reactive,
+} from 'vue'
+// import { use } from 'echarts/core'
+// import { CanvasRenderer } from 'echarts/renderers'
+// import { LineChart } from 'echarts/charts'
+// import {
+//     GridComponent,
+//     TooltipComponent,
+//     MarkLineComponent,
+//     MarkPointComponent,
+// } from 'echarts/components'
+// import VChart, { THEME_KEY } from 'vue-echarts'
 import { bigDataFormatter, moneyFormatter, removeZeroSuffix } from '../../utils'
 
-use([
-    CanvasRenderer,
-    LineChart,
-    GridComponent,
-    TooltipComponent,
-    MarkLineComponent,
-    MarkPointComponent,
-])
+// use([
+//     CanvasRenderer,
+//     LineChart,
+//     GridComponent,
+//     TooltipComponent,
+//     MarkLineComponent,
+//     MarkPointComponent,
+// ])
 /**
  * 分析类型
  */
@@ -131,6 +145,9 @@ interface TooltipItem {
     value: number //39853625
 }
 
+import DwLineChart from '../../dwLineChart'
+import { RangeRound } from '../../@types/index'
+
 export default defineComponent({
     name: 'DwStocksAnalysisLine',
     props: {
@@ -140,6 +157,27 @@ export default defineComponent({
         themeKey: {
             type: String,
             default: 'bright', // 'bark'
+        },
+        /**
+         * y轴显示范围取整
+         */
+        yRangeRound: {
+            type: Object as PropType<RangeRound>,
+            default: () => {
+                return {
+                    min: true,
+                    max: true,
+                    diffPercent: 10,
+                    decimal: 10,
+                }
+            },
+        },
+        /**
+         * 自动设置Y轴显示范围
+         */
+        autoSetYRangeRound: {
+            type: Boolean,
+            default: true,
         },
         /**
          * x轴数据
@@ -217,18 +255,19 @@ export default defineComponent({
         yData: {
             type: Array as () => number[],
             default: () => {
+                return []
                 // 数量
-                return [
-                    63728781, 273408012, 311825293, 271786113, 143719228, 222530711, 176305296,
-                    373832056, 651284673, 695289545, 741806715, 592130430, 335984459, 426056686,
-                    420261800, 464910782, 245593994, 250017771, 203402386, 240828490, 258252854,
-                    484602734, 478500678, 351851486, 251681543, 168237572, 149348223, 163708039,
-                    97209784, 125416681, 81425750, 118520172, 198272592, 103719831, 106024806,
-                    112399063, 42588132, 33720601, 39853625, 58161258, 80456579, 290098071,
-                    265900439, 300892926, 257879212, 222048195, 346866266, 263609489, 314932440,
-                    337497035, 317148074, 239032318, 164582499, 129692109, 228657045, 382740223,
-                    269650282, 82123528, 56577291,
-                ]
+                // return [
+                //     63728781, 273408012, 311825293, 271786113, 143719228, 222530711, 176305296,
+                //     373832056, 651284673, 695289545, 741806715, 592130430, 335984459, 426056686,
+                //     420261800, 464910782, 245593994, 250017771, 203402386, 240828490, 258252854,
+                //     484602734, 478500678, 351851486, 251681543, 168237572, 149348223, 163708039,
+                //     97209784, 125416681, 81425750, 118520172, 198272592, 103719831, 106024806,
+                //     112399063, 42588132, 33720601, 39853625, 58161258, 80456579, 290098071,
+                //     265900439, 300892926, 257879212, 222048195, 346866266, 263609489, 314932440,
+                //     337497035, 317148074, 239032318, 164582499, 129692109, 228657045, 382740223,
+                //     269650282, 82123528, 56577291,
+                // ]
                 // 市值
                 // return [
                 //     2998439146.05, 19562342755.74, 42080823290.35, 28836506589.3, 7604184353.48,
@@ -314,6 +353,20 @@ export default defineComponent({
             type: Boolean,
             default: true,
         },
+        /**
+         * 主题颜色
+         */
+        themeColor: {
+            type: String,
+            default: '#D65928',
+        },
+        /**
+         * 十字点追踪（开启后对性能有一定影响）
+         */
+        pointTrace: {
+            type: Boolean,
+            default: false,
+        },
     },
     emits: {
         /**
@@ -327,7 +380,7 @@ export default defineComponent({
         // provide(LOADING_OPTIONS_KEY, { notMerge: true })
         // :update-options="{notMerge:true}"
         // 主题
-        provide(THEME_KEY, props.themeKey)
+        // provide(THEME_KEY, props.themeKey)
         const selectDateIndex = ref(3)
         // 时间切换列表
         const dateList = computed(() => {
@@ -480,48 +533,63 @@ export default defineComponent({
                 yData,
             }
         })
+        /**
+         * 点类型
+         */
+        const symbolType = computed(() => {
+            if (showData.value.yData.length <= 1) {
+                return 'circle'
+            }
+            return 'none'
+        })
         // 数据的最小值和最大值
-        const dataMaxMin = computed(() => {
-            const valueArr = showData.value.yData
-            if (valueArr.length <= 0) {
-                return {
-                    max: 100,
-                    min: 0,
-                }
-            }
-            if (valueArr.length === 1) {
-                return {
-                    max: 2 * valueArr[0],
-                    min: 0,
-                }
-            }
-            let max = null
-            let min = null
-            for (let value of valueArr) {
-                if (max === null || max < value) {
-                    max = value
-                }
-                if (min === null || min > value) {
-                    min = value
-                }
-            }
-            if (max !== null && min !== null) {
-                const diffValue = max - min
-                return {
-                    max: max + diffValue / 8,
-                    min: min - diffValue / 8,
-                }
-            }
-            if (min == null) {
-                return {
-                    max: max,
-                    min: 0,
-                }
-            }
-            return {
-                max: 100,
-                min: min,
-            }
+        // const dataMaxMin = computed(() => {
+        //     const valueArr = showData.value.yData
+        //     if (valueArr.length <= 0) {
+        //         return {
+        //             max: 100,
+        //             min: 0,
+        //         }
+        //     }
+        //     if (valueArr.length === 1) {
+        //         return {
+        //             max: 2 * valueArr[0],
+        //             min: 0,
+        //         }
+        //     }
+        //     let max = null
+        //     let min = null
+        //     for (let value of valueArr) {
+        //         if (max === null || max < value) {
+        //             max = value
+        //         }
+        //         if (min === null || min > value) {
+        //             min = value
+        //         }
+        //     }
+        //     if (max !== null && min !== null) {
+        //         const diffValue = max - min
+        //         return {
+        //             max: max + diffValue / 8,
+        //             min: min - diffValue / 8,
+        //         }
+        //     }
+        //     if (min == null) {
+        //         return {
+        //             max: max,
+        //             min: 0,
+        //         }
+        //     }
+        //     return {
+        //         max: 100,
+        //         min: min,
+        //     }
+        // })
+        /**
+         * MarkLine位置
+         */
+        const seriesMarkLineData = reactive({
+            value: [] as ({ yAxis: number } | { xAxis: string })[],
         })
         // echarts option
         const echartsOption = computed(() => {
@@ -530,7 +598,7 @@ export default defineComponent({
                 tooltip: {
                     trigger: 'axis',
                     axisPointer: {
-                        type: 'line',
+                        type: props.pointTrace ? 'none' : 'line',
                         axis: 'x',
                         snap: true,
                         label: {
@@ -642,8 +710,8 @@ export default defineComponent({
                             return value
                         },
                     },
-                    min: dataMaxMin.value.min,
-                    max: dataMaxMin.value.max,
+                    // min: dataMaxMin.value.min,
+                    // max: dataMaxMin.value.max,
                 },
                 // dataZoom: [
                 //     {
@@ -663,20 +731,50 @@ export default defineComponent({
                         name: echartsName.value,
                         type: 'line',
                         itemStyle: {
-                            color: '#D65928',
+                            color: props.themeColor,
                             decal: {
                                 symbol: 'circle',
                             },
                         },
                         lineStyle: {
-                            color: '#D65928',
+                            color: props.themeColor,
+                            symbol: 'none',
                         },
                         emphasis: {
                             lineStyle: {
                                 width: 1.8, // hover时的折线宽度
                             },
                         },
-                        data: showData.value.yData,
+                        markLine: {
+                            symbol: 'none', //去掉箭头
+                            animation: false,
+                            label: {
+                                show: false,
+                            },
+                            lineStyle: {
+                                color: '#8F8F8F',
+                                type: 'dashed',
+                                width: 1, // 正常时的折线宽度
+                            },
+                            emphasis: {
+                                disabled: true, // 从 v5.3.0 开始支持
+                                lable: {
+                                    show: false,
+                                },
+                                lineStyle: {
+                                    color: '#8F8F8F',
+                                    type: 'dashed',
+                                    width: 1, // 正常时的折线宽度
+                                },
+                            },
+                            data: seriesMarkLineData.value,
+                        },
+                        data: showData.value.yData.map((value, index) => {
+                            return {
+                                value,
+                                symbol: symbolType.value,
+                            }
+                        }),
                     },
                 ],
             }
@@ -690,6 +788,16 @@ export default defineComponent({
         // 图标自适应相关
         // const vEchart: Ref<typeof VChart | null> = ref(null)
         const vEchart: Ref<any | null> = ref(null)
+        /**
+         * 导出chart
+         */
+        const chart = computed(() => {
+            const nowChart = vEchart.value
+            if (nowChart === null) {
+                return null
+            }
+            return nowChart.chart
+        })
         const resizeChart = () => {
             if (vEchart.value !== null) {
                 vEchart.value.resize()
@@ -703,9 +811,51 @@ export default defineComponent({
                 window.removeEventListener('resize', resizeChart)
             })
         }
+        // 监听
+        watchEffect(() => {
+            if (!props.pointTrace) {
+                return
+            }
+            const chartValue = vEchart.value
+            if (!chartValue) {
+                return
+            }
+            const eChart = chartValue.chart
+            if (!eChart) {
+                return
+            }
+            eChart.getZr().on('mousemove', function (params: any) {
+                // 获取点击位置的坐标
+                let pointInPixel = [params.offsetX, params.offsetY]
+                // containPixel为true则点击位置在坐标轴内
+                if (eChart.containPixel('grid', pointInPixel)) {
+                    // 传入鼠标位置坐标进行转化
+                    // convertFromPixel返回[x, y],x对应鼠标点击处数据的下标,y对应鼠标点击处的数值
+                    const x = eChart.convertFromPixel({ seriesIndex: 0 }, pointInPixel)[0]
+                    seriesMarkLineData.value = [
+                        {
+                            yAxis: props.yData[x],
+                        },
+                        {
+                            xAxis: props.xData[x],
+                        },
+                    ]
+                } else {
+                    seriesMarkLineData.value = []
+                }
+            })
+            eChart.getZr().on('mouseup', function (event: any) {
+                eChart.dispatchAction({
+                    type: 'hideTip',
+                })
+                seriesMarkLineData.value = []
+            })
+        })
         context.expose({
             resizeChart,
+            chart,
         })
+
         return {
             vEchart,
             selectDateIndex,
@@ -716,12 +866,18 @@ export default defineComponent({
         }
     },
     components: {
-        VChart,
+        DwLineChart,
     },
 })
 </script>
 
 <style lang="scss" scoped>
+.dw-stocks-analysis-line {
+    --charts-bottom-normal-bg-color: #ffffff;
+    --charts-bottom-normal-text-color: #191919;
+    --charts-bottom-select-bg-color: var(--themeColor);
+    --charts-bottom-select-text-color: #ffffff;
+}
 .dw-stocks-analysis-line {
     box-sizing: border-box;
     max-height: 100vh;
@@ -751,42 +907,42 @@ export default defineComponent({
             text-align: center;
             height: 2.8rem;
         }
-        .tooltip-content {
-            position: absolute;
-            top: 0rem;
-            left: 0rem;
-            display: flex;
-            align-items: center;
-            background: rgba(#535353, 0.3);
-            border-radius: 0.8rem;
-            padding: 0.8rem;
-            .tooltip-content-left {
-                width: 0.5rem;
-                min-height: 3.2rem;
-                background: #d65928;
-            }
-            .tooltip-content-right {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                margin-left: 1rem;
-                align-items: center;
-                .tooltip-content-date {
-                    font-size: 1rem;
-                    font-family: PingFangSC-Regular, PingFang SC;
-                    font-weight: 400;
-                    line-height: 1.6rem;
-                    color: #d65928;
-                }
-                .tooltip-content-value {
-                    font-size: 1rem;
-                    font-family: PingFangSC-Regular, PingFang SC;
-                    font-weight: 400;
-                    line-height: 1.6rem;
-                    color: #d65928;
-                }
-            }
-        }
+        // .tooltip-content {
+        //     position: absolute;
+        //     top: 0rem;
+        //     left: 0rem;
+        //     display: flex;
+        //     align-items: center;
+        //     background: rgba(#535353, 0.3);
+        //     border-radius: 0.8rem;
+        //     padding: 0.8rem;
+        //     .tooltip-content-left {
+        //         width: 0.5rem;
+        //         min-height: 3.2rem;
+        //         background: #d65928;
+        //     }
+        //     .tooltip-content-right {
+        //         display: flex;
+        //         flex-direction: column;
+        //         justify-content: center;
+        //         margin-left: 1rem;
+        //         align-items: center;
+        //         .tooltip-content-date {
+        //             font-size: 1rem;
+        //             font-family: PingFangSC-Regular, PingFang SC;
+        //             font-weight: 400;
+        //             line-height: 1.6rem;
+        //             color: #d65928;
+        //         }
+        //         .tooltip-content-value {
+        //             font-size: 1rem;
+        //             font-family: PingFangSC-Regular, PingFang SC;
+        //             font-weight: 400;
+        //             line-height: 1.6rem;
+        //             color: #d65928;
+        //         }
+        //     }
+        // }
     }
     .load-content {
         position: absolute;
@@ -815,20 +971,20 @@ export default defineComponent({
                 font-size: 1.5rem;
                 font-family: PingFang SC-Medium, PingFang SC;
                 font-weight: 500;
-                color: #191919;
+                color: var(--charts-bottom-normal-text-color);
                 line-height: 4rem;
                 padding: 0rem 1rem;
-                background: #f7f7f7;
+                background: var(--charts-bottom-normal-bg-color);
                 text-align: center;
             }
             .charts-bottom-select-value {
                 font-size: 1.5rem;
                 font-family: PingFang SC-Medium, PingFang SC;
                 font-weight: 500;
-                color: #ffffff;
+                color: var(--charts-bottom-select-text-color);
                 line-height: 4rem;
                 padding: 0rem 1rem;
-                background: #d65928;
+                background: var(--charts-bottom-select-bg-color);
                 text-align: center;
             }
         }
