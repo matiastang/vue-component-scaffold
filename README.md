@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-13 10:12:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-16 15:37:59
+ * @LastEditTime: 2022-05-17 15:09:37
  * @FilePath: /dw-vue-components/README.md
  * @Description: datumwealth-vue-components
 -->
@@ -142,6 +142,12 @@ const redirect_uri = computed(() => {
 ```
 
 ## 版本
+
+### 0.3.7
+
+1. fix:
+
+* `DwStocksAnalysisLine`组件自适应大小报错修复
 
 ### 0.3.6
 

@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-01-13 14:21:48
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-16 15:48:32
+ * @LastEditTime: 2022-05-17 15:05:57
  * @FilePath: /dw-vue-components/components/dwStocksAnalysisLine/src/DwStocksAnalysisLine.vue
  * @Description: 西筹“个股分析”小程序，折线图
 -->
@@ -798,10 +798,19 @@ export default defineComponent({
             }
             return nowChart.chart
         })
+        /**
+         * 大小自适应
+         */
         const resizeChart = () => {
-            if (vEchart.value !== null) {
-                vEchart.value.resize()
+            const chartValue = vEchart.value
+            if (!chartValue) {
+                return
             }
+            const eChart = chartValue.chart
+            if (!eChart) {
+                return
+            }
+            eChart.resize()
         }
         if (props.autoResize) {
             onMounted(() => {
