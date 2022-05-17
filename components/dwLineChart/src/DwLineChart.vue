@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-09 10:46:25
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-13 15:26:21
+ * @LastEditTime: 2022-05-17 15:49:15
  * @FilePath: /dw-vue-components/components/dwLineChart/src/DwLineChart.vue
  * @Description: 折线图
 -->
@@ -110,7 +110,6 @@ export default defineComponent({
             if (roundMax) {
                 max = Math.ceil(max * decimal) / decimal
             }
-            console.info(roundMin, roundMax, `min=${min},max=${max}`)
             return {
                 min,
                 max,
@@ -173,7 +172,6 @@ export default defineComponent({
                                                 return values.value
                                             })
                                             .flat()
-                                        console.log(values)
                                     } else {
                                         console.warn(`fix: series lingth < ${i}`)
                                     }
@@ -248,7 +246,6 @@ export default defineComponent({
                     }
                 }
             }
-            // console.info('option', option)
             return option
         })
         const chart = computed(() => {

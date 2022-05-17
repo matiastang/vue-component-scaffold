@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-15 16:57:39
- * @LastEditTime: 2022-05-10 19:09:18
+ * @LastEditTime: 2022-05-17 15:44:49
  * @LastEditors: matiastang
  * @Description: In User Settings Edit
  * @FilePath: /dw-vue-components/vite.config.ts
@@ -135,7 +135,23 @@ export default defineConfig(({ mode, command }) => {
         // 构建配置
         build: {
             outDir: './build',
-            assetsInlineLimit: 10240,
+            assetsInlineLimit: 1024,
+            assetsDir: './static',
+            chunkSizeWarningLimit: 500,
+            minify: 'terser',
+            cssCodeSplit: true, // 如果设置为false，整个项目中的所有 CSS 将被提取到一个 CSS 文件中
+            terserOptions: {
+                compress: {
+                    // warnings: false,
+                    drop_console: false, //打包时删除console
+                    drop_debugger: true, //打包时删除 debugger
+                    pure_funcs: ['console.log'],
+                },
+                output: {
+                    // 去掉注释内容
+                    comments: true,
+                },
+            },
         },
     }
 })
