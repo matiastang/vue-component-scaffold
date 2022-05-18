@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-13 10:12:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-17 15:09:37
+ * @LastEditTime: 2022-05-18 10:42:30
  * @FilePath: /dw-vue-components/README.md
  * @Description: datumwealth-vue-components
 -->
@@ -142,6 +142,12 @@ const redirect_uri = computed(() => {
 ```
 
 ## 版本
+
+### 0.3.8
+
+1. feat:
+
+* `DwDefectFactorPositionTraceLine`组件开放坐标轴单位设置功能。
 
 ### 0.3.7
 

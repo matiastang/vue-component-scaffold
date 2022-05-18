@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-10 10:27:25
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-13 15:33:46
+ * @LastEditTime: 2022-05-18 10:44:35
  * @FilePath: /dw-vue-components/src/views/test/DwDefectChartsTest.vue
  * @Description: 西筹-大V-寻暇记-图谱测试
 -->
@@ -39,16 +39,17 @@
                     :x-data="tradeoffPositionChartXData"
                     factor-title="沪深300权益性价比"
                     :factorYData="tradeoffChartYData"
-                    :tooltipFactorValueDecimalDigits="4"
+                    :tooltipFactorValueDecimalDigits="2"
+                    :factorYAxisDecimalDigits="2"
                     position-title="灵活配置型公募持仓"
                     :positionYData="positionChartYData"
                     :yRangeRound="{
                         min: false,
                         max: false,
-                        diffPercent: 10,
-                        decimal: 10,
+                        diffPercent: 50,
+                        decimal: 50,
                     }"
-                    :autoSetYRangeRound="false"
+                    :autoSetYRangeRound="true"
                     :style="{ height: '300px', background: '#FFFFFF' }"
                 ></DwDefectFactorPositionTraceLine>
             </div>
@@ -197,7 +198,7 @@ const tradeoffPositionChartXData = computed(() => {
 const tradeoffChartYData = computed(() => {
     const tradeoff = tradeoffPositionData.tradeoffData
     if (tradeoff) {
-        return tradeoff.list.map((item) => item.rltvValue)
+        return tradeoff.list.map((item) => item.rltvValue * 100)
     }
     return null
 })

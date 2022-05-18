@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-15 17:10:16
- * @LastEditTime: 2022-05-17 15:16:20
+ * @LastEditTime: 2022-05-18 10:50:22
  * @LastEditors: matiastang
  * @Description: In User Settings Edit
  * @FilePath: /dw-vue-components/src/main.ts
@@ -41,7 +41,7 @@ import { createPersistedState } from 'matias-pinia-persisted-state'
 // import DwVueComponents, { initEcharts } from '../components/index'
 import DwVueComponents, { initEcharts } from '../dist/index.es.js'
 // import DwVueComponents from 'root/dist/dw-vue-components.es.js'
-import 'root/dist/style.css'
+import 'root/dist/index.css'
 // 默认主题（如果是其他预编译样式可以配置vite默认导入）
 import '@/common/themes/default.css'
 

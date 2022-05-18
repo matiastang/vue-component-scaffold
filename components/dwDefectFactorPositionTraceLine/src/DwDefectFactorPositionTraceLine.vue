@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-10 10:41:21
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-13 15:42:54
+ * @LastEditTime: 2022-05-18 10:34:46
  * @FilePath: /dw-vue-components/components/dwDefectFactorPositionTraceLine/src/DwDefectFactorPositionTraceLine.vue
  * @Description: 西筹-大v-寻暇记-权益仓位-权益&仓位-折线图
 -->
@@ -208,6 +208,15 @@ export default defineComponent({
             type: Boolean,
             default: false,
         },
+        /**
+         * 单位
+         */
+        units: {
+            type: Array as PropType<string[]>,
+            default: () => {
+                return ['%', '%']
+            },
+        },
     },
     setup(props, context) {
         // 导出
@@ -288,11 +297,16 @@ export default defineComponent({
                                 }
                                 if (item && typeof item.value === 'number') {
                                     // ${item.marker}
-                                    return `<br/> ${item.seriesName} ${item.value.toFixed(
+                                    const str = `<br/> ${item.seriesName} ${item.value.toFixed(
                                         index === 0
                                             ? props.tooltipFactorValueDecimalDigits
                                             : props.tooltipPositionValueDecimalDigits
-                                    )}${index === 0 ? '' : '%'}`
+                                    )}`
+                                    const units = props.units
+                                    if (units.length > index) {
+                                        return str + units[index]
+                                    }
+                                    return str
                                 }
                                 return ''
                             })
@@ -357,8 +371,14 @@ export default defineComponent({
                             fontSize: 10,
                             color: colors.value.yAxisAxisLabelColor,
                             formatter: (value: string, index: number) => {
+                                const units = props.units
+                                let unit = ''
+                                if (units.length > 0) {
+                                    unit = units[0]
+                                }
                                 try {
-                                    return Number(value).toFixed(props.factorYAxisDecimalDigits)
+                                    let data = Number(value).toFixed(props.factorYAxisDecimalDigits)
+                                    return `${data}${unit}`
                                 } catch (error) {
                                     return value
                                 }
@@ -392,13 +412,18 @@ export default defineComponent({
                             fontSize: 10,
                             color: colors.value.yAxisAxisLabelColor,
                             formatter: (value: string, index: number) => {
+                                const units = props.units
+                                let unit = ''
+                                if (units.length > 1) {
+                                    unit = units[1]
+                                }
                                 try {
                                     let data = Number(value).toFixed(
                                         props.positionYAxisDecimalDigits
                                     )
-                                    return `${data}%`
+                                    return `${data}${unit}`
                                 } catch (error) {
-                                    return `${value}%`
+                                    return `${value}${unit}`
                                 }
                             },
                         },
