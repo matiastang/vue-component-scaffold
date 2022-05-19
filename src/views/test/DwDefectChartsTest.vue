@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-10 10:27:25
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-19 13:58:19
+ * @LastEditTime: 2022-05-19 14:58:37
  * @FilePath: /dw-vue-components/src/views/test/DwDefectChartsTest.vue
  * @Description: 西筹-大V-寻暇记-图谱测试
 -->
@@ -13,7 +13,8 @@
                 <img src="static/bg/bg-left-top.png" style="width: 28rem; height: 28rem" />
             </template>
             <DwDefectDashboard
-                :percentage="0"
+                :percentage="70"
+                :angularSpeed="3"
                 :style="{
                     background: 'white',
                     zoom: 0.5,

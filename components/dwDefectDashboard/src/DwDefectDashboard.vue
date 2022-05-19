@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-06 14:01:32
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-19 13:54:38
+ * @LastEditTime: 2022-05-19 14:59:23
  * @FilePath: /dw-vue-components/components/dwDefectDashboard/src/DwDefectDashboard.vue
  * @Description: 仪表盘比例显示
 -->
@@ -38,14 +38,30 @@ export default defineComponent({
             type: String,
             default: 'id',
         },
+        /**
+         * 百分比
+         */
         percentage: {
             type: Number,
             default: 100,
         },
+        /**
+         * 角速度
+         */
+        angularSpeed: {
+            type: Number,
+            default: 3,
+        },
+        /**
+         * 起始颜色
+         */
         startColor: {
             type: String,
             default: '#FFCECE',
         },
+        /**
+         * 结束颜色
+         */
         endColor: {
             type: String,
             default: '#FF2E2E',
@@ -66,6 +82,7 @@ export default defineComponent({
             width: number,
             height: number,
             value: number,
+            speed: number,
             startColor: string,
             endColor: string
         ) => {
@@ -81,7 +98,7 @@ export default defineComponent({
             ctx.clearRect(0, 0, width, height) // 清理
             initBgArc(ctx, centerPoint, circleR, lineWidth, startAngle, startAngle + Math.PI)
             initScale(ctx, centerPoint, radius, Math.PI / 6, 3, 6, 23)
-            let xAngle = 1 * (Math.PI / 180) //偏移角度量
+            let xAngle = speed * (Math.PI / 180) //偏移角度量
             let tmpAngle = startAngle //临时角度变量 //渲染函数
             rander(
                 ctx,
@@ -399,6 +416,7 @@ export default defineComponent({
                     canvasW,
                     canvasH,
                     value,
+                    props.angularSpeed,
                     props.startColor || '#FFCECE',
                     props.endColor || '#FF2E2E'
                 )
