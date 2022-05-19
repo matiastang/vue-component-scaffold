@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-06 14:01:32
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-12 13:55:34
+ * @LastEditTime: 2022-05-19 13:54:38
  * @FilePath: /dw-vue-components/components/dwDefectDashboard/src/DwDefectDashboard.vue
  * @Description: 仪表盘比例显示
 -->
@@ -126,6 +126,26 @@ export default defineComponent({
             value: number
         ) => {
             if (tmpAngle >= endAngle) {
+                if (value === 0) {
+                    // 文字
+                    ctx.clearRect(radius - 26, radius - 16, 52, 40) // 清除画布
+                    ctx.fillStyle = '#191919'
+                    ctx.font = '36px Microsoft Yahei'
+                    ctx.textAlign = 'center'
+                    ctx.fillText(`${value}`, radius, radius + 12)
+                    // 三角形
+                    initTriangle(
+                        ctx,
+                        {
+                            x: radius,
+                            y: radius,
+                        },
+                        circleR + 10,
+                        tmpAngle + Math.PI,
+                        9,
+                        endColor
+                    )
+                }
                 return
             } else if (tmpAngle + xAngle > endAngle) {
                 tmpAngle = endAngle

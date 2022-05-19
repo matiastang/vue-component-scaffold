@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-13 10:12:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-18 10:42:30
+ * @LastEditTime: 2022-05-19 14:03:09
  * @FilePath: /dw-vue-components/README.md
  * @Description: datumwealth-vue-components
 -->
@@ -142,6 +142,14 @@ const redirect_uri = computed(() => {
 ```
 
 ## 版本
+
+### 0.3.10
+
+* `DwDefectDashboard`数据为`0`的处理。
+
+### 0.3.9
+
+* 组件包的大小优化
 
 ### 0.3.8
 

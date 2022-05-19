@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-03-21 10:15:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-04-01 13:44:32
+ * @LastEditTime: 2022-05-19 13:26:46
  * @FilePath: /dw-vue-components/components/dwPortfolioNetWorth/src/DwPortfolioNetWorth.vue
  * @Description: 单位净值曲线
 -->
@@ -19,25 +19,25 @@
 
 <script lang="ts">
 import { computed, defineComponent, provide, ref, Ref, watchEffect } from 'vue'
-import { use } from 'echarts/core'
-import { CanvasRenderer } from 'echarts/renderers'
-import { LineChart } from 'echarts/charts'
-import {
-    GridComponent,
-    TooltipComponent,
-    MarkLineComponent,
-    MarkPointComponent,
-} from 'echarts/components'
+// import { use } from 'echarts/core'
+// import { CanvasRenderer } from 'echarts/renderers'
+// import { LineChart } from 'echarts/charts'
+// import {
+//     GridComponent,
+//     TooltipComponent,
+//     MarkLineComponent,
+//     MarkPointComponent,
+// } from 'echarts/components'
 import VChart, { THEME_KEY } from 'vue-echarts'
 
-use([
-    CanvasRenderer,
-    LineChart,
-    GridComponent,
-    TooltipComponent,
-    MarkLineComponent,
-    MarkPointComponent,
-])
+// use([
+//     CanvasRenderer,
+//     LineChart,
+//     GridComponent,
+//     TooltipComponent,
+//     MarkLineComponent,
+//     MarkPointComponent,
+// ])
 
 interface lineYData {
     /**

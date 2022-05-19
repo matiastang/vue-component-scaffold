@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-30 15:31:25
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-13 15:54:46
+ * @LastEditTime: 2022-05-19 13:27:45
  * @FilePath: /dw-vue-components/components/index.ts
  * @Description: 导出所有组件
  */
@@ -38,16 +38,16 @@ import DwDefectFactorPositionTraceLine from './dwDefectFactorPositionTraceLine/i
 
 import _package from '../package.json'
 // echarts 支持导入
-import { use } from 'echarts/core'
-import { CanvasRenderer } from 'echarts/renderers'
-import { LineChart } from 'echarts/charts'
-import {
-    GridComponent,
-    TooltipComponent,
-    MarkLineComponent,
-    MarkPointComponent,
-    VisualMapComponent,
-} from 'echarts/components'
+// import { use } from 'echarts/core'
+// import { CanvasRenderer } from 'echarts/renderers'
+// import { LineChart } from 'echarts/charts'
+// import {
+//     GridComponent,
+//     TooltipComponent,
+//     MarkLineComponent,
+//     MarkPointComponent,
+//     VisualMapComponent,
+// } from 'echarts/components'
 /**
  * Error: Renderer 'undefined' is not imported. Please import it first
  * zRander的registerPainter未初始化,需要在main.ts中添加use()引用
@@ -55,17 +55,17 @@ import {
 /**
  * 初始化导入
  */
-const initEcharts = () => {
-    use([
-        CanvasRenderer,
-        LineChart,
-        GridComponent,
-        TooltipComponent,
-        MarkLineComponent,
-        MarkPointComponent,
-        VisualMapComponent,
-    ])
-}
+// const initEcharts = () => {
+//     use([
+//         CanvasRenderer,
+//         LineChart,
+//         GridComponent,
+//         TooltipComponent,
+//         MarkLineComponent,
+//         MarkPointComponent,
+//         VisualMapComponent,
+//     ])
+// }
 
 // 所有组件列表
 const components = [
@@ -102,7 +102,7 @@ const install = (app: App): void => {
 }
 
 export {
-    initEcharts,
+    // initEcharts,
     // 基础
     DwEcharts,
     DwLineChart,

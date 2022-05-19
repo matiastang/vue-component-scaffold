@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-15 17:10:16
- * @LastEditTime: 2022-05-18 10:50:22
+ * @LastEditTime: 2022-05-19 14:04:30
  * @LastEditors: matiastang
  * @Description: In User Settings Edit
  * @FilePath: /dw-vue-components/src/main.ts
@@ -38,8 +38,8 @@ import { createPersistedState } from 'matias-pinia-persisted-state'
 // } from 'datumwealth-vue-components'
 // import '../node_modules/datumwealth-vue-components/dist/style.css'
 // import 'datumwealth-vue-components/dist/style.css'
-// import DwVueComponents, { initEcharts } from '../components/index'
-import DwVueComponents, { initEcharts } from '../dist/index.es.js'
+// import DwVueComponents from '../components/index'
+import DwVueComponents from '../dist/index.es.js'
 // import DwVueComponents from 'root/dist/dw-vue-components.es.js'
 import 'root/dist/index.css'
 // 默认主题（如果是其他预编译样式可以配置vite默认导入）

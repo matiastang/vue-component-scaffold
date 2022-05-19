@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-10 10:27:25
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-18 10:44:35
+ * @LastEditTime: 2022-05-19 13:58:19
  * @FilePath: /dw-vue-components/src/views/test/DwDefectChartsTest.vue
  * @Description: 西筹-大V-寻暇记-图谱测试
 -->
@@ -13,7 +13,7 @@
                 <img src="static/bg/bg-left-top.png" style="width: 28rem; height: 28rem" />
             </template>
             <DwDefectDashboard
-                :percentage="70"
+                :percentage="0"
                 :style="{
                     background: 'white',
                     zoom: 0.5,
@@ -60,7 +60,7 @@
     </div>
 </template>
 <script setup lang="ts">
-import { Ref, ref, watchEffect, reactive, computed } from 'vue'
+import { Ref, ref, watchEffect, reactive, computed, onMounted } from 'vue'
 import { tradeoffCurve, positionCurve, factorCurve } from '@/api/request'
 import { TradeoffCurveInfo, PositionCurveItem } from '@/@types/index'
 // import { DwPortfolioBg } from 'datumwealth-vue-components'
@@ -271,7 +271,7 @@ const getFactorCurveChartsData = (range: string) => {
     factorCurve(range)
         .then((res) => {
             factorCurveXData.value = res.map((item) => dateStringTransform(item.tradeDate))
-            factorCurveYData.value = res.map((item) => item.ftrRtn)
+            factorCurveYData.value = res.map((item) => item.ftrRtn * 100)
         })
         .catch((err) => {
             console.warn(err)
@@ -297,6 +297,12 @@ watchEffect(() => {
     })
     eChart.getZr().on('mouseup', function (event: any) {
         console.log('mouseup')
+    })
+})
+
+onMounted(() => {
+    window.addEventListener('message', (event) => {
+        console.log('event', event)
     })
 })
 </script>

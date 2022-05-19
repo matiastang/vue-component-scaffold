@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-01-13 19:00:54
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-18 10:17:05
+ * @LastEditTime: 2022-05-18 16:37:26
  * @FilePath: /dw-vue-components/src/views/test/DwStocksAnalysisLineTest.vue
  * @Description: DwStocksAnalysisLine组件测试
 -->
@@ -107,6 +107,12 @@ const stocksAnalysisDataChangeAction = () => {
     }
 
     stocksAnalysisData.value = testData[index.value]
+    // window.open('http://localhost:3001/dwDefectChartsTest')
+    setTimeout(() => {
+        const msg = 'message hello'
+        console.log(msg)
+        window.postMessage(msg, '*')
+    }, 5000)
 }
 
 const title = ref('DwStocksAnalysisLine组件测试')
