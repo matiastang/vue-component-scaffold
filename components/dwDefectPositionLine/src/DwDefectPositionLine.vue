@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-09 17:08:43
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-13 15:40:29
+ * @LastEditTime: 2022-05-19 16:07:39
  * @FilePath: /dw-vue-components/components/dwDefectPositionLine/src/DwDefectPositionLine.vue
  * @Description: 西筹-大v-寻暇记-权益仓位-折线图
 -->
@@ -108,6 +108,13 @@ export default defineComponent({
             type: Boolean,
             default: true,
         },
+        /**
+         * 开启动画
+         */
+        animation: {
+            type: Boolean,
+            default: true,
+        },
     },
     setup(props, context) {
         // 导出
@@ -149,6 +156,7 @@ export default defineComponent({
          */
         const echartsOption = computed(() => {
             return {
+                animation: props.animation,
                 grid: {
                     show: true,
                     left: props.grid.left,

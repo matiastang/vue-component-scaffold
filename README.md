@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-13 10:12:56
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-19 15:00:40
+ * @LastEditTime: 2022-05-19 16:13:30
  * @FilePath: /dw-vue-components/README.md
  * @Description: datumwealth-vue-components
 -->
@@ -142,6 +142,10 @@ const redirect_uri = computed(() => {
 ```
 
 ## 版本
+
+### 0.3.12
+
+* 组件开放动画参数。
 
 ### 0.3.11
 

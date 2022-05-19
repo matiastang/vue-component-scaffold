@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-10 09:50:21
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-13 15:44:46
+ * @LastEditTime: 2022-05-19 16:08:09
  * @FilePath: /dw-vue-components/components/dwDefectFactorLine/src/DwDefectFactorLine.vue
  * @Description: 西筹-大v-寻暇记-因子收益率-折线图
 -->
@@ -108,6 +108,13 @@ export default defineComponent({
                 } as ChartsGrid
             },
         },
+        /**
+         * 开启动画
+         */
+        animation: {
+            type: Boolean,
+            default: true,
+        },
     },
     setup(props, context) {
         // 导出
@@ -149,6 +156,7 @@ export default defineComponent({
          */
         const echartsOption = computed(() => {
             return {
+                animation: props.animation,
                 grid: {
                     show: true,
                     left: props.grid.left,

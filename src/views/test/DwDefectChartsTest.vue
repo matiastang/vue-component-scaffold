@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-10 10:27:25
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-19 14:58:37
+ * @LastEditTime: 2022-05-19 16:14:49
  * @FilePath: /dw-vue-components/src/views/test/DwDefectChartsTest.vue
  * @Description: 西筹-大V-寻暇记-图谱测试
 -->
@@ -27,6 +27,7 @@
                 :chart-theme="{}"
                 :point-trace="true"
                 :style="{ height: '300px', background: '#FFFFFF' }"
+                :animation="false"
             ></DwDefectFactorLine>
             <DwDefectPositionLine
                 :x-data="xData"
@@ -34,8 +35,11 @@
                 :chart-theme="{ color: '#f00' }"
                 :point-trace="false"
                 :style="{ height: '300px', background: '#FFFFFF' }"
+                :animation="false"
             ></DwDefectPositionLine>
             <div v-if="tradeoffChartYData && positionChartYData" :style="{ width: '100%' }">
+                <div @click="tradeoffChartShow = !tradeoffChartShow">沪深300权益性价比</div>
+                <div @click="factorCurveRange = !factorCurveRange">灵活配置型公募持仓</div>
                 <DwDefectFactorPositionTraceLine
                     :x-data="tradeoffPositionChartXData"
                     factor-title="沪深300权益性价比"
@@ -52,6 +56,7 @@
                     }"
                     :autoSetYRangeRound="true"
                     :style="{ height: '300px', background: '#FFFFFF' }"
+                    :animation="false"
                 ></DwDefectFactorPositionTraceLine>
             </div>
             <template v-slot:rightBottomImg>
@@ -122,6 +127,7 @@ const data = {
 }
 
 const factorChart: Ref<any> = ref(null)
+const factorCurveRange = ref(true)
 // 权益和公募性价比数据
 const tradeoffPositionData = reactive({
     tradeoffData: null as TradeoffCurveInfo | null,
@@ -196,7 +202,11 @@ const tradeoffPositionChartXData = computed(() => {
     }
     return []
 })
+const tradeoffChartShow = ref(true)
 const tradeoffChartYData = computed(() => {
+    if (!tradeoffChartShow.value) {
+        return []
+    }
     const tradeoff = tradeoffPositionData.tradeoffData
     if (tradeoff) {
         return tradeoff.list.map((item) => item.rltvValue * 100)
@@ -279,7 +289,7 @@ const getFactorCurveChartsData = (range: string) => {
         })
 }
 watchEffect(() => {
-    const range = 'Y1'
+    const range = factorCurveRange.value ? 'Y1' : 'M6'
     getFactorCurveChartsData(range)
 })
 
