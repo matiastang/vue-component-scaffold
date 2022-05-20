@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-30 15:37:18
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-19 13:22:25
+ * @LastEditTime: 2022-05-19 18:56:18
  * @FilePath: /dw-vue-components/vite.build.config.ts
  * @Description: npm 打包上传配置
  */
@@ -100,6 +100,7 @@ export default defineConfig({
             external: ['vue', 'echarts', 'vue-echarts'],
             // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
             output: {
+                exports: 'named',
                 // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
                 globals: {
                     vue: 'Vue',

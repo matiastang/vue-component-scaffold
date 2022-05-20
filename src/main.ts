@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-15 17:10:16
- * @LastEditTime: 2022-05-19 16:14:20
+ * @LastEditTime: 2022-05-19 18:55:48
  * @LastEditors: matiastang
  * @Description: In User Settings Edit
  * @FilePath: /dw-vue-components/src/main.ts
@@ -79,7 +79,7 @@ use([
     VisualMapComponent,
 ])
 // initEcharts()
-app.use(DwVueComponents)
+// app.use(DwVueComponents)
 // app.use(DwPortfolioBg)
 //     .use(DwDefectDashboard)
 //     .use(DwDefectPositionLine)

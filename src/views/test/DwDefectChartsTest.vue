@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-05-10 10:27:25
  * @LastEditors: matiastang
- * @LastEditTime: 2022-05-19 16:14:49
+ * @LastEditTime: 2022-05-19 17:02:22
  * @FilePath: /dw-vue-components/src/views/test/DwDefectChartsTest.vue
  * @Description: 西筹-大V-寻暇记-图谱测试
 -->
@@ -20,23 +20,6 @@
                     zoom: 0.5,
                 }"
             ></DwDefectDashboard>
-            <DwDefectFactorLine
-                ref="factorChart"
-                :x-data="factorCurveXData.value"
-                :y-data="factorCurveYData.value"
-                :chart-theme="{}"
-                :point-trace="true"
-                :style="{ height: '300px', background: '#FFFFFF' }"
-                :animation="false"
-            ></DwDefectFactorLine>
-            <DwDefectPositionLine
-                :x-data="xData"
-                :y-data="yData"
-                :chart-theme="{ color: '#f00' }"
-                :point-trace="false"
-                :style="{ height: '300px', background: '#FFFFFF' }"
-                :animation="false"
-            ></DwDefectPositionLine>
             <div v-if="tradeoffChartYData && positionChartYData" :style="{ width: '100%' }">
                 <div @click="tradeoffChartShow = !tradeoffChartShow">沪深300权益性价比</div>
                 <div @click="factorCurveRange = !factorCurveRange">灵活配置型公募持仓</div>
@@ -59,6 +42,23 @@
                     :animation="false"
                 ></DwDefectFactorPositionTraceLine>
             </div>
+            <DwDefectFactorLine
+                ref="factorChart"
+                :x-data="factorCurveXData.value"
+                :y-data="factorCurveYData.value"
+                :chart-theme="{}"
+                :point-trace="true"
+                :style="{ height: '300px', background: '#FFFFFF' }"
+                :animation="false"
+            ></DwDefectFactorLine>
+            <DwDefectPositionLine
+                :x-data="xData"
+                :y-data="yData"
+                :chart-theme="{ color: '#f00' }"
+                :point-trace="false"
+                :style="{ height: '300px', background: '#FFFFFF' }"
+                :animation="false"
+            ></DwDefectPositionLine>
             <template v-slot:rightBottomImg>
                 <img src="static/bg/bg-right-bottom.png" style="width: 28rem; height: 28rem" />
             </template>
@@ -66,7 +66,7 @@
     </div>
 </template>
 <script setup lang="ts">
-import { Ref, ref, watchEffect, reactive, computed, onMounted } from 'vue'
+import { Ref, ref, watchEffect, reactive, computed, onMounted, defineAsyncComponent } from 'vue'
 import { tradeoffCurve, positionCurve, factorCurve } from '@/api/request'
 import { TradeoffCurveInfo, PositionCurveItem } from '@/@types/index'
 // import { DwPortfolioBg } from 'datumwealth-vue-components'
@@ -77,11 +77,14 @@ import { TradeoffCurveInfo, PositionCurveItem } from '@/@types/index'
 //     DwDefectFactorLine,
 //     DwDefectFactorPositionTraceLine,
 // } from 'datumwealth-vue-components'
-// import { DwPortfolioBg } from 'datumwealth-vue-components'
-// import DwDefectDashboard from 'root/components/dwDefectDashboard'
-// import DwDefectPositionLine from 'root/components/dwDefectPositionLine'
-// import DwDefectFactorLine from 'root/components/dwDefectFactorLine'
-// import DwDefectFactorPositionTraceLine from 'root/components/dwDefectFactorPositionTraceLine'
+import { DwPortfolioBg } from 'datumwealth-vue-components'
+import DwDefectDashboard from 'root/components/dwDefectDashboard'
+import DwDefectPositionLine from 'root/components/dwDefectPositionLine'
+import DwDefectFactorLine from 'root/components/dwDefectFactorLine'
+import DwDefectFactorPositionTraceLine from 'root/components/dwDefectFactorPositionTraceLine'
+// const DwDefectFactorPositionTraceLine = defineAsyncComponent({
+//     loader: () => import('root/components/dwDefectFactorPositionTraceLine'),
+// })
 
 const xData = [
     '2021.7.9',
