@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-01-11 15:48:23
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-12 18:39:45
+ * @LastEditTime: 2022-05-19 13:25:54
  * @FilePath: /dw-vue-components/components/dwPortfolioIcon/src/DwPortfolioIcon.vue
  * @Description: 西筹“基金组合”组合策略折线icon
 -->
@@ -17,13 +17,13 @@
 
 <script lang="ts">
 import { provide, computed, defineComponent } from 'vue'
-import { use } from 'echarts/core'
-import { CanvasRenderer } from 'echarts/renderers'
-import { LineChart } from 'echarts/charts'
-import { GridComponent } from 'echarts/components'
+// import { use } from 'echarts/core'
+// import { CanvasRenderer } from 'echarts/renderers'
+// import { LineChart } from 'echarts/charts'
+// import { GridComponent } from 'echarts/components'
 import VChart, { THEME_KEY } from 'vue-echarts'
 
-use([CanvasRenderer, LineChart, GridComponent])
+// use([CanvasRenderer, LineChart, GridComponent])
 
 export default defineComponent({
     name: 'DwPortfolioIcon',

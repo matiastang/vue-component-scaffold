@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2021-12-30 15:37:18
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-12 14:08:34
+ * @LastEditTime: 2022-05-19 18:56:18
  * @FilePath: /dw-vue-components/vite.build.config.ts
  * @Description: npm 打包上传配置
  */
@@ -15,25 +15,29 @@ import { defineConfig } from 'vite'
 // 解析.vue文件
 import vue from '@vitejs/plugin-vue'
 // 开启GZIP压缩
-import compressPlugin from 'vite-plugin-compression'
+// import compressPlugin from 'vite-plugin-compression'
 // .vue或.ts生成.d.ts文件
 import dts from 'vite-plugin-dts'
 // vite-plugin-imp
 // microbundle
 
+import { terser } from 'rollup-plugin-terser'
+
 export default defineConfig({
     // 共享配置
     plugins: [
         vue(),
+        terser(),
         dts({
             include: ['./components'],
             outputDir: './types',
         }),
-        compressPlugin({
-            ext: '.gz', //gz br
-            algorithm: 'gzip', //brotliCompress gzip
-            deleteOriginFile: false,
-        }),
+        // compressPlugin({
+        //     ext: '.gz', //gz br
+        //     algorithm: 'gzip', //brotliCompress gzip
+        //     deleteOriginFile: false,
+        // }),
+        // terser(),
     ],
     resolve: {
         // 别名
@@ -53,10 +57,10 @@ export default defineConfig({
         preprocessorOptions: {
             less: {},
             scss: {
-                additionalData: `
-                    @use "@/common/css/element-variables.scss" as * ;
-                    @use "@/common/css/index.scss" as * ;
-                `,
+                // additionalData: `
+                //     @use "@/common/css/element-variables.scss" as * ;
+                //     @use "@/common/css/index.scss" as * ;
+                // `,
             },
             sass: {},
         },
@@ -67,7 +71,24 @@ export default defineConfig({
             entry: path.resolve(__dirname, './components/index.ts'),
             name: 'dwVueComponents',
             formats: ['es', 'cjs', 'umd', 'iife'],
-            fileName: (format) => `dw-vue-components.${format}.js`,
+            fileName: (format) => `index.${format}.js`,
+        },
+        assetsInlineLimit: 1024,
+        assetsDir: './static',
+        chunkSizeWarningLimit: 500,
+        minify: 'terser',
+        cssCodeSplit: true, // 如果设置为false，整个项目中的所有 CSS 将被提取到一个 CSS 文件中
+        terserOptions: {
+            compress: {
+                // warnings: false,
+                drop_console: true, //打包时删除console
+                drop_debugger: true, //打包时删除 debugger
+                pure_funcs: ['console.log'],
+            },
+            output: {
+                // 去掉注释内容
+                comments: true,
+            },
         },
         // 样式相关
         // cssCodeSplit: true, // 启用/禁用 CSS 代码拆分。当启用时，在异步 chunk 中导入的 CSS 将内联到异步 chunk 本身，并在其被加载时插入。如果禁用，整个项目中的所有 CSS 将被提取到一个 CSS 文件中。
@@ -77,13 +98,14 @@ export default defineConfig({
         rollupOptions: {
             // 确保外部化处理那些你不想打包进库的依赖
             external: ['vue', 'echarts', 'vue-echarts'],
-            // external: ['vue'],
+            // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
             output: {
+                exports: 'named',
                 // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
                 globals: {
                     vue: 'Vue',
                     echarts: 'echarts',
-                    VChart: 'vue-echarts',
+                    'vue-echarts': 'VChart',
                 },
             },
         },

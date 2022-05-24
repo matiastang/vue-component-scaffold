@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-01-12 10:23:25
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-12 18:39:02
+ * @LastEditTime: 2022-05-19 13:26:30
  * @FilePath: /dw-vue-components/components/dwPortfolioLine/src/DwPortfolioLine.vue
  * @Description: 西筹“基金组合”结果页优化折线图
 -->
@@ -14,25 +14,25 @@
 
 <script lang="ts">
 import { reactive, computed, defineComponent, provide } from 'vue'
-import { use } from 'echarts/core'
-import { CanvasRenderer } from 'echarts/renderers'
-import { LineChart } from 'echarts/charts'
-import {
-    GridComponent,
-    TooltipComponent,
-    MarkLineComponent,
-    MarkPointComponent,
-} from 'echarts/components'
+// import { use } from 'echarts/core'
+// import { CanvasRenderer } from 'echarts/renderers'
+// import { LineChart } from 'echarts/charts'
+// import {
+//     GridComponent,
+//     TooltipComponent,
+//     MarkLineComponent,
+//     MarkPointComponent,
+// } from 'echarts/components'
 import VChart, { THEME_KEY } from 'vue-echarts'
 
-use([
-    CanvasRenderer,
-    LineChart,
-    GridComponent,
-    TooltipComponent,
-    MarkLineComponent,
-    MarkPointComponent,
-])
+// use([
+//     CanvasRenderer,
+//     LineChart,
+//     GridComponent,
+//     TooltipComponent,
+//     MarkLineComponent,
+//     MarkPointComponent,
+// ])
 
 interface lineYData {
     lineOneData: number[]

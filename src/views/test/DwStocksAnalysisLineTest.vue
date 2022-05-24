@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-01-13 19:00:54
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-19 17:46:03
+ * @LastEditTime: 2022-05-18 16:37:26
  * @FilePath: /dw-vue-components/src/views/test/DwStocksAnalysisLineTest.vue
  * @Description: DwStocksAnalysisLine组件测试
 -->
@@ -18,12 +18,14 @@
                 ref="vueEchart"
                 :y-data="stocksAnalysisData.value"
                 :analyzeType="analyzeType"
-                :reportType="ReportType.QUAETER"
+                :reportType="ReportType.DAY"
                 :chartStyle="chartStyle"
                 :fullScreenStyle="fullScreenStyle"
                 :autoResize="false"
                 @arge-screen="argeScreenAction"
                 :showFullScreen="true"
+                themeColor="#296fff"
+                :pointTrace="true"
             >
                 <template v-slot:fullScreenImg>
                     <img
@@ -41,10 +43,11 @@ import { Ref, ref, reactive, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import {
     DwPortfolioBg,
     // DwStocksAnalysisLine,
-    // AnalyzeType,
-    // ReportType,
+    AnalyzeType,
+    ReportType,
 } from 'datumwealth-vue-components'
-import DwStocksAnalysisLine, { AnalyzeType, ReportType } from 'root/components/dwStocksAnalysisLine'
+// import DwPortfolioBg from 'root/components/dwPortfolioBg'
+// import DwStocksAnalysisLine, { AnalyzeType, ReportType } from 'root/components/dwStocksAnalysisLine'
 
 const argeScreenAction = () => {
     console.log('点击了大屏查看')
@@ -104,6 +107,12 @@ const stocksAnalysisDataChangeAction = () => {
     }
 
     stocksAnalysisData.value = testData[index.value]
+    // window.open('http://localhost:3001/dwDefectChartsTest')
+    setTimeout(() => {
+        const msg = 'message hello'
+        console.log(msg)
+        window.postMessage(msg, '*')
+    }, 5000)
 }
 
 const title = ref('DwStocksAnalysisLine组件测试')
@@ -139,6 +148,12 @@ onBeforeUnmount(() => {
 </script>
 
 <style lang="scss" scoped>
+// .dw-stocks-analysis-line {
+//     --charts-bottom-normal-bg-color: #ffffff;
+//     --charts-bottom-normal-text-color: #191919;
+//     --charts-bottom-select-bg-color: #ff0000;
+//     --charts-bottom-select-text-color: #ffffff;
+// }
 .home {
     display: flex;
     flex-direction: column;

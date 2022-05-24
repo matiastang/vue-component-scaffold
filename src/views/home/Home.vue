@@ -2,18 +2,18 @@
  * @Author: matiastang
  * @Date: 2021-12-29 10:52:57
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-13 18:55:04
+ * @LastEditTime: 2022-05-09 10:09:58
  * @FilePath: /dw-vue-components/src/views/home/Home.vue
  * @Description: 
 -->
 <template>
     <div class="home">
-        <DwPortfolioBg
-            class="home-bg"
-            left-top-url="static/bg/bg-left-top.png"
-            right-bottom-url="static/bg/bg-right-bottom.png"
-            style="height: auto"
-        >
+        <!-- left-top-url="static/bg/bg-left-top.png"
+        right-bottom-url="static/bg/bg-right-bottom.png" -->
+        <DwPortfolioBg class="home-bg" style="height: auto">
+            <template v-slot:leftTopImg>
+                <img src="static/bg/bg-left-top.png" style="width: 28rem; height: 28rem" />
+            </template>
             <div class="text">{{ text }}</div>
             <!-- <DwWechatLogin
                 appid="wx6d902dc1624282c4"
@@ -30,9 +30,20 @@
             />
             <DwPortfolioIcon />
             <DwPortfolioLine />
-            <DwPortfolioPie :data="pieData" />
+            <DwPortfolioNetWorth />
+            <DwPortfolioPie
+                :data="pieData"
+                :chartStyle="{
+                    width: '60%',
+                    height: '10rem',
+                }"
+            />
             <DwPortfolioIndustry :data="industryData.value" @tooltipAction="tooltipAction" />
             <div @click="pieDataChangeAction">切换数据</div>
+
+            <template v-slot:rightBottomImg>
+                <img src="static/bg/bg-right-bottom.png" style="width: 28rem; height: 28rem" />
+            </template>
         </DwPortfolioBg>
     </div>
 </template>
@@ -53,17 +64,18 @@ import { DwStocksAnalysisLine, AnalyzeType, ReportType } from 'datumwealth-vue-c
 //     IndustryBondStockData,
 //     IndustryMainData,
 // } from 'datumwealth-vue-components/components/dwPortfolioTypes/index'
-// import {
-//     DwPortfolioBg,
-//     DwPortfolioIcon,
-//     DwPortfolioLine,
-//     DwPortfolioPie,
-//     DwPortfolioIndustry,
-//     DwStocksAnalysisLine,
-//     AnalyzeType,
-//     ReportType,
-// } from 'root/components/index'
-// // import DwStocksAnalysisLine, { AnalyzeType, ReportType } from 'root/components/dwStocksAnalysisLine'
+import {
+    DwPortfolioNetWorth,
+    // DwPortfolioBg,
+    // DwPortfolioIcon,
+    // DwPortfolioLine,
+    // DwPortfolioPie,
+    // DwPortfolioIndustry,
+    // DwStocksAnalysisLine,
+    // AnalyzeType,
+    // ReportType,
+} from 'root/components/index'
+// import DwStocksAnalysisLine, { AnalyzeType, ReportType } from 'root/components/dwStocksAnalysisLine'
 import { IndustryBondStockData, IndustryMainData } from 'root/components/dwPortfolioTypes'
 
 const argeScreenAction = () => {

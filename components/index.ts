@@ -2,27 +2,76 @@
  * @Author: matiastang
  * @Date: 2021-12-30 15:31:25
  * @LastEditors: matiastang
- * @LastEditTime: 2022-02-09 09:46:00
+ * @LastEditTime: 2022-05-19 13:27:45
  * @FilePath: /dw-vue-components/components/index.ts
  * @Description: 导出所有组件
  */
 import { App } from 'vue'
-import DwWechatLogin from './dwWechatLogin/src/DwWechatLogin.vue'
-import DwDragVerify from './dwDragVerify/src/DwDragVerify.vue'
+import DwWechatLogin from './dwWechatLogin/index'
+import DwDragVerify from './dwDragVerify/index'
+// 类型
+// export * from './@types/index'
+// 基础
+import DwEcharts from './dwEcharts/index'
+import DwLineChart from './dwLineChart/index'
 // 西筹基金组合小程序图谱组件
-import DwPortfolioBg from './dwPortfolioBg/src/DwPortfolioBg.vue'
-import DwPortfolioIcon from './dwPortfolioIcon/src/DwPortfolioIcon.vue'
-import DwPortfolioLine from './dwPortfolioLine/src/DwPortfolioLine.vue'
-import DwPortfolioPie from './dwPortfolioPie/src/DwPortfolioPie.vue'
-import DwPortfolioIndustry from './dwPortfolioIndustry/src/DwPortfolioIndustry.vue'
+import DwPortfolioBg from './dwPortfolioBg/index'
+import DwPortfolioIcon from './dwPortfolioIcon/index'
+import DwPortfolioLine from './dwPortfolioLine/index'
+import DwPortfolioPie from './dwPortfolioPie/index'
+import DwPortfolioIndustry from './dwPortfolioIndustry/index'
+import DwPortfolioNetWorth from './dwPortfolioNetWorth/index'
 // 西筹个股分析小程序图谱组件
-import DwStocksAnalysisLine, {
-    AnalyzeType,
-    ReportType,
-} from './dwStocksAnalysisLine/src/DwStocksAnalysisLine.vue'
+import DwStocksAnalysisLine, { AnalyzeType, ReportType } from './dwStocksAnalysisLine/index'
+// 基金筛选
+import DwFilterSlider from './dwFilterSlider/index'
+import DwFilterArea from './dwFilterArea/index'
+// import { ChartItem, CanvasItem } from './dwFilterArea/src/interface'
+import DwFilterRuler from './dwFilterRuler/index'
+import DwFilterAreaSlider from './dwFilterAreaSlider/index'
+import DwFilterRulerSlider from './dwFilterRulerSlider/index'
+// 寻暇记
+import DwDefectDashboard from './dwDefectDashboard/index'
+import DwDefectPositionLine from './dwDefectPositionLine/index'
+import DwDefectFactorLine from './dwDefectFactorLine/index'
+import DwDefectFactorPositionTraceLine from './dwDefectFactorPositionTraceLine/index'
+
+import _package from '../package.json'
+// echarts 支持导入
+// import { use } from 'echarts/core'
+// import { CanvasRenderer } from 'echarts/renderers'
+// import { LineChart } from 'echarts/charts'
+// import {
+//     GridComponent,
+//     TooltipComponent,
+//     MarkLineComponent,
+//     MarkPointComponent,
+//     VisualMapComponent,
+// } from 'echarts/components'
+/**
+ * Error: Renderer 'undefined' is not imported. Please import it first
+ * zRander的registerPainter未初始化,需要在main.ts中添加use()引用
+ */
+/**
+ * 初始化导入
+ */
+// const initEcharts = () => {
+//     use([
+//         CanvasRenderer,
+//         LineChart,
+//         GridComponent,
+//         TooltipComponent,
+//         MarkLineComponent,
+//         MarkPointComponent,
+//         VisualMapComponent,
+//     ])
+// }
 
 // 所有组件列表
 const components = [
+    // 基础
+    DwEcharts,
+    DwLineChart,
     DwWechatLogin,
     DwDragVerify,
     DwPortfolioBg,
@@ -30,18 +79,41 @@ const components = [
     DwPortfolioLine,
     DwPortfolioPie,
     DwPortfolioIndustry,
+    DwPortfolioNetWorth,
     DwStocksAnalysisLine,
+    DwFilterSlider,
+    DwFilterArea,
+    DwFilterRuler,
+    DwFilterAreaSlider,
+    DwFilterRulerSlider,
+    // 寻暇记
+    DwDefectDashboard,
+    DwDefectPositionLine,
+    DwDefectFactorLine,
+    DwDefectFactorPositionTraceLine,
 ]
 
 // 定义 install 方法， App 作为参数, options
 const install = (app: App): void => {
     // 遍历注册所有组件
-    components.map((item) => {
-        app.component(item.name, item.component)
+    components.map((component) => {
+        app.component(component.name, component)
     })
 }
 
 export {
+    // initEcharts,
+    // 基础
+    DwEcharts,
+    DwLineChart,
+    // 西筹“基金筛选”小程序
+    DwFilterSlider,
+    DwFilterArea,
+    // ChartItem,
+    // CanvasItem,
+    DwFilterRuler,
+    DwFilterAreaSlider,
+    DwFilterRulerSlider,
     // 西筹“个股分析”小程序
     DwStocksAnalysisLine,
     AnalyzeType,
@@ -52,12 +124,18 @@ export {
     DwPortfolioLine,
     DwPortfolioPie,
     DwPortfolioIndustry,
+    DwPortfolioNetWorth,
     // 西筹通用组件
     DwWechatLogin,
     DwDragVerify,
+    // 寻暇记
+    DwDefectDashboard,
+    DwDefectPositionLine,
+    DwDefectFactorLine,
+    DwDefectFactorPositionTraceLine,
 }
 
 export default {
-    version: '0.1.20',
+    version: _package.version,
     install,
 }

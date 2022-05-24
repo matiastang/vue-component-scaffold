@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-01-12 18:42:57
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-13 10:01:47
+ * @LastEditTime: 2022-05-19 13:26:11
  * @FilePath: /dw-vue-components/components/dwPortfolioIndustry/src/DwPortfolioIndustry.vue
  * @Description: 西筹“基金组合”结果页，行业占比折线图
 -->
@@ -14,28 +14,28 @@
 
 <script lang="ts">
 import { defineComponent, provide, computed } from 'vue'
-import { use } from 'echarts/core'
-import { CanvasRenderer } from 'echarts/renderers'
-import { LineChart } from 'echarts/charts'
-import {
-    GridComponent,
-    LegendComponent,
-    TooltipComponent,
-    MarkLineComponent,
-    MarkPointComponent,
-} from 'echarts/components'
+// import { use } from 'echarts/core'
+// import { CanvasRenderer } from 'echarts/renderers'
+// import { LineChart } from 'echarts/charts'
+// import {
+//     GridComponent,
+//     LegendComponent,
+//     TooltipComponent,
+//     MarkLineComponent,
+//     MarkPointComponent,
+// } from 'echarts/components'
 import VChart, { THEME_KEY } from 'vue-echarts'
 import { IndustryBondStockData, IndustryMainData } from '../../dwPortfolioTypes'
 
-use([
-    CanvasRenderer,
-    LineChart,
-    GridComponent,
-    LegendComponent,
-    TooltipComponent,
-    MarkLineComponent,
-    MarkPointComponent,
-])
+// use([
+//     CanvasRenderer,
+//     LineChart,
+//     GridComponent,
+//     LegendComponent,
+//     TooltipComponent,
+//     MarkLineComponent,
+//     MarkPointComponent,
+// ])
 
 export default defineComponent({
     name: 'DwPortfolioIndustry',

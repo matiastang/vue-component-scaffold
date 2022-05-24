@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-01-12 16:39:19
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-13 18:45:41
+ * @LastEditTime: 2022-05-19 13:26:59
  * @FilePath: /dw-vue-components/components/dwPortfolioPie/src/DwPortfolioPie.vue
  * @Description: 西筹“基金组合”结果页，行业占比饼图
 -->
@@ -14,28 +14,28 @@
 
 <script lang="ts">
 import { defineComponent, provide, computed } from 'vue'
-import { use } from 'echarts/core'
-import { CanvasRenderer } from 'echarts/renderers'
-import { PieChart } from 'echarts/charts'
-import {
-    GridComponent,
-    LegendComponent,
-    TooltipComponent,
-    MarkLineComponent,
-    MarkPointComponent,
-} from 'echarts/components'
+// import { use } from 'echarts/core'
+// import { CanvasRenderer } from 'echarts/renderers'
+// import { PieChart } from 'echarts/charts'
+// import {
+//     GridComponent,
+//     LegendComponent,
+//     TooltipComponent,
+//     MarkLineComponent,
+//     MarkPointComponent,
+// } from 'echarts/components'
 import VChart, { THEME_KEY } from 'vue-echarts'
 import { PieBondStockData } from '../../dwPortfolioTypes'
 
-use([
-    CanvasRenderer,
-    PieChart,
-    GridComponent,
-    LegendComponent,
-    TooltipComponent,
-    MarkLineComponent,
-    MarkPointComponent,
-])
+// use([
+//     CanvasRenderer,
+//     PieChart,
+//     GridComponent,
+//     LegendComponent,
+//     TooltipComponent,
+//     MarkLineComponent,
+//     MarkPointComponent,
+// ])
 
 // export type PieBondStockData = {
 //     value: number

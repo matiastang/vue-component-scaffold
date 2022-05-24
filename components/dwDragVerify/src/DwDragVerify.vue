@@ -2,7 +2,7 @@
  * @Author: matiastang
  * @Date: 2022-01-05 10:33:42
  * @LastEditors: matiastang
- * @LastEditTime: 2022-01-13 10:23:33
+ * @LastEditTime: 2022-02-17 14:42:40
  * @FilePath: /dw-vue-components/components/dwDragVerify/src/DwDragVerify.vue
  * @Description: 拖拽验证
 -->
@@ -155,7 +155,7 @@ export default defineComponent({
     height: 52px;
     line-height: 52px;
     text-align: center;
-    border: 1px solid $borderColor;
+    border: 1px solid #bfbfbf;
     box-sizing: border-box;
     .handler {
         width: 50px;
@@ -192,7 +192,14 @@ export default defineComponent({
         -o-user-select: none;
         -ms-user-select: none;
         font-size: fontSize(16px);
-        @include defaultFont;
+        // @include defaultFont;
+        font-family: 'PingFangSC-Regular', 'PingFang SC', 'Helvetica Neue', Helvetica,
+            'Nimbus Sans L', Arial, 'Liberation Sans', 'Hiragino Sans GB',
+            'Source Han Sans CN Normal', 'Microsoft YaHei', 'Wenquanyi Micro Hei',
+            'WenQuanYi Zen Hei', 'ST Heiti', SimHei, 'WenQuanYi Zen Hei Sharp', sans-serif;
+        font-weight: normal !important;
+        letter-spacing: 1px;
+        text-align: center;
     }
 
     .slidetounlock {
